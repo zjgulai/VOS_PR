@@ -1,0 +1,132 @@
+schemaVersion: "1.0"
+registry: Momcozy 出海 PR 知识库 — 来源注册表
+reviewedAt: "2026-08-13"
+
+sources:
+  - sourceId: SRC-MUCKRACK-SOJ2025
+    title: Muck Rack State of Journalism 2025
+    kind: industry-report
+    authority: third-party
+    url: https://media.muckrack.com/documents/6.9.2025_state_of_journalism.pdf
+    reviewedAt: "2026-08-13"
+    notes: 1890 名记者调查（1515 有效），媒体 pitch 行为数据权威来源
+
+  - sourceId: SRC-PRCA-PR-DEFINITION
+    title: A New Definition for Public Relations (PRCA)
+    kind: official-web
+    authority: first-party
+    url: https://www.prca.global/new-definition-public-relations
+    reviewedAt: "2026-08-13"
+    notes: PR 行业权威定义："战略管理学科，建立信任、增强声誉"
+
+  - sourceId: SRC-CIPR-PAID-EARNED
+    title: CIPR The Ethics of Paid and Earned Media
+    kind: official-web
+    authority: first-party
+    url: https://cipr.co.uk/CIPR/CIPR/Learn_Develop/Resources/The_Ethics_of_Paid_and_Earned_Media.aspx
+    reviewedAt: "2026-08-13"
+    notes: 付费/赢得媒体伦理边界，广告 vs 软文区别
+
+  - sourceId: SRC-EDELMAN-TRUST
+    title: Edelman Trust Barometer（第三方媒体影响力数据）
+    kind: industry-report
+    authority: third-party
+    url: https://www.edelman.com/trust/trust-barometer
+    reviewedAt: "2026-08-13"
+    notes: "第三方媒体内容购买决策影响力是硬广 3 倍以上"的出处
+
+  - sourceId: SRC-GRANDVIEW-WEARABLE-PUMP
+    title: Grand View Research — Wearable Breast Pump Market 2026-2033
+    kind: industry-report
+    authority: third-party
+    url: https://www.grandviewresearch.com/industry-analysis/wearable-breast-pumps-market-report
+    reviewedAt: "2026-08-13"
+    notes: 2025 年 $646.4M，2033 年 $1,193.9M，CAGR 8.56%；北美最大、亚太最快
+
+  - sourceId: SRC-MORDOR-PUMP
+    title: Mordor Intelligence — Breast Pumps Market 2026-2031
+    kind: industry-report
+    authority: third-party
+    url: https://www.mordorintelligence.com/industry-reports/breast-pumps-market
+    reviewedAt: "2026-08-13"
+    notes: 2026 年 $3.93B → 2031 $5.91B，CAGR 8.49%；职场哺乳法规、hands-free 创新驱动
+
+  - sourceId: SRC-FTC-ENDORSEMENT
+    title: FTC Endorsement Guides (16 CFR Part 255)
+    kind: official-web
+    authority: first-party
+    url: https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews
+    reviewedAt: "2026-08-13"
+    notes: 付费连接披露、虚假评论禁止、影响者合规监控的权威依据
+
+  - sourceId: SRC-FTC-FAKE-REVIEW-RULE
+    title: FTC Final Rule Banning Fake Reviews (2024-08-14)
+    kind: official-web
+    authority: first-party
+    url: https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials
+    reviewedAt: "2026-08-13"
+    notes: 禁止买卖虚假评论、AI 生成假评论、虚假社媒指标
+
+  - sourceId: SRC-CPSC-RECALL
+    title: CPSC Recall Checklist
+    kind: official-web
+    authority: first-party
+    url: https://www.cpsc.gov/Business--Manufacturing/Recall-Guidance/Recall-Checklist
+    reviewedAt: "2026-08-13"
+    notes: 召回官方清单：指定发言人、统一口径、多渠道、月度报告
+
+  - sourceId: SRC-ACCC-RECALL-COMM
+    title: ACCC Product Safety — Plan recall communication
+    kind: official-web
+    authority: first-party
+    url: https://www.productsafety.gov.au/business/recall-an-unsafe-product/plan-how-youll-communicate-the-recall
+    reviewedAt: "2026-08-13"
+    notes: "消费者需 4-6 次沟通才会行动"的研究出处；多渠道召回策略
+
+  - sourceId: SRC-5WPR-MOM-PLAYBOOK
+    title: 5WPR — The Mom Founder's PR Playbook
+    kind: industry-article
+    authority: third-party
+    url: https://www.5wpr.com/new/the-mom-founders-pr-playbook-how-to-launch-your-parenting-product-without-a-big-budget/
+    reviewedAt: "2026-08-13"
+    notes: 母婴 PR 4 策略：micro-influencer seeding、hospital bag、mom blogger、lifecycle timing
+
+  - sourceId: SRC-5WPR-SEO-PR
+    title: 5WPR — SEO + PR: 5 Ways Parents Find Products
+    kind: industry-article
+    authority: third-party
+    url: https://www.5wpr.com/new/seo-pr-5-ways-parents-find-products/
+    reviewedAt: "2026-08-13"
+    notes: 编辑日历时间（9月 gift guide、6月 back-to-school、4月 summer），提前 4-6 周 pitch
+
+  - sourceId: SRC-SLICEDBRAND-BABY-PR
+    title: SlicedBrand — Consumer Baby PR Complete Guide
+    kind: industry-article
+    authority: third-party
+    url: https://slicedbrand.com/insights/posts/consumer-baby-pr-the-complete-guide-to-baby-tech-communications
+    reviewedAt: "2026-08-13"
+    notes: 母婴 PR 优先级"安全第一/易用第二/创新第三"；pre-launch 6-8 周 seeding；post-launch 60-90 天
+
+  - sourceId: SRC-WOLFENDEN-2026
+    title: Wolfenden — Parenting Media Landscape 2026
+    kind: industry-article
+    authority: third-party
+    url: https://wolfenden.agency/insights/navigating-the-shifting-parenting-media-landscape-what-brands-need-to-know-for-2026/
+    reviewedAt: "2026-08-13"
+    notes: 育儿媒体萎缩、专家内容+first-person+roundups 仍是主流；TikTok 虚假专家导致家长更谨慎
+
+  - sourceId: SRC-FEMTECH-WILLOW-ELVIE
+    title: Femtech Insider — Willow Acquires Elvie
+    kind: industry-news
+    authority: third-party
+    url: https://femtechinsider.com/willow-acquires-elvie-femtech-leaders-join-forces-to-transform-maternal-health/
+    reviewedAt: "2026-08-13"
+    notes: 2025-03-28 Willow 收购 Elvie；可穿戴泵占美国吸奶器市场 57%
+
+  - sourceId: SRC-MUCKRACK-AI-CITATION
+    title: PRsay — Why Earned Media Matters More in the Age of AI
+    kind: industry-article
+    authority: third-party
+    url: https://prsay.prsa.org/2026/07/14/why-earned-media-matters-more-in-the-age-of-ai/
+    reviewedAt: "2026-08-13"
+    notes: "94% AI 引用来源是非付费内容，84% 是 earned media"的数据出处

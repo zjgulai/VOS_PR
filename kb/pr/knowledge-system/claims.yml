@@ -1,0 +1,115 @@
+schemaVersion: "1.0"
+registry: Momcozy 出海 PR 知识库 — 主张注册表
+reviewedAt: "2026-08-13"
+coverageMode: reviewed-semantic-sample
+
+claims:
+  - claimId: CLM-PR-001
+    statement: 84% 的记者表示至少部分报道源于 PR pitch，但 86% 会忽略与自身报道领域不相关的 pitch。
+    claimType: external-fact
+    risk: medium
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-MUCKRACK-SOJ2025]
+    applicability: 用于指导 Pitch 相关性判断，不是成功率保证。
+    limitations: 基于 1515 名记者样本（2025-04），以美国记者为主。
+
+  - claimId: CLM-PR-002
+    statement: 69% 记者偏好 200 字以内的 pitch，62% 偏好 1:1 邮件，78% 希望中午前收到，50% 认为 1 次跟进（3-7 天内）最合适。
+    claimType: operational-rule
+    risk: medium
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-MUCKRACK-SOJ2025]
+    applicability: 直接用于 Pitch 模板的格式规范。
+    limitations: 群体平均值，个别记者偏好可能不同。
+
+  - claimId: CLM-PR-003
+    statement: 第三方媒体内容对购买决策的影响力是品牌自投硬广的 3 倍以上。
+    claimType: external-fact
+    risk: medium
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-EDELMAN-TRUST]
+    applicability: 支撑 Earned Media 优先于付费投放的底层逻辑。
+    limitations: 爱德曼信任度报告为年度性调查，倍数随年份略有波动。
+
+  - claimId: CLM-PR-004
+    statement: 全球可穿戴吸奶器市场 2025 年约 $646M，预计 2033 年达 $1,194M，CAGR 8.56%；北美最大、亚太增速最快。
+    claimType: market-fact
+    risk: low
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-GRANDVIEW-WEARABLE-PUMP]
+    applicability: 用于战略决策（市场进入、优先级）。
+    limitations: 第三方机构估算，不同机构口径有差异（Fortune 口径为 $202M/2025）。
+
+  - claimId: CLM-PR-005
+    statement: 可穿戴泵已占美国吸奶器市场约 57%（Willow/Elvie 合并后披露数据）。
+    claimType: market-fact
+    risk: low
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-FEMTECH-WILLOW-ELVIE]
+    applicability: 支撑"可穿戴泵是主战场"的品类判断。
+    limitations: 品牌自述数据，非第三方审计。
+
+  - claimId: CLM-PR-006
+    statement: FTC 2024-08-14 最终规则禁止买卖虚假评论/AI 假评论/虚假社媒指标，违规可处民事罚款。
+    claimType: legal-context
+    risk: critical
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-FTC-FAKE-REVIEW-RULE]
+    applicability: 直接约束 PR/社媒团队的 KOL 合作与评论运营，禁止买量/假评。
+    limitations: 不构成法律意见，具体合规需法务确认。
+
+  - claimId: CLM-PR-007
+    statement: 召回沟通需重复 4-6 次消费者才会采取行动，需多渠道组合（直连+社媒+媒体）并持续追踪。
+    claimType: operational-rule
+    risk: high
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-ACCC-RECALL-COMM, SRC-CPSC-RECALL]
+    applicability: 直接用于危机响应 SOP 的召回沟通策略。
+    limitations: ACCC 研究基于澳洲消费者，美国需 CPSC 口径适配。
+
+  - claimId: CLM-PR-008
+    statement: AI 答案引擎引用的来源中 94% 是非付费内容，其中 84% 是 PR 安排的 earned media。
+    claimType: external-fact
+    risk: medium
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-MUCKRACK-AI-CITATION]
+    applicability: 支撑"Earned Media 是 AI 时代品牌权威来源"的战略判断。
+    limitations: Muck Rack 研究口径，不同 AI 模型引用偏好不同。
+
+  - claimId: CLM-PR-009
+    statement: 母婴媒体 pitch 需提前 4-6 周（gift guide 9 月策划、back-to-school 6 月、summer 4 月），pre-launch 提前 6-8 周 seeding。
+    claimType: operational-rule
+    risk: medium
+    verification: source-reviewed
+    evidenceGrade: L2-fixture-or-dry-run
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-5WPR-SEO-PR, SRC-SLICEDBRAND-BABY-PR]
+    applicability: 直接用于机会识别器的窗口期计算。
+    limitations: 行业实操经验，非硬性数据，需按具体媒体日历校准。
+
+  - claimId: CLM-PR-010
+    statement: 母婴品牌 PR 内容优先级为"安全第一、易用第二、创新第三"；专家内容与 first-person 故事最受信任。
+    claimType: operational-rule
+    risk: medium
+    verification: source-reviewed
+    evidenceGrade: L2-fixture-or-dry-run
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-SLICEDBRAND-BABY-PR, SRC-WOLFENDEN-2026]
+    applicability: 指导内容策略与 pitch 角度的排序。
+    limitations: 行业经验总结，具体品类需验证。
