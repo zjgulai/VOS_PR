@@ -1,0 +1,65 @@
+﻿task_id,country_code,platform_code,wave,collection_mode,status,error_type,owner,started_at,finished_at,next_action
+GLOBAL_forum_batch01,GLOBAL,forum,batch01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+GLOBAL_generic_batch01,GLOBAL,generic,batch01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+BE_Amazon.com.be_ACTUAL_WAVE_BE_BATCH01,BE,amazon_com_be,ACTUAL_WAVE_BE_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+IT_Amazon.it_ACTUAL_WAVE_IT_BATCH01,IT,amazon_it,ACTUAL_WAVE_IT_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+IT_alfemminile_Forum_ACTUAL_WAVE_IT_BATCH01,IT,alfemminile_forum,ACTUAL_WAVE_IT_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+KE_Jumia_Kenya_ACTUAL_WAVE_KE_BATCH01,KE,jumia_kenya,ACTUAL_WAVE_KE_BATCH01,batch,done,,system,03-10-2025,2026-04-01T17:58:52,keep_template_synced
+KE_本土妈妈群_/_媒体单篇_ACTUAL_WAVE_KE_BATCH01,KE,本土妈妈群_/_媒体单篇,ACTUAL_WAVE_KE_BATCH01,batch,done,,system,03-10-2025,2026-04-01T17:58:52,keep_template_synced
+CA_Amazon.ca_ACTUAL_WAVE_CA_BATCH01,CA,amazon_ca,ACTUAL_WAVE_CA_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+CA_Mamanpourlavie_Forum_ACTUAL_WAVE_CA_BATCH01,CA,mamanpourlavie_forum,ACTUAL_WAVE_CA_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+LB_Amazon.ae_ACTUAL_WAVE_LB_BATCH01,LB,amazon_ae,ACTUAL_WAVE_LB_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+LB_Lebanon_MOPH_ACTUAL_WAVE_LB_BATCH01,LB,lebanon_moph,ACTUAL_WAVE_LB_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+AU_Amazon.com.au_ACTUAL_WAVE_AU_BATCH01,AU,amazon_com_au,ACTUAL_WAVE_AU_BATCH01,batch,done,,system,2025-01-30,2026-04-01T17:58:52,keep_template_synced
+AU_BabyCenter_Australia_ACTUAL_WAVE_AU_BATCH01,AU,babycenter_australia,ACTUAL_WAVE_AU_BATCH01,batch,done,,system,2025-01-30,2026-04-01T17:58:52,keep_template_synced
+ES_Amazon.es_ACTUAL_WAVE_ES_BATCH01,ES,amazon_es,ACTUAL_WAVE_ES_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+FI_Vauva.fi_ACTUAL_WAVE_FI_BATCH01,FI,vauva_fi,ACTUAL_WAVE_FI_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+FI_YouTube_ACTUAL_WAVE_FI_BATCH01,FI,youtube,ACTUAL_WAVE_FI_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+IN_Amazon.in_ACTUAL_WAVE_IN_BATCH01,IN,amazon_in,ACTUAL_WAVE_IN_BATCH01,batch,done,,system,2025-09-04,2026-04-01T17:58:52,keep_template_synced
+OM_Amazon.ae_ACTUAL_WAVE_OM_BATCH01,OM,amazon_ae,ACTUAL_WAVE_OM_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+OM_Amazon.ae_/_Noon_ACTUAL_WAVE_OM_BATCH01,OM,amazon_ae_/_noon,ACTUAL_WAVE_OM_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+CA_Amazon.ca_ACTUAL_WAVE_CA_BATCH01;batch01,CA,amazon_ca,ACTUAL_WAVE_CA_BATCH01;batch01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+CA_Mamanpourlavie_ACTUAL_WAVE_CA_BATCH01;batch01,CA,mamanpourlavie,ACTUAL_WAVE_CA_BATCH01;batch01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+CA_amazon_ACTUAL_WAVE_CA_BATCH01;batch01,CA,amazon,ACTUAL_WAVE_CA_BATCH01;batch01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+SE_Familjeliv.se_ACTUAL_WAVE_SE_BATCH01,SE,familjeliv_se,ACTUAL_WAVE_SE_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+SE_YouTube_ACTUAL_WAVE_SE_BATCH01,SE,youtube,ACTUAL_WAVE_SE_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+GB_Amazon.co.uk_ACTUAL_WAVE_UK_BATCH01,GB,amazon_co_uk,ACTUAL_WAVE_UK_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+GB_Mumsnet_ACTUAL_WAVE_UK_BATCH01,GB,mumsnet,ACTUAL_WAVE_UK_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+AU_Amazon.com.au_ACTUAL_WAVE_AU_BATCH01;batch01,AU,amazon_com_au,ACTUAL_WAVE_AU_BATCH01;batch01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+AU_ProductReview.com.au_ACTUAL_WAVE_AU_BATCH01;batch01,AU,productreview_com_au,ACTUAL_WAVE_AU_BATCH01;batch01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+AU_amazon_ACTUAL_WAVE_AU_BATCH01;batch01,AU,amazon,ACTUAL_WAVE_AU_BATCH01;batch01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+FR_Amazon.fr_ACTUAL_WAVE_FR_BATCH01,FR,amazon_fr,ACTUAL_WAVE_FR_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+FR_Doctissimo_Forum_/_Magicmaman_Forum_ACTUAL_WAVE_FR_BATCH01,FR,doctissimo_forum_/_magicmaman_forum,ACTUAL_WAVE_FR_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+GB_Netmums_ACTUAL_WAVE_UK_BATCH01,GB,netmums,ACTUAL_WAVE_UK_BATCH01,batch,done,,system,2025-04-26,2026-04-01T17:58:52,keep_template_synced
+DE_Amazon.de_ACTUAL_WAVE1_BATCH01,DE,amazon_de,ACTUAL_WAVE1_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+ID_Tokopedia_ACTUAL_WAVE_ID_BATCH01,ID,tokopedia,ACTUAL_WAVE_ID_BATCH01,batch,done,,system,Lebih dari 1 tahun lalu,2026-04-01T17:58:52,keep_template_synced
+MX_BabyCenter_en_Español_ACTUAL_WAVE1_BATCH02,MX,babycenter_en_español,ACTUAL_WAVE1_BATCH02,batch,done,,system,2025-04-06,2026-04-01T17:58:52,keep_template_synced
+TH_Pantip_ACTUAL_WAVE_TH_BATCH01,TH,pantip,ACTUAL_WAVE_TH_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+AT_urbia.de_ACTUAL_WAVE_AT_BATCH01,AT,urbia_de,ACTUAL_WAVE_AT_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+IE_RollerCoaster.ie_ACTUAL_WAVE_IE_BATCH01,IE,rollercoaster_ie,ACTUAL_WAVE_IE_BATCH01,batch,done,,system,2015-01-02,2026-04-01T17:58:52,keep_template_synced
+NL_Ouders.nl_Forum_ACTUAL_WAVE_NL_BATCH01,NL,ouders_nl_forum,ACTUAL_WAVE_NL_BATCH01,batch,done,,system,2009-09-25,2026-04-01T17:58:52,keep_template_synced
+NL_forum.oudersvannu.nl_ACTUAL_WAVE_NL_BATCH01,NL,forum_oudersvannu_nl,ACTUAL_WAVE_NL_BATCH01,batch,done,,system,2009-09-25,2026-04-01T17:58:52,keep_template_synced
+NO_Babyverden_Forum_ACTUAL_WAVE_NO_BATCH01,NO,babyverden_forum,ACTUAL_WAVE_NO_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+NO_YouTube_ACTUAL_WAVE_NO_BATCH01,NO,youtube,ACTUAL_WAVE_NO_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+TN_Leaders_Tunisie_ACTUAL_WAVE_TN_BATCH01,TN,leaders_tunisie,ACTUAL_WAVE_TN_BATCH01,batch,done,,system,2021-10-28,2026-04-01T17:58:52,keep_template_synced
+TN_Med.ma_ACTUAL_WAVE_TN_BATCH01,TN,med_ma,ACTUAL_WAVE_TN_BATCH01,batch,done,,system,2021-10-28,2026-04-01T17:58:52,keep_template_synced
+TN_The_Milkyway_Tunisia_ACTUAL_WAVE_TN_BATCH01,TN,the_milkyway_tunisia,ACTUAL_WAVE_TN_BATCH01,batch,done,,system,2021-10-28,2026-04-01T17:58:52,keep_template_synced
+AE_3a2ilati_ACTUAL_WAVE_AE_BATCH01,AE,3a2ilati,ACTUAL_WAVE_AE_BATCH01,batch,done,,system,2018-07-23,2026-04-01T17:58:52,keep_template_synced
+AE_Supermama_ACTUAL_WAVE_AE_BATCH01,AE,supermama,ACTUAL_WAVE_AE_BATCH01,batch,done,,system,2018-07-23,2026-04-01T17:58:52,keep_template_synced
+AE_MOHAP_UAE_ACTUAL_WAVE_AE_BATCH01,AE,mohap_uae,ACTUAL_WAVE_AE_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+BE_Doctissimo_Forum_/_Magicmaman_Forum_ACTUAL_WAVE_BE_BATCH01,BE,doctissimo_forum_/_magicmaman_forum,ACTUAL_WAVE_BE_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+BG_YouTube_bg_ACTUAL_WAVE3_BATCH01,BG,youtube_bg,ACTUAL_WAVE3_BATCH01,batch,done,,system,2024-05-06（页面展示）,2026-04-01T17:58:52,keep_template_synced
+BG_eMAG.bg_ACTUAL_WAVE3_BATCH01,BG,emag_bg,ACTUAL_WAVE3_BATCH01,batch,done,,system,2024-05-06（页面展示）,2026-04-01T17:58:52,keep_template_synced
+CH_babyforum.ch_ACTUAL_WAVE_CH_BATCH01,CH,babyforum_ch,ACTUAL_WAVE_CH_BATCH01,batch,done,,system,2023-01-04,2026-04-01T17:58:52,keep_template_synced
+HR_RODA_Forum_ACTUAL_WAVE_HR_BATCH01,HR,roda_forum,ACTUAL_WAVE_HR_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+PT_De_Mãe_Para_Mãe_ACTUAL_WAVE_PT_BATCH01,PT,de_mãe_para_mãe,ACTUAL_WAVE_PT_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+RO_eMAG_ACTUAL_WAVE3_BATCH01,RO,emag,ACTUAL_WAVE3_BATCH01,batch,done,,system,04 Mar 2026,2026-04-01T17:58:52,keep_template_synced
+SA_BabyCenter_Community_ACTUAL_WAVE1_BATCH02,SA,babycenter_community,ACTUAL_WAVE1_BATCH02,batch,done,,system,2025-07-10,2026-04-01T17:58:52,keep_template_synced
+HU_eMAG.hu_ACTUAL_WAVE3_BATCH01,HU,emag_hu,ACTUAL_WAVE3_BATCH01,batch,done,,system,2018. aug 13.（页面展示）,2026-04-01T17:58:52,keep_template_synced
+UZ_iRecommend.ru_ACTUAL_WAVE_UZ_BATCH01,UZ,irecommend_ru,ACTUAL_WAVE_UZ_BATCH01,batch,done,,system,13.04.2023 11:41,2026-04-01T17:58:52,keep_template_synced
+AL_YouTube_sq/en_ACTUAL_WAVE3_BATCH01,AL,youtube_sq/en,ACTUAL_WAVE3_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+CN_孕小帮_ACTUAL_WAVE1_BATCH01,CN,孕小帮,ACTUAL_WAVE1_BATCH01,batch,done,,system,2022-03-03 11:17,2026-04-01T17:58:52,keep_template_synced
+CZ_YouTube_ACTUAL_WAVE_CZ_BATCH01,CZ,youtube,ACTUAL_WAVE_CZ_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+DK_YouTube_ACTUAL_WAVE_DK_BATCH01,DK,youtube,ACTUAL_WAVE_DK_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+GR_YouTube_ACTUAL_WAVE3_BATCH01,GR,youtube,ACTUAL_WAVE3_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced
+KW_Supermama_ACTUAL_WAVE_KW_BATCH01,KW,supermama,ACTUAL_WAVE_KW_BATCH01,batch,done,,system,,2026-04-01T17:58:52,keep_template_synced

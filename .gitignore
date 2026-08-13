@@ -49,9 +49,6 @@ app/tools/
 app/__init__.py
 app/config.py
 
-# Docs (not needed for site)
-docs/
-
 # Build output
 app/dashboard/frontend/out/
 app/dashboard/frontend/.next/
