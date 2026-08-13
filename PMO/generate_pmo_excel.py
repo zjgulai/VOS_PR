@@ -27,6 +27,39 @@ FILL_FILL = PatternFill(start_color="FFF2CC", end_color="FFF2CC", fill_type="sol
 OK_FILL = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")
 CENTER = Alignment(horizontal="center", vertical="center")
 
+FB_GROUPS = [
+    ("Exclusively Pumping Mamas - Education & Support Group",
+     "https://www.facebook.com/groups/1574856819503023/",
+     "排奶/泵奶支持", "教育+支持型，活跃度高，S1 用户讨论核心群"),
+    ("Exclusive Pumping: Breastfeeding Without Nursing",
+     "https://www.facebook.com/groups/EP.BWN/",
+     "排奶/泵奶支持", "经典排奶大群，跨地区"),
+    ("Wearable Pump Paperweight Prevention",
+     "URL 待社媒团队补充", "可穿戴泵 troubleshooting",
+     "IBCLC Jessica Anderson 运营，可穿戴泵专业讨论"),
+    ("Breastfeeding Support Group for Black Moms",
+     "URL 待社媒团队补充", "母乳支持", "约 9.1 万成员大群"),
+    ("Pumping Mamas: breastfeeding support for working moms",
+     "URL 待社媒团队补充", "职场泵奶", "职场妈妈泵奶场景，与 Momcozy 目标人群重合"),
+]
+
+KOL_CREATORS = [
+    ("Allison Tolman / New Little Life", "YouTube", "泵奶器测评 IBCLC",
+     "头部泵奶器专家，万粉级，可做专家背书/Pitch"),
+    ("Jessica Anderson / Genuine Lactation", "Instagram+FB", "可穿戴泵 IBCLC",
+     "可穿戴泵专业测评，运营 Wearable Pump Paperweight 群"),
+    ("Katie Clark / The Breastfeeding Mama", "YouTube", "泵奶器 IBCLC",
+     "IBCLC 推荐类内容，6.7K+ 播放"),
+    ("Carisa Myers / The Milk Effect", "Instagram", "泵奶器 RN IBCLC",
+     "测评 30+ 泵，100 分评分体系，无赞助"),
+    ("Allison Banfield / Pumping Milk", "YouTube+Blog", "Momcozy 测评",
+     "Momcozy 全系列测评（M5/M6/M9/V1 Pro），可合作"),
+    ("Tamari Jacob / @onewiththepump", "Instagram/Threads", "排奶/泵奶",
+     "16.9K 粉丝，排奶教育"),
+    ("maxinesanz", "Instagram", "泵奶器测评",
+     "新手妈妈泵奶测评，#momcozy #spectra"),
+]
+
 
 def _style_header(ws, ncols: int) -> None:
     for c in range(1, ncols + 1):
@@ -82,23 +115,27 @@ def gen_fill_sheet() -> None:
 
     ws1 = wb.active
     ws1.title = "1.FacebookGroups群组"
-    ws1.append(["群组名称", "群组URL", "是否公开", "主题/垂类", "备注"])
-    for _ in range(8):
+    ws1.append(["群组名称", "群组URL", "主题/垂类", "AI备注", "业务确认"])
+    for name, url, theme, note in FB_GROUPS:
+        ws1.append([name, url, theme, note, ""])
+    for _ in range(3):
         ws1.append(["", "", "", "", ""])
     _style_header(ws1, 5)
-    for c in range(1, 6):
-        _fill_col(ws1, c, 8)
-    _set_widths(ws1, [28, 40, 10, 20, 20])
+    nrows = ws1.max_row - 1
+    _fill_col(ws1, 5, nrows)
+    _set_widths(ws1, [42, 42, 18, 40, 12])
     ws1.freeze_panes = "A2"
 
     ws2 = wb.create_sheet("2.KOL关注池")
-    ws2.append(["Creator账号", "平台", "垂类", "是否已合作", "备注"])
-    for _ in range(8):
+    ws2.append(["Creator账号", "平台", "垂类", "AI备注", "业务确认"])
+    for name, platform, niche, note in KOL_CREATORS:
+        ws2.append([name, platform, niche, note, ""])
+    for _ in range(3):
         ws2.append(["", "", "", "", ""])
     _style_header(ws2, 5)
-    for c in range(1, 6):
-        _fill_col(ws2, c, 8)
-    _set_widths(ws2, [24, 12, 16, 12, 20])
+    nrows = ws2.max_row - 1
+    _fill_col(ws2, 5, nrows)
+    _set_widths(ws2, [34, 16, 18, 42, 12])
     ws2.freeze_panes = "A2"
 
     ws3 = wb.create_sheet("3.周报接收人")
