@@ -1,0 +1,89 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-08-13",
+  "source": "docs/竞品维度表v1.1.md (FINAL)",
+  "purpose": "竞品词典单一真源。所有采集器（feed_collector / tiktok_collector / instagram_collector / youtube_collector / reddit_collector / keyword_search_collector）的品牌、型号、handle、PR 关键词、风险词均从此文件读取，禁止在采集器内硬编码 BRAND_WATCHLIST。",
+
+  "momcozy": {
+    "brand_key": "momcozy",
+    "name": "Momcozy",
+    "product_lines": ["pump", "feeding_appliance", "monitor", "carrier", "bra", "baby_care"],
+    "models": ["M5 Smart", "M9", "S9 Pro", "S12 Pro", "V1 Pro", "V2", "Air 1", "W1", "KleanPal Pro"],
+    "product_aliases": {
+      "M5 Smart": "BP380",
+      "M9": "BP223",
+      "W1": "BP420"
+    },
+    "self_keywords": ["momcozy", "kleanpal", "klean pal"]
+  },
+
+  "competitors": {
+    "pump": [
+      {"brand_key": "eufy", "name": "Eufy", "origin": "中国(Anker)", "tier": "T1", "priority": "P0", "models": ["S1 Pro", "S1", "E10"], "tiktok": "eufybaby", "instagram": "eufyofficial", "pr_keywords": ["eufy", "eufy S1 Pro", "eufy S1", "eufy breast pump"]},
+      {"brand_key": "elvie", "name": "Elvie", "origin": "英国", "tier": "T1", "priority": "P0", "models": ["Elvie Pump", "Elvie Stride", "Elvie Stride Plus"], "tiktok": "elvieofficial", "instagram": "elvie", "pr_keywords": ["elvie", "elvie pump", "elvie stride"]},
+      {"brand_key": "willow", "name": "Willow", "origin": "美国", "tier": "T1", "priority": "P0", "models": ["Willow Go", "Willow 360", "Willow Sync", "Willow Wave"], "tiktok": "willowpump", "instagram": "willowpump", "pr_keywords": ["willow", "willow pump", "willow go", "willow 360", "willow sync", "willow wave"]},
+      {"brand_key": "spectra", "name": "Spectra", "origin": "韩国", "tier": "T1", "priority": "P0", "models": ["S1 Plus", "S2 Plus", "S9 Plus", "Synergy Gold", "Premier Wearable"], "tiktok": "spectrababyusa", "instagram": "spectrababyusa", "pr_keywords": ["spectra", "spectra S1", "spectra S2"]},
+      {"brand_key": "medela", "name": "Medela", "origin": "瑞士", "tier": "T2", "priority": "P0", "models": ["Swing Maxi Hands-free", "Motion InBra", "Melody InBra", "Freestyle Mini", "Pump In Style Pro+"], "tiktok": "medela_official", "instagram": "medelaofficial", "pr_keywords": ["medela", "medela pump", "melody inbra", "freestyle mini"]},
+      {"brand_key": "frida", "name": "Frida", "origin": "美国", "tier": "T2", "priority": "P1", "models": ["Frida Manual Breast Pump (DualSwap)"], "tiktok": "fridamom", "instagram": "fridababy", "pr_keywords": ["frida", "fridababy pump", "dualswap", "fridamom"]},
+      {"brand_key": "philips_avent", "name": "Philips Avent", "origin": "荷兰", "tier": "T2", "priority": "P1", "models": ["Double Electric", "Comfort Single", "Hands-free"], "tiktok": "philipsavent", "instagram": "philipsavent", "pr_keywords": ["philips avent", "philips avent breast pump", "SCD553"]},
+      {"brand_key": "motif_medical", "name": "Motif Medical", "origin": "美国", "tier": "T2", "priority": "P1", "models": ["Motif Luna", "Motif Aura Glow", "Motif Roam"], "tiktok": "motifmedical", "instagram": "motifmedical", "pr_keywords": ["motif", "motif medical", "motif luna", "motif aura glow"]},
+      {"brand_key": "lansinoh", "name": "Lansinoh", "origin": "美国", "tier": "T2", "priority": "P1", "models": ["DiscreetDuo Flow", "DiscreetDuo", "SmartPump 2.0", "NaturalWave"], "tiktok": "lansinoh", "instagram": "lansinoh", "pr_keywords": ["lansinoh", "lansinoh discreetduo", "medicaid pump"]},
+      {"brand_key": "babybuddha", "name": "BabyBuddha", "origin": "美国", "tier": "T2", "priority": "P1", "models": ["BabyBuddha 2.0", "BabyBuddha Portable"], "tiktok": "babybuddhaofficial", "instagram": "babybuddhaofficial", "pr_keywords": ["babybuddha", "babybuddha 2.0", "portable pump"]},
+      {"brand_key": "ameda", "name": "Ameda", "origin": "美国", "tier": "T2", "priority": "P2", "models": ["Mya Joy Plus", "Purely Yours Ultra", "Finesse"], "tiktok": "amedabreastpumps", "instagram": "ameda", "pr_keywords": ["ameda", "ameda mya joy", "ameda purely yours"]},
+      {"brand_key": "zomee", "name": "Zomee", "origin": "美国", "tier": "T2", "priority": "P2", "models": ["Zomee Z2", "Zomee Fit"], "tiktok": "zomeebreastpump", "instagram": "zomee", "pr_keywords": ["zomee", "zomee Z2", "zomee fit"]},
+      {"brand_key": "haakaa", "name": "Haakaa", "origin": "新西兰", "tier": "T3", "priority": "P2", "models": ["Gen 3 Silicone", "Ladybug", "Electric"], "tiktok": "haakaanz", "instagram": "haakaa_nz", "pr_keywords": ["haakaa", "haakaa silicone", "passive pump"]},
+      {"brand_key": "ardo", "name": "Ardo", "origin": "比利时", "tier": "T3", "priority": "P2", "models": [], "tiktok": "", "instagram": "ardocare", "pr_keywords": ["ardo"]},
+      {"brand_key": "pigeon", "name": "Pigeon/贝亲", "origin": "日本", "tier": "T3", "priority": "P2", "models": [], "tiktok": "", "instagram": "pigeon_global", "pr_keywords": ["pigeon", "贝亲"]},
+      {"brand_key": "nuk", "name": "NUK", "origin": "德国", "tier": "T3", "priority": "P2", "models": [], "tiktok": "", "instagram": "nukbaby", "pr_keywords": ["nuk"]},
+      {"brand_key": "lola_lykke", "name": "Lola&Lykke", "origin": "英国", "tier": "T3", "priority": "P2", "models": ["Lola&Lykke Smart Electric"], "tiktok": "lolaandlykke", "instagram": "lolalykke", "pr_keywords": ["lola lykke", "lola and lykke", "smart electric pump"]},
+      {"brand_key": "freemie", "name": "Freemie", "origin": "美国", "tier": "T3", "priority": "P2", "models": [], "tiktok": "", "instagram": "freemie", "pr_keywords": ["freemie"]}
+    ],
+    "feeding_appliance": [
+      {"brand_key": "baby_brezza", "name": "Baby Brezza", "origin": "美国", "tier": "T1", "priority": "P0", "models": ["One Step Advanced", "SuperQuick", "Superfast", "Bottle Washer Pro"], "tiktok": "babybrezza", "instagram": "babybrezza", "pr_keywords": ["baby brezza", "baby brezza sterilizer", "one step advanced", "superquick", "HEPA"]},
+      {"brand_key": "grownsy", "name": "Grownsy", "origin": "中国", "tier": "T1", "priority": "P0", "models": ["Electric Sterilizer", "Bottle Warmer"], "tiktok": "grownsy", "instagram": "grownsybaby", "pr_keywords": ["grownsy", "grownsy sterilizer", "coating peeling"]},
+      {"brand_key": "philips_avent", "name": "Philips Avent", "origin": "荷兰", "tier": "T2", "priority": "P1", "models": ["Sterilizer & Dryer Premium", "Microwave Steam", "Bottle Warmer"], "tiktok": "philipsavent", "instagram": "philipsavent", "pr_keywords": ["philips avent sterilizer", "premium dryer"]},
+      {"brand_key": "dr_browns", "name": "Dr. Brown's", "origin": "美国", "tier": "T2", "priority": "P1", "models": ["Deluxe Warmer & Sterilizer", "Clean Steam Sterilizer"], "tiktok": "drbrowns", "instagram": "drbrowns", "pr_keywords": ["dr browns", "dr browns sterilizer", "deluxe warmer"]},
+      {"brand_key": "tommee_tippee", "name": "Tommee Tippee", "origin": "英国", "tier": "T2", "priority": "P1", "models": ["Microwave Steam", "LetsGo Portable Warmer", "Steri-Steam"], "tiktok": "tommeetippee", "instagram": "", "pr_keywords": ["tommee tippee sterilizer", "letsgo warmer"]},
+      {"brand_key": "wabi_baby", "name": "Wabi Baby", "origin": "美国", "tier": "T2", "priority": "P1", "models": ["Electric Steam Sterilizer & Dryer"], "tiktok": "wabi_baby", "instagram": "", "pr_keywords": ["wabi baby sterilizer"]},
+      {"brand_key": "papablic", "name": "Papablic", "origin": "中国", "tier": "T2", "priority": "P2", "models": ["Sterilizer & Dryer Pro", "Baby Bottle Sterilizer"], "tiktok": "papablic", "instagram": "", "pr_keywords": ["papablic sterilizer", "papablic dryer pro"]},
+      {"brand_key": "chicco", "name": "Chicco", "origin": "意大利", "tier": "T2", "priority": "P2", "models": [], "tiktok": "chicco_official", "instagram": "", "pr_keywords": ["chicco"]},
+      {"brand_key": "munchkin", "name": "Munchkin", "origin": "美国", "tier": "T2", "priority": "P2", "models": [], "tiktok": "munchkininc", "instagram": "", "pr_keywords": ["munchkin"]},
+      {"brand_key": "beaba", "name": "Béaba", "origin": "法国", "tier": "T2", "priority": "P2", "models": [], "tiktok": "beabausa", "instagram": "", "pr_keywords": ["beaba"]}
+    ]
+  },
+
+  "kleanpal_risk_keywords": [
+    "kleanpal", "klean pal", "sterilizer crack", "sterilizer plastic",
+    "microplastic baby", "bottle sterilizer peeling", "bottle sterilizer recall",
+    "sterilizer coating", "grownsy peeling"
+  ],
+
+  "risk_keywords": [
+    {"term": "paying creators to lie", "boost": 0.50, "type": "声誉/FTC合规"},
+    {"term": "class action", "boost": 0.45, "type": "法律"},
+    {"term": "lawsuit", "boost": 0.40, "type": "法律/产品安全"},
+    {"term": "recall", "boost": 0.40, "type": "产品安全"},
+    {"term": "fake review", "boost": 0.40, "type": "FTC合规"},
+    {"term": "false advertising", "boost": 0.38, "type": "监管"},
+    {"term": "microplastic", "boost": 0.38, "type": "产品安全"},
+    {"term": "coating peeling", "boost": 0.38, "type": "产品安全"},
+    {"term": "injury", "boost": 0.35, "type": "产品安全"},
+    {"term": "hazard", "boost": 0.35, "type": "产品安全"},
+    {"term": "don't buy", "boost": 0.28, "type": "声誉"},
+    {"term": "scam", "boost": 0.25, "type": "声誉"},
+    {"term": "unsafe", "boost": 0.30, "type": "产品安全"},
+    {"term": "defect", "boost": 0.30, "type": "产品安全"},
+    {"term": "warning", "boost": 0.25, "type": "监管"},
+    {"term": "investigation", "boost": 0.25, "type": "法律/监管"},
+    {"term": "ban", "boost": 0.25, "type": "监管"}
+  ],
+
+  "brand_watchlist_flat": [
+    "momcozy", "kleanpal", "eufy", "elvie", "willow", "spectra", "medela",
+    "frida", "philips avent", "motif medical", "lansinoh", "babybuddha",
+    "ameda", "zomee", "haakaa", "ardo", "pigeon", "nuk", "lola lykke", "freemie",
+    "baby brezza", "grownsy", "wabi baby", "papablic", "tommee tippee",
+    "dr browns", "chicco", "munchkin", "beaba",
+    "breast pump", "wearable pump", "m5", "s12", "v1 pro"
+  ]
+}

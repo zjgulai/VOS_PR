@@ -39,7 +39,8 @@ data/delivery/tables/voc_negative_summary_report.md
 archive/
 runtime/
 viz-static/
-config/
+config/*.py
+config/__pycache__/
 _tmp_list.txt
 
 # Non-core app modules (local-only)
