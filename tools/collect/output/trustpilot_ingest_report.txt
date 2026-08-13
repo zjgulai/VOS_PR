@@ -1,0 +1,19 @@
+Trustpilot Ingest Report - 2026-04-08
+==================================================
+Total reviews collected: 282
+  Elvie: 40
+  Tommee Tippee: 40
+  Bugaboo: 40
+  Cybex: 40
+  Momcozy: 39
+  Medela: 27
+  Graco: 20
+  UPPAbaby: 18
+  Baby Brezza: 12
+  Willow: 5
+  Lansinoh: 1
+
+Country distribution:
+  美国: 280
+  德国: 1
+  法国: 1
