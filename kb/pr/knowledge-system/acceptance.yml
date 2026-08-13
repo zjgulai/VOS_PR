@@ -1,0 +1,40 @@
+schemaVersion: "1.0"
+registry: Momcozy 出海 PR 知识库 — SOP 验收契约
+reviewedAt: "2026-08-13"
+
+acceptance:
+  - contractId: ACC-CRISIS-001
+    sopDocument: sop/危机响应分级步骤.md
+    criterion: Sev4 信号从出现到确认不超过 15 分钟，且有「发现时间 + 确认时间」记录。
+    verification: 注入一条测试 Sev4 信号，记录时间戳差值。
+    gate: 超过 15 分钟则判定未达标，需优化预警链路。
+
+  - contractId: ACC-CRISIS-002
+    sopDocument: sop/危机响应分级步骤.md
+    criterion: 所有对外声明必须经 Legal 复核，AI 只生成草稿。
+    verification: 抽查对外声明是否含审批记录。
+    gate: 存在未经审批的对外声明即失败关闭。
+
+  - contractId: ACC-CRISIS-003
+    sopDocument: sop/危机响应分级步骤.md
+    criterion: 召回沟通覆盖 4-6 次多渠道触达（直连+社媒+媒体+电商）。
+    verification: 召回事件记录渠道清单与触达次数。
+    gate: 单渠道单次触达即判定召回沟通不达标。
+
+  - contractId: ACC-PITCH-001
+    sopDocument: sop/个性化Pitch模板.md
+    criterion: Pitch 正文 <200 字，1:1 邮件，无群发。
+    verification: 抽查 pitch 草稿字数与发送方式。
+    gate: 超过 200 字或群发即不达标。
+
+  - contractId: ACC-PITCH-002
+    sopDocument: sop/个性化Pitch模板.md
+    criterion: Pitch 首句必须呼应编辑近期文章/选题（个性化证据）。
+    verification: 人工复核 pitch 草稿是否含具体编辑引用。
+    gate: 无个性化呼应即判定为模板群发，不达标。
+
+  - contractId: ACC-PITCH-003
+    sopDocument: sop/个性化Pitch模板.md
+    criterion: 跟进不超过 1 次，3-7 天后发送，2 次无回复即停止。
+    verification: 记录跟进时间戳与次数。
+    gate: 3 次以上跟进即违反冷却期规则。

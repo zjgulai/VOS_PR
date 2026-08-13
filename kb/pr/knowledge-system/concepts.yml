@@ -1,0 +1,81 @@
+schemaVersion: "1.0"
+registry: Momcozy 出海 PR 知识库 — 概念图谱
+reviewedAt: "2026-08-13"
+
+concepts:
+  - conceptId: CONCEPT-PR
+    term: 公共关系 Public Relations
+    aliases: [PR, 公关]
+    definition: 战略性沟通学科，通过经营与利益相关方的双向信任关系，管理声誉、塑造统一认知、实现品牌资产增值，区别于直接带货的广告。
+    canonicalDocument: wiki_出海PR运营LLM知识库.md
+    related: [CONCEPT-EARNED-MEDIA, CONCEPT-PAID-MEDIA, CONCEPT-OWNED-MEDIA, CONCEPT-CRISIS-PR]
+
+  - conceptId: CONCEPT-EARNED-MEDIA
+    term: 赢得媒体 Earned Media
+    aliases: [免费媒体, 第三方背书]
+    definition: 媒体主动报道、第三方测评、编辑推荐等非付费获得的曝光，是 PR 的终极目标，公信力最高。
+    canonicalDocument: wiki_出海PR运营LLM知识库.md
+    conflictsWith:
+      - conceptId: CONCEPT-PAID-MEDIA
+        reason: Earned 是赢取信任，Paid 是购买曝光，二者逻辑相反
+    related: [CONCEPT-PR, CONCEPT-PITCH, CONCEPT-SEEDING]
+
+  - conceptId: CONCEPT-PAID-MEDIA
+    term: 付费媒体 Paid Media
+    aliases: [软文, 赞助内容, 商单]
+    definition: 付费软文、媒体专栏赞助、KOL 商单、社媒广告，介于营销与 PR 之间，可控但公信力低。
+    canonicalDocument: wiki_出海PR运营LLM知识库.md
+    conflictsWith:
+      - conceptId: CONCEPT-EARNED-MEDIA
+        reason: 见上
+    related: [CONCEPT-PR]
+
+  - conceptId: CONCEPT-OWNED-MEDIA
+    term: 自有媒体 Owned Media
+    aliases: [品牌官网, 品牌官号]
+    definition: 官网、独立站、品牌社媒官号、博客，完全自主可控，是 PR 基础阵地。
+    canonicalDocument: wiki_出海PR运营LLM知识库.md
+    related: [CONCEPT-PR]
+
+  - conceptId: CONCEPT-PITCH
+    term: 媒体提案 Pitch
+    aliases: [投递, 建联]
+    definition: 一对一、个性化的媒体提案，从「编辑需要什么」出发而非「品牌想说什么」；群发模板会被编辑拉黑。
+    canonicalDocument: sop/个性化Pitch模板.md
+    prerequisiteOf: [CONCEPT-MEDIA-RELATIONS]
+    related: [CONCEPT-EARNED-MEDIA]
+
+  - conceptId: CONCEPT-SEEDING
+    term: 产品寄样 Seeding
+    aliases: [寄样, 送测]
+    definition: 向编辑/KOL 寄送产品样机换取真实测评，成本低效果好，是母婴 PR 核心打法。
+    canonicalDocument: wiki_出海PR运营LLM知识库.md
+    related: [CONCEPT-PITCH, CONCEPT-EARNED-MEDIA]
+
+  - conceptId: CONCEPT-MEDIA-RELATIONS
+    term: 媒介关系 Media Relations
+    aliases: [媒体关系]
+    definition: 发稿、对接记者、媒体专访、评测、行业报道，是 PR 七模块中最常被提及的一项。
+    canonicalDocument: wiki_出海PR运营LLM知识库.md
+    related: [CONCEPT-PITCH, CONCEPT-SEEDING]
+
+  - conceptId: CONCEPT-CRISIS-PR
+    term: 危机公关 Crisis PR
+    aliases: [危机管理, 召回沟通]
+    definition: 应对产品安全投诉、集体维权、媒体负面、召回等声誉风险，含舆情监测、官方声明、媒体沟通、声誉修复。
+    canonicalDocument: sop/危机响应分级步骤.md
+    related: [CONCEPT-PR, CONCEPT-EARNED-MEDIA]
+
+  - conceptId: CONCEPT-THOUGHT-LEADERSHIP
+    term: 行业思想领导力 Thought Leadership
+    aliases: [白皮书, 行业观点]
+    definition: 面向行业媒体、分析师、展会输出创始人/产品技术观点、白皮书、数据，建立赛道权威。
+    canonicalDocument: wiki_出海PR运营LLM知识库.md
+    related: [CONCEPT-EARNED-MEDIA]
+
+  - conceptId: CONCEPT-SOV
+    term: 声量份额 Share of Voice
+    aliases: [SOV, 媒体渗透率]
+    definition: 品牌在行业/品类媒体提及中的占比，是 PR 效果的核心量化指标之一。
+    canonicalDocument: wiki_出海PR运营LLM知识库.md
+    related: [CONCEPT-EARNED-MEDIA]
