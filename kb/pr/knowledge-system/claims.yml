@@ -2,8 +2,11 @@ schemaVersion: "1.0"
 registry: Momcozy 出海 PR 知识库 — 主张注册表
 reviewedAt: "2026-08-13"
 coverageMode: reviewed-semantic-sample
+crossAuditPolicy: 每条 claim 标注独立来源数；单一来源标「L2 待核实」；≥2 个独立来源标「L1」
 
 claims:
+  # ── 原有 10 条（基础 PR 数据）─────────────────────────────────
+
   - claimId: CLM-PR-001
     statement: 84% 的记者表示至少部分报道源于 PR pitch，但 86% 会忽略与自身报道领域不相关的 pitch。
     claimType: external-fact
@@ -113,3 +116,162 @@ claims:
     sourceRefs: [SRC-SLICEDBRAND-BABY-PR, SRC-WOLFENDEN-2026]
     applicability: 指导内容策略与 pitch 角度的排序。
     limitations: 行业经验总结，具体品类需验证。
+
+  # ── 阶段 A 研究包新增（14 条，含交叉审计标注）──────────────────
+
+  # 研究包1：出海 DTC PR 成功框架
+  - claimId: CLM-DTC-001
+    statement: 中国出海品牌进入西方市场面临"信任缺口"——记者先问"能信任吗"而不是"够厉害吗"；需要公司身份清晰、创始人可信度、产品主张有证据、市场相关性明确、语言具体不夸张。
+    claimType: operational-rule
+    risk: high
+    verification: cross-audit-verified
+    crossAuditNote: 3 个独立来源独立描述同一现象
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-TIF-CHINESE-BRAND-TRUST, SRC-CALYWIRE-ASIAN-US, SRC-ABOVEA-CHINESE-TRUST]
+    applicability: 指导 Momcozy 出海 PR 的叙事框架，不可直接照搬国内软文思路。
+    limitations: 信任缺口程度因品类和市场阶段不同。
+
+  - claimId: CLM-DTC-002
+    statement: 88% 的西方消费者购买前会阅读评论；在美国，reviews 是信任基础设施，不是副产品，且现在也是 AI 搜索引用品牌的核心信号。
+    claimType: external-fact
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: 2 个独立来源（AboveA + Calywire）均引用"88%"或相近数据
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-ABOVEA-CHINESE-TRUST, SRC-CALYWIRE-ASIAN-US]
+    applicability: 支撑 Momcozy 需要在 Babylist/Consumer Reports/Amazon 建立真实评论基础设施。
+    limitations: 数据口径为通用消费品，母婴品类可能略有差异。
+
+  - claimId: CLM-DTC-003
+    statement: 中国出海 DTC 品牌 PR 成功公式：跨类媒体策略（tech/lifestyle/women's 媒体，不局限单一类别）+ GEO 布局 + 性能 PR（affiliate 链接）三轨并行。HOTO 案例结果：双倍营收、SOV+20%、AI Share of Answer 行业第一。
+    claimType: operational-rule
+    risk: medium
+    verification: source-reviewed
+    crossAuditNote: 单一来源（Proper Propaganda），待第二来源核实
+    evidenceGrade: L2-fixture-or-dry-run
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-PROPER-PROPAGANDA-HOTO]
+    applicability: 出海 DTC 品牌媒体策略参考。
+    limitations: 案例来自 PR 代理商自述，需独立验证具体数据。
+
+  - claimId: CLM-DTC-004
+    statement: 中国出海 DTC（Urevo/Xiaomi）通过 performance PR（affiliate 类媒体+购物导购）实现 9.5x PR ROI，10 个月 100+ Tier1 媒体报道，Prime Day 销售记录。
+    claimType: operational-rule
+    risk: medium
+    verification: source-reviewed
+    crossAuditNote: 单一来源（Proper Propaganda），待第二来源核实
+    evidenceGrade: L2-fixture-or-dry-run
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-PROPER-PROPAGANDA-UREVO]
+    applicability: 跨境品牌 PR ROI 参考基准。
+    limitations: 案例来自 PR 代理商自述，ROI 计算口径未独立核实。
+
+  # 研究包2：母婴品类专业生态
+  - claimId: CLM-MOM-001
+    statement: AAP、AAFP、USPSTF 三大权威机构均正式推荐纯母乳喂养约 6 个月，继续母乳喂养至 1-2 年；USPSTF 为 Grade B 推荐，医疗保险须覆盖吸奶器费用。
+    claimType: external-fact
+    risk: high
+    verification: cross-audit-verified
+    crossAuditNote: 3 个独立第一方官方来源
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-AAP-BREASTFEEDING, SRC-AAFP-BREASTFEEDING, SRC-USPSTF-BREASTFEEDING]
+    applicability: Momcozy PR 的"科学/官方推荐"背书依据；合规传播的锚点。
+    limitations: 推荐是针对健康婴儿，早产/特殊情况有例外。
+
+  - claimId: CLM-MOM-002
+    statement: Babylist、The Bump、Parents 三大核心母婴媒体均采用独立编辑标准 + 真实家长测试；寄样不保证入选，且均参考 AAP/CPSC 安全标准。
+    claimType: operational-rule
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: 3 个独立第一方媒体均在官方页面公开测评标准
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-BABYLIST-EDITORIAL, SRC-THEBUMP-AWARDS, SRC-PARENTS-AWARDS]
+    applicability: 直接指导向这三家媒体的 seeding 和 pitch 策略。
+    limitations: 各媒体具体测评标准可能每年调整。
+
+  - claimId: CLM-MOM-003
+    statement: The Bump 2026 年测试了 880 个产品，320 名测试者，1300+ 社区调查，26 个品类 208 个获奖产品——入围需要通过市场研究+专家咨询+亲身测试三道环节。
+    claimType: external-fact
+    risk: low
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-THEBUMP-AWARDS]
+    applicability: 量化 The Bump 奖项的测试规模，用于 pitch 时的奖项申报策略。
+    limitations: 数据为 2026 年，历年可能有变化。
+
+  - claimId: CLM-MOM-004
+    statement: IBLCE 明确规定吸奶器公司为"不符合资质的公司（ineligible company）"；IBCLCs 法规要求必须避免商业偏见并披露与吸奶器公司的利益冲突。
+    claimType: legal-context
+    risk: critical
+    verification: cross-audit-verified
+    crossAuditNote: 2 个独立来源（IBLCE 官方政策 + 同行评审学术文章）
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-IBLCE-COI-POLICY, SRC-IBCLC-COI-ACADEMIC]
+    applicability: 与 IBCLC 合作必须符合其职业道德规范；品牌赞助/认证项目需法务审查。
+    limitations: 不构成法律意见，具体安排需法务和 IBCLC 个人确认。
+
+  # 研究包3：竞品 PR 策略深度
+  - claimId: CLM-COMP-001
+    statement: Elvie PR 核心策略：把"禁忌话题"（母乳喂养/盆底健康）做成主流可讨论话题，连接现代母性叙事，创造跨越 consumer/tech/health/business 的报道机会。结果：2 年 300 篇报道、240% 网站流量增长、Time Best Invention + Fast Company Most Innovative。
+    claimType: operational-rule
+    risk: low
+    verification: cross-audit-verified
+    crossAuditNote: 4 个独立来源（SourceCode x2 + Kaplow + Creative Review）记录同一策略和结果
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-SOURCECODE-ELVIE, SRC-SOURCECODE-ELVIE-LAUNCH, SRC-WARC-ELVIE-STUNT]
+    applicability: Momcozy 可参考"话题化 PR"策略：把职场泵奶、FemTech 等话题做成可讨论的主流议题。
+    limitations: Elvie 是欧洲品牌进美国，Momcozy 是中国品牌，信任缺口不同，需配合 CLM-DTC-001 策略。
+
+  - claimId: CLM-COMP-002
+    statement: Elvie Pump 发布策略（SourceCode 执行）：15 次 pre-briefings + Fashion Week 秀场穿戴吸奶器 stunt → 234 篇媒体报道、2.2BN UV、5100 waitlist 注册、200% 粉丝增长。
+    claimType: operational-rule
+    risk: low
+    verification: cross-audit-verified
+    crossAuditNote: SourceCode 案例 + Warc SABRE Awards 记录两套独立数据互相印证
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-SOURCECODE-ELVIE-LAUNCH, SRC-WARC-ELVIE-STUNT]
+    applicability: Pre-briefings + cultural stunt + 三波段发布（发布前/发布当天/广告）是母婴科技品牌新品 PR 的有效模板。
+    limitations: Elvie 已是 FemTech 先行者，首发效应强；Momcozy 作为品类追随者策略需调整。
+
+  - claimId: CLM-COMP-003
+    statement: 竞品 PR 有效策略共同点：名人/专家真实故事 + 社群共鸣 + 媒体关系积累。Medela 22 Victories（90M 受众，30% Instagram增）；Lansinoh/Mandy Moore（312M 曝光）；Willow 与 IBCLC 系列内容。
+    claimType: operational-rule
+    risk: low
+    verification: cross-audit-verified
+    crossAuditNote: 3 个不同品牌的独立 PR 案例均展现同一模式
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-MEDELA-OGILVY-22VICTORIES, SRC-5WPR-LANSINOH-CELEBRITY, SRC-FEMTECH-WILLOW-ELVIE]
+    applicability: Momcozy PR 策略设计参考：真实妈妈故事 + IBCLC 背书 + 社群参与是三条可复制的路径。
+    limitations: Lansinoh 数据来自 PR 代理商自述，需注意数据独立性。
+
+  - claimId: CLM-COMP-004
+    statement: Wirecutter（NYT）测评吸奶器方法：测试 32 款、上手测 14 款；必须访谈哺乳专家 + 阅读数百在线评论 + 从专属泵奶 Facebook 群组收集反馈；Spectra S1/S2 是自 2018 年以来持续 top pick。
+    claimType: operational-rule
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: Wirecutter 官方指南 + 方法论页面两处描述一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-WIRECUTTER-BREAST-PUMP]
+    applicability: 直接指导向 Wirecutter 的 Pitch 和 seeding 策略——需要专家访谈 + 真实用户评论 + 产品横向对比数据。
+    limitations: Wirecutter 方法论可能随时更新，建议 pitch 前再查看最新版。
+
+  - claimId: CLM-COMP-005
+    statement: Consumer Reports 使用 40-45 名真实哺乳期家长（非实验室）测试吸奶器，评估 setup/comfort/operation/cleaning/noise/battery 六个维度；Momcozy 已在 2026 年评测名单内。
+    claimType: external-fact
+    risk: low
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-CR-BREAST-PUMP]
+    applicability: CR 测评已包含 Momcozy，说明品牌认知度已达 CR 门槛；需持续维护产品体验（尤其 comfort/noise 维度）。
+    limitations: CR 评分为用户体验评分，非实验室客观测量。

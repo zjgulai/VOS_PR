@@ -79,3 +79,75 @@ concepts:
     definition: 品牌在行业/品类媒体提及中的占比，是 PR 效果的核心量化指标之一。
     canonicalDocument: wiki_出海PR运营LLM知识库.md
     related: [CONCEPT-EARNED-MEDIA]
+
+  # ── 阶段 A 研究包新增概念 ──────────────────────────────────────
+
+  - conceptId: CONCEPT-CHINA-TRUST-GAP
+    term: 中国品牌信任缺口 China Brand Trust Gap
+    aliases: [信任缺口, 出海信任障碍]
+    definition: 中国出海品牌在西方市场面临的先天信任劣势——记者和消费者先问"能信任吗"而非"够厉害吗"，需要通过公司身份清晰、创始人可信度、产品主张有证据、第三方验证和具体非夸张语言来主动建立信任。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-DTC-001
+    conflictsWith:
+      - conceptId: CONCEPT-PAID-MEDIA
+        reason: 信任缺口不能用付费广告弥补，只能通过 Earned Media 积累
+    related: [CONCEPT-EARNED-MEDIA, CONCEPT-THOUGHT-LEADERSHIP]
+
+  - conceptId: CONCEPT-REVIEW-MOAT
+    term: 评论护城河 Review Moat
+    aliases: [评论壁垒, review 基础设施]
+    definition: 在美国市场，第三方真实评论（Amazon/Babylist/CR）是品牌信任基础设施，不是营销副产品；review moat 既影响消费者转化，也决定 AI 搜索引擎是否引用品牌。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-DTC-002
+    related: [CONCEPT-CHINA-TRUST-GAP, CONCEPT-EARNED-MEDIA]
+
+  - conceptId: CONCEPT-TABOO-TO-MAINSTREAM
+    term: 禁忌话题主流化策略 Taboo-to-Mainstream
+    aliases: [破禁忌, 话题化PR]
+    definition: 将母乳喂养、盆底健康等被主流媒体回避的话题连接到更大的文化议题（女性赋权、现代母性），使产品 PR 突破品类束缚进入 tech/business/lifestyle 媒体。Elvie 的核心 PR 策略，使其在 2 年内获得 300 篇跨类报道。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-COMP-001
+    related: [CONCEPT-THOUGHT-LEADERSHIP, CONCEPT-EARNED-MEDIA]
+
+  - conceptId: CONCEPT-IBCLC
+    term: 国际认证哺乳顾问 IBCLC
+    aliases: [哺乳顾问, 泌乳顾问]
+    definition: International Board Certified Lactation Consultant，全球最高级别的哺乳专业认证，由 IBLCE 颁发。IBCLCs 法规要求必须避免利益冲突（包括与吸奶器公司的商业关系），其专家背书对母婴品牌具有高公信力但需合规操作。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-MOM-004
+    related: [CONCEPT-THOUGHT-LEADERSHIP]
+
+  - conceptId: CONCEPT-CROSS-CATEGORY-MEDIA
+    term: 跨类媒体策略 Cross-Category Media
+    aliases: [跨品类媒体, 跨赛道覆盖]
+    definition: 不局限于单一品类媒体（如只投母婴媒体），而是同时覆盖 tech/lifestyle/women's/home/business 媒体，用不同角度讲同一产品故事。HOTO Tools 和 Elvie 的成功案例证明此策略能显著扩大 SOV 和 AI 可见性。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-DTC-003
+    related: [CONCEPT-SOV, CONCEPT-THOUGHT-LEADERSHIP]
+
+  - conceptId: CONCEPT-PERFORMANCE-PR
+    term: 绩效公关 Performance PR
+    aliases: [带货 PR, affiliate PR]
+    definition: 将 PR 报道与电商 affiliate 链接结合，使媒体曝光直接驱动可归因销售转化，是出海 DTC 品牌提升 PR ROI 的重要方式。区别于纯品牌 PR（不带销售追踪）。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-DTC-004
+    related: [CONCEPT-EARNED-MEDIA, CONCEPT-SOV]
+
+  - conceptId: CONCEPT-EDITORIAL-INDEPENDENCE
+    term: 编辑独立性 Editorial Independence
+    aliases: [独立测评, 编辑标准]
+    definition: 核心母婴媒体（Babylist/The Bump/Parents/Wirecutter/Consumer Reports）的测评决策完全独立于广告关系；寄样不保证入选，品牌无法通过付费获得"独立推荐"。误解此概念是跨境品牌 PR 失败的常见原因。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-MOM-002
+    conflictsWith:
+      - conceptId: CONCEPT-PAID-MEDIA
+        reason: 付费赞助 ≠ 编辑推荐，混淆二者会损害品牌公信力
+    related: [CONCEPT-EARNED-MEDIA, CONCEPT-SEEDING]
+
+  - conceptId: CONCEPT-CLINICAL-ADVISORY-NETWORK
+    term: 临床顾问网络 Clinical Advisory Network
+    aliases: [专家顾问网络, 医学背书体系]
+    definition: 品牌建立的由医疗专业人士（IBCLC/妇产科医生/儿科医生）组成的顾问团队，作为品牌代言人用于 PR 媒体声明、内容验证和临床可信度背书。Lansinoh 采用此策略获得 312M 媒体曝光。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-COMP-003
+    related: [CONCEPT-THOUGHT-LEADERSHIP, CONCEPT-IBCLC]

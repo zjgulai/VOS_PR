@@ -130,3 +130,184 @@ sources:
     url: https://prsay.prsa.org/2026/07/14/why-earned-media-matters-more-in-the-age-of-ai/
     reviewedAt: "2026-08-13"
     notes: "94% AI 引用来源是非付费内容，84% 是 earned media"的数据出处
+
+  # ── 阶段 A 研究包新增信源 ─────────────────────────────────────────
+
+  # 研究包1：出海 DTC PR 成功框架
+  - sourceId: SRC-TIF-CHINESE-BRAND-TRUST
+    title: TIF Creative — What Journalists Need to Trust Chinese Outbound Brand
+    kind: industry-article
+    authority: third-party
+    url: https://www.tifcreative.com/insights/what-journalists-need-to-trust-chinese-outbound-brand
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】记者的信任建立框架：公司身份清晰、创始人可信度、产品主张有证据、市场相关性明确、语言具体不夸张
+
+  - sourceId: SRC-CALYWIRE-ASIAN-US
+    title: Calywire — Marketing Asian Brands in the US vs. Asia (2026)
+    kind: industry-article
+    authority: third-party
+    url: https://calywire.com/marketing-asian-brands-in-the-us-vs-asia-understanding-consumer-differences/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】美国 vs 亚洲信任构建差异：美国靠评论+微创作者+第三方验证，不靠大 KOL；需要 review moat
+
+  - sourceId: SRC-ABOVEA-CHINESE-TRUST
+    title: Above A — Chinese Brands Expanding West: How to Win Trust in 2025
+    kind: industry-article
+    authority: third-party
+    url: https://abovea.tech/chinese-brands-trust-west/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】"88% 消费者购买前看评论"；西方媒体 PR 是建立合法性的长期策略；战略合作伙伴可快速借用信任
+
+  - sourceId: SRC-PROPER-PROPAGANDA-HOTO
+    title: Proper Propaganda — HOTO Tools: Transforming a Mature Category in the US
+    kind: case-study
+    authority: third-party
+    url: https://properpropaganda.net/how-we-helped-hoto-tools-transform-and-own-a-mature-category-in-the-us/
+    reviewedAt: "2026-08-13"
+    notes: 【L2，单一来源待核实】中国出海品牌 HOTO：双倍营收、SOV+20%、AI Share of Answer 行业第一；跨类媒体（tech/lifestyle/女性媒体）策略
+
+  - sourceId: SRC-PROPER-PROPAGANDA-UREVO
+    title: Proper Propaganda — Urevo Case Study: 9.5x PR ROI
+    kind: case-study
+    authority: third-party
+    url: https://properpropaganda.net/urevo-case-study/
+    reviewedAt: "2026-08-13"
+    notes: 【L2，单一来源待核实】Urevo（Xiaomi 旗下）：9.5x PR ROI，100+ Tier1 媒体，10 个月，Prime Day 破记录
+
+  - sourceId: SRC-CBA-ANKER-CES
+    title: China Business Agency — Anker CES 2019 Case Study
+    kind: case-study
+    authority: third-party
+    url: https://www.chinabusinessagency.com/portfolio/anker/
+    reviewedAt: "2026-08-13"
+    notes: Anker CES PR 策略：pre-show 定向 tier-one 媒体、curated media walkthroughs、CNET/The Verge 报道；从充电品牌向多品类科技品牌转型
+
+  # 研究包2：母婴品类专业生态
+  - sourceId: SRC-AAP-BREASTFEEDING
+    title: American Academy of Pediatrics — Breastfeeding Policy
+    kind: official-web
+    authority: first-party
+    url: https://www.aap.org/en/patient-care/newborn-infant-and-early-childhood-nutrition/newborn-and-infant-breastfeeding/
+    reviewedAt: "2026-08-13"
+    notes: 【第一方权威】AAP 官方推荐：纯母乳喂养约 6 个月，继续母乳喂养至少 2 年；是临床合规的权威依据
+
+  - sourceId: SRC-AAFP-BREASTFEEDING
+    title: American Academy of Family Physicians — Breastfeeding Policy Statement
+    kind: official-web
+    authority: first-party
+    url: https://www.aafp.org/about/policies/breastfeeding-policy-statement
+    reviewedAt: "2026-08-13"
+    notes: 【第一方权威】AAFP 与 AAP 同步推荐纯母乳喂养 6 个月；包含泵奶设备使用建议
+
+  - sourceId: SRC-USPSTF-BREASTFEEDING
+    title: USPSTF — Breastfeeding Behavioral Counseling Interventions
+    kind: official-web
+    authority: first-party
+    url: https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breastfeeding-primary-care-interventions
+    reviewedAt: "2026-08-13"
+    notes: 【第一方权威，Grade B】USPSTF Grade B 推荐孕产期母乳支持干预；医疗保险须覆盖吸奶器成本
+
+  - sourceId: SRC-BABYLIST-EDITORIAL
+    title: Babylist — Product Reviews Policy, Guidelines and Disclosures
+    kind: official-web
+    authority: first-party
+    url: https://www.babylist.com/lp/product-review-processes
+    reviewedAt: "2026-08-13"
+    notes: 【第一方】Babylist 测评政策：编辑独立性、安全优先（参考 AAP/CPSC）、亲身测试；寄样不保证入选
+
+  - sourceId: SRC-THEBUMP-AWARDS
+    title: The Bump — Best of The Bump Awards 2026
+    kind: official-web
+    authority: first-party
+    url: https://www.thebump.com/best-of-the-bump-awards
+    reviewedAt: "2026-08-13"
+    notes: 【第一方】13 年历史；测试 880 个产品、320 名测试者、1300+ 社区调查；市场研究+专家咨询+亲身测试三环节
+
+  - sourceId: SRC-PARENTS-AWARDS
+    title: Parents — Best for Baby Awards (Submission & Methodology)
+    kind: official-web
+    authority: first-party
+    url: https://www.parents.com/parents-awards-submission-dates-guidelines-faqs-8717098
+    reviewedAt: "2026-08-13"
+    notes: 【第一方】编辑审核→家长测试→专家评审→多维评分（安全/耐用性/效果/便利/价值）
+
+  - sourceId: SRC-IBLCE-COI-POLICY
+    title: IBLCE — Minimising Commercial Influence on Education Policy (2025)
+    kind: official-web
+    authority: first-party
+    url: https://iblce.org/wp-content/uploads/2025/08/2025_June_26_minimising-commercial-influence-on-education-policy.pdf
+    reviewedAt: "2026-08-13"
+    notes: 【第一方】IBLCE 明确将"吸奶器公司"列为 ineligible company；IBCLCs 必须避免商业偏见和披露利益冲突
+
+  - sourceId: SRC-IBCLC-COI-ACADEMIC
+    title: Sagepub — Does Truthful Advertising Pass the Smell Test (peer-reviewed)
+    kind: academic
+    authority: third-party
+    url: https://journals.sagepub.com/doi/full/10.1177/0890334419868163
+    reviewedAt: "2026-08-13"
+    notes: 【同行评审】IBCLCs 被法规要求"提供无利益冲突的循证信息"；吸奶器公司 CERP 营销存在显著商业影响问题
+
+  # 研究包3：竞品 PR 策略深度
+  - sourceId: SRC-SOURCECODE-ELVIE
+    title: SourceCode Communications — Scaling Elvie through Bold Category Leadership
+    kind: case-study
+    authority: third-party
+    url: https://sourcecodecommunications.com/our-work/case-study-elvie-femtech-marketing-growth/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】Elvie PR 成果：2 年 300 篇报道、240% 网站流量增长、200% 粉丝增长；策略：把禁忌话题做成主流新闻
+
+  - sourceId: SRC-WARC-ELVIE-STUNT
+    title: Warc — Milking My Ladies: Launching the Elvie Pump
+    kind: case-study
+    authority: third-party
+    url: https://www.warc.com/en/content/article/sabre-awards/milking-my-ladies-launching-the-elvie-pump/en-gb/126044
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】Elvie Fashion Week stunt：41 篇独家报道、64% waitlist 增长；BBC/Independent/Cosmopolitan 报道
+
+  - sourceId: SRC-SOURCECODE-ELVIE-LAUNCH
+    title: SourceCode — Launching the World's First Silent Wearable Breast Pump
+    kind: case-study
+    authority: third-party
+    url: https://sourcecodecommunications.com/our-work/launching-product-elvie/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】Elvie Pump 发布策略：15 个 pre-briefings、234 总媒体提及、2.2BN UV、5100 waitlist 注册；三管齐下（发布+广告+模特秀）
+
+  - sourceId: SRC-MEDELA-OGILVY-22VICTORIES
+    title: Ogilvy DC — Medela 22 Victories Campaign
+    kind: case-study
+    authority: third-party
+    url: https://www.weareodc.com/project/medela
+    reviewedAt: "2026-08-13"
+    notes: 30% Instagram 访问量增加，8000 新粉丝，90M 受众触达，1.3M 社媒互动；真实妈妈故事策略
+
+  - sourceId: SRC-5WPR-LANSINOH-CELEBRITY
+    title: 5WPR — Lansinoh 312M Impressions with Mandy Moore
+    kind: case-study
+    authority: third-party
+    url: https://www.5wpr.com/practice/lansinoh.cfm
+    reviewedAt: "2026-08-13"
+    notes: 【L2，单一来源】Lansinoh + Mandy Moore：312M 媒体曝光，120K+ 视频观看；Entertainment Tonight/GMA/ABC News 报道；临床顾问网络策略
+
+  - sourceId: SRC-BOLTPR-FEMTECH
+    title: Bolt PR — PR Strategies for FemTech and Women's Health Brands
+    kind: industry-article
+    authority: third-party
+    url: https://www.boltpr.com/article/pr-strategies-for-femtech-and-womens-health-brands-in-the-us
+    reviewedAt: "2026-08-13"
+    notes: FemTech PR 五策略：stigma-breaking narratives + clinical authority + compliance-first；FemTech 市场 2024 $39.29B → 2030 $97.25B
+
+  - sourceId: SRC-WIRECUTTER-BREAST-PUMP
+    title: Wirecutter — The 6 Best Breast Pumps of 2026
+    kind: editorial-review
+    authority: first-party
+    url: https://www.nytimes.com/wirecutter/reviews/best-breast-pumps/
+    reviewedAt: "2026-08-13"
+    notes: 测试 32 款、上手测试 14 款；methodology：scout report→专家访谈→比较表格→picks；Spectra S1/S2 是自 2018 年起的 top pick
+
+  - sourceId: SRC-CR-BREAST-PUMP
+    title: Consumer Reports — Best Breast Pumps 2026
+    kind: editorial-review
+    authority: first-party
+    url: https://www.consumerreports.org/babies-kids/breast-pumps/best-breast-pumps-a7652309030/
+    reviewedAt: "2026-08-13"
+    notes: 40 名哺乳期父母测试；涵盖 Momcozy、Medela、Spectra、Elvie、Lansinoh、Willow 等品牌；评估维度：易用性/舒适度/操作/清洁/噪音
