@@ -311,3 +311,120 @@ sources:
     url: https://www.consumerreports.org/babies-kids/breast-pumps/best-breast-pumps-a7652309030/
     reviewedAt: "2026-08-13"
     notes: 40 名哺乳期父母测试；涵盖 Momcozy、Medela、Spectra、Elvie、Lansinoh、Willow 等品牌；评估维度：易用性/舒适度/操作/清洁/噪音
+
+  # ── 阶段 B 研究包新增信源 ─────────────────────────────────────────
+
+  # 研究包4：AI 时代 PR 新策略
+  - sourceId: SRC-SEARCHENGLAND-GEO
+    title: Search Engine Land — Generative Engine Optimization (GEO)
+    kind: industry-article
+    authority: third-party
+    url: https://searchengineland.com/what-is-generative-engine-optimization-geo-444418
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】GEO 权威定义：5 大原则（SEO 基础/实体清晰/内容可提取/多平台存在/AI 测量）；Semrush 数据：Reddit+LinkedIn 是 AI 最引用的两个域
+
+  - sourceId: SRC-SEARCHENGINELAND-CATEGORY-CODING
+    title: Search Engine Land — Category Framing Changes Which Brands AI Recommends
+    kind: research
+    authority: third-party
+    url: https://searchengineland.com/category-framing-brands-ai-recommends-482715
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】实证研究：14140 次 API 测试，5 个 AI 引擎，12 个品牌；类别编码（第三方内容的品类语言）比实体强度更能决定 AI 推荐
+
+  - sourceId: SRC-SHOPIFY-GEO
+    title: Shopify — The GEO Playbook 2026
+    kind: industry-article
+    authority: first-party
+    url: https://www.shopify.com/enterprise/blog/generative-engine-optimization
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1 + 第一方数据】Q1 2026: AI 推荐来源会话增长 8x YoY，AI 推荐订单增长 13x YoY；AI 引用访客转化率比有机搜索高 50%
+
+  - sourceId: SRC-SOAR-COMMUNITY-AI
+    title: Soar Agency — Community Marketing Drives AI Visibility
+    kind: industry-article
+    authority: third-party
+    url: https://www.soar.sh/blog/how-community-marketing-drives-ai-visibility
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】4200+ 活动 280+ 品牌实测数据：社区平台（Reddit+Quora）占 AI 引用约 52.5%；品牌 mentions 与 AI 可见性相关性 0.664（vs backlinks 0.218）
+
+  - sourceId: SRC-PRDAILY-REDDIT
+    title: PR Daily — A Smarter Way to Approach Reddit in PR
+    kind: industry-article
+    authority: third-party
+    url: https://www.prdaily.com/a-smarter-way-to-approach-reddit-in-pr/
+    reviewedAt: "2026-08-13"
+    notes: Reddit 是 AI 引用的主要来源；Google 签 $60M/年授权协议；CEO/创始人真实参与（非品牌账号）效果最佳；必须披露商业关联
+
+  - sourceId: SRC-FARANDWIDE-REDDIT-QUORA
+    title: FarAndWide — Reddit and Quora Drive 50%+ of AI Citations
+    kind: research
+    authority: third-party
+    url: https://www.farandwide.io/blog/reddit-quora-ai-citations
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】10M 引用分析：Reddit 21%+Quora 14.3%+YouTube 18.8% = 54.1% Google AI Overviews；ChatGPT 占 AI 推荐流量 87.4%
+
+  - sourceId: SRC-NAV43-KNOWLEDGE-GRAPH
+    title: NAV43 — Knowledge Graph Strategy for B2B SEO
+    kind: industry-article
+    authority: third-party
+    url: https://nav43.com/blog/knowledge-graph-strategy/
+    reviewedAt: "2026-08-13"
+    notes: 知识图谱实体建立框架：Brand Entity→Executive Entities→Product Entities→Topical Authority；Wikidata + sameAs schema + 双向链接
+
+  # 研究包5：PR 合规深度
+  - sourceId: SRC-FDA-BREAST-PUMP-510K
+    title: FDA — Powered Breast Pump Classification (21 CFR 884.5160)
+    kind: official-web
+    authority: first-party
+    url: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpcd/classification.cfm?id=4333
+    reviewedAt: "2026-08-13"
+    notes: 【第一方官方】吸奶器 = Class II 医疗器械，产品代码 HGX，提交类型 510(k)，需清关（Substantially Equivalent）才可上市
+
+  - sourceId: SRC-FDA-BREAST-PUMP-CONSUMER
+    title: FDA — Buying and Renting a Breast Pump
+    kind: official-web
+    authority: first-party
+    url: https://www.fda.gov/medical-devices/breast-pumps/buying-and-renting-breast-pump
+    reviewedAt: "2026-08-13"
+    notes: 【第一方官方】FDA 不认可"hospital-grade pump"标签（无一致定义）；吸奶器按 FDA 规定为单人使用设备
+
+  - sourceId: SRC-FTC-HEALTH-PRODUCTS
+    title: FTC — Health Products Compliance Guidance (2022)
+    kind: official-web
+    authority: first-party
+    url: https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance
+    reviewedAt: "2026-08-13"
+    notes: 【第一方官方】健康产品声明需"有竞争力和可靠的科学证据（RCT 级别）"；FTC 已执法 200+ 健康产品虚假声明案
+
+  - sourceId: SRC-CPSC-NURSERY-2025
+    title: CPSC — Nursery Products Annual Report 2025
+    kind: official-web
+    authority: first-party
+    url: https://www.cpsc.gov/content/Nursery-Products-Annual-Report-2025
+    reviewedAt: "2026-08-13"
+    notes: 【第一方官方】2024 年：<5岁儿童婴儿护理产品急诊伤害 70,000 例，伤害率 380/10万；护理枕头/喂养支撑规则 2024-2025 新出台
+
+  # 研究包6：PR 效果测量
+  - sourceId: SRC-AMEC-IEF
+    title: AMEC Integrated Evaluation Framework (官方资源中心)
+    kind: official-web
+    authority: first-party
+    url: https://amecorg.com/amecframework/home/
+    reviewedAt: "2026-08-13"
+    notes: 【第一方权威】免费，17 语言；Output→Out-takes→Outcomes→Impact 四层测量框架；Barcelona Principles 实操工具；明确 AVEs 无效
+
+  - sourceId: SRC-AMEC-BARCELONA
+    title: AMEC Barcelona Declaration of Measurement Principles
+    kind: official-web
+    authority: first-party
+    url: https://amecorg.com/barcelona-declaration-of-measurement-principles/
+    reviewedAt: "2026-08-13"
+    notes: 【第一方权威】7 大原则；明确 AVEs 不是 PR 的价值；测量需同时覆盖 Quantity + Quality；社媒测量是学科而非工具
+
+  - sourceId: SRC-CISION-PR-ROI
+    title: Cision — Measuring and Proving PR ROI
+    kind: industry-article
+    authority: third-party
+    url: https://www.cision.com/resources/articles/measuring-proving-pr-roi/
+    reviewedAt: "2026-08-13"
+    notes: 37% 传播 leader 难以有效测量 PR 影响（Cision/PRWeek 2025 报告）；5 大 PR ROI 指标：媒体提及/SOV/网站流量/Lead 生成/转化率

@@ -275,3 +275,136 @@ claims:
     sourceRefs: [SRC-CR-BREAST-PUMP]
     applicability: CR 测评已包含 Momcozy，说明品牌认知度已达 CR 门槛；需持续维护产品体验（尤其 comfort/noise 维度）。
     limitations: CR 评分为用户体验评分，非实验室客观测量。
+
+  # ── 阶段 B 研究包新增（Phase B）──────────────────────────────────────
+
+  # 研究包4：AI 时代 PR 新策略
+  - claimId: CLM-AI-001
+    statement: GEO（生成式引擎优化）是让品牌出现在 ChatGPT/Perplexity/Google AI Overviews 引用答案中的实践——不是排名关键词，而是成为 AI 引用的可信来源。Shopify Q1 2026 数据：AI 推荐来源会话增长 8x，AI 推荐订单增长 13x YoY。
+    claimType: market-fact
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: 4 个独立来源（Search Engine Land + Shopify + Infosys + Backlinko）均描述 GEO，Shopify 提供第一方电商数据
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-SEARCHENGLAND-GEO, SRC-SHOPIFY-GEO]
+    applicability: Momcozy PR 策略需将 Earned Media 的目标从「排名」扩展到「AI 引用」。
+    limitations: AI 引擎行为会持续变化，数据基于 2026 早期。
+
+  - claimId: CLM-AI-002
+    statement: Reddit 和 Quora 是 AI 最常引用的两个社区平台。多项独立研究收敛：Google 以 $60M/年授权 Reddit 内容；Reddit 占 Google AI Overviews 引用约 21%，Quora 占 14.3%，YouTube 占 18.8%，三者合计 54.1%。
+    claimType: external-fact
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: 3 个独立研究（FarAndWide 10M 引用分析 + Soar 4200+ 活动数据 + Semrush 150K 引用研究）均指向 Reddit 第一
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-FARANDWIDE-REDDIT-QUORA, SRC-SOAR-COMMUNITY-AI, SRC-PRDAILY-REDDIT]
+    applicability: Momcozy PR 需要建立 Reddit/Quora 的真实社区存在——r/breastfeeding、r/exclusivelypumping 等子版块是 S1 用户讨论的核心，也是 AI 引用的来源。
+    limitations: 不同 AI 引擎引用 Reddit 的比例有差异（Claude 更倾向学术/文档，Perplexity 更倾向 Reddit）。
+
+  - claimId: CLM-AI-003
+    statement: 品牌 mentions（无链接提及）与 AI 可见性的相关性为 0.664，而 backlinks 仅为 0.218——mentions 的预测力约是 backlinks 的 3 倍。
+    claimType: external-fact
+    risk: medium
+    verification: source-reviewed
+    crossAuditNote: Ahrefs 分析 75000 个品牌，Soar 引用；Backlinko 亦引用同数据
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-SOAR-COMMUNITY-AI]
+    applicability: PR Earned Media 对 AI 可见性的价值远超 SEO 链接建设，支撑 PR 预算优先于单纯 SEO 外链。
+    limitations: 相关性分析，非因果；Ahrefs 数据时间点为 2025。
+
+  - claimId: CLM-AI-004
+    statement: AI 是否推荐一个品牌，取决于「品类编码」（category coding）——第三方内容是否用了用户搜索时的品类语言——而不仅是品牌实体强度。知识图谱描述只是锚点，第三方内容语料决定推荐。
+    claimType: operational-rule
+    risk: high
+    verification: source-reviewed
+    crossAuditNote: Search Engine Land 实证研究（14140 次 API 测试，5 个 AI 引擎）
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-SEARCHENGINELAND-CATEGORY-CODING]
+    applicability: Momcozy PR 必须在「wearable breast pump」「hands-free pump」「pumping at work」等用户实际使用的品类语言下建立第三方内容，而不只是在「breast pump」下。
+    limitations: 单一研究（运动服 vs 运动鞋品类），需在母婴品类验证。
+
+  - claimId: CLM-AI-005
+    statement: Reddit 参与的最佳实践：真实人名账号+明确披露商业关联；CEO/创始人参与（非品牌账号）效果最佳；80% 帮助性内容，20% 品牌相关；FTC 规定适用 Reddit 同样有效。
+    claimType: operational-rule
+    risk: high
+    verification: cross-audit-verified
+    crossAuditNote: PR Daily + FarAndWide + Search Engine Journal + AIM Interactive 多个来源一致描述同一最佳实践
+    evidenceGrade: L2-fixture-or-dry-run
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-PRDAILY-REDDIT, SRC-FARANDWIDE-REDDIT-QUORA]
+    applicability: 直接用于 Momcozy 社媒团队的 Reddit 运营规范——不是广告，是真实社区贡献。
+    limitations: 行业实践共识，非 A/B 测试数据。
+
+  # 研究包5：PR 合规深度
+  - claimId: CLM-REG-001
+    statement: FDA 将电动吸奶器归类为 Class II 医疗器械（产品代码 HGX，法规 884.5160），在美国上市前必须通过 510(k) 清关（Substantially Equivalent）。FDA 不认可「hospital-grade pump」标签（无一致定义）。
+    claimType: legal-context
+    risk: critical
+    verification: cross-audit-verified
+    crossAuditNote: FDA 产品分类数据库 + FDA 消费者页面两处第一方来源
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-FDA-BREAST-PUMP-510K, SRC-FDA-BREAST-PUMP-CONSUMER]
+    applicability: Momcozy PR 传播中的「hospital-grade」声明不受 FDA 认可；任何性能声明需要对应的 510(k) 清关数据支撑。
+    limitations: 不构成法律意见，具体合规需法务确认。
+
+  - claimId: CLM-REG-002
+    statement: FTC 健康产品合规指南（2022 年更新）：健康相关声明需「有竞争力和可靠的科学证据（competent and reliable scientific evidence）」，通常期望 RCT 级别人体临床试验；FTC 已在 200+ 案例中执法虚假健康声明。
+    claimType: legal-context
+    risk: critical
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-FTC-HEALTH-PRODUCTS]
+    applicability: Momcozy 任何「促进泌乳」「提高母乳量」类声明都需有 RCT 数据支撑，否则面临 FTC 执法风险。
+    limitations: 不构成法律意见，具体合规需法务确认。
+
+  - claimId: CLM-REG-003
+    statement: CPSC 2024 年数据：美国 <5 岁儿童婴儿护理产品急诊伤害 70,000 例（伤害率 380/10万）；CPSC 在 FY2024-2025 出台护理枕（Nursing Pillows）和喂养支撑新强制标准。
+    claimType: market-fact
+    risk: high
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-CPSC-NURSERY-2025]
+    applicability: Momcozy KleanPal（喂养消毒器）属于婴儿护理品类，需持续关注 CPSC 强制标准更新；P0 预警链路中的监管源须覆盖 CPSC。
+    limitations: CPSC 报告涵盖所有婴儿护理产品，非吸奶器专项统计。
+
+  # 研究包6：PR 效果测量
+  - claimId: CLM-MEAS-001
+    statement: AMEC 综合评估框架（IEF）是行业标准 PR 测量工具：Output（产出）→ Out-takes（受众反应）→ Outcomes（效果）→ Impact（商业影响），免费使用，支持 17 语言。AVEs 明确被 Barcelona Principles 否定。
+    claimType: methodology
+    risk: low
+    verification: cross-audit-verified
+    crossAuditNote: AMEC 官方框架 + Barcelona Declaration 两处第一方权威，相互引用
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-AMEC-IEF, SRC-AMEC-BARCELONA]
+    applicability: Momcozy PR Intelligence 系统的效果测量应采用 AMEC IEF 四层框架，不使用 AVEs；周报里的指标应覆盖 Output（覆盖量）→ Outcome（品牌偏好/Pitch 成功率）。
+    limitations: 框架本身不提供具体数字，需自行设定基线和目标。
+
+  - claimId: CLM-MEAS-002
+    statement: 37% 的传播 leader 难以有效测量 PR 影响，将「把指标与营收对齐」列为行业第一挑战（Cision/PRWeek 2025 报告，300+ 传播高管调研）。
+    claimType: external-fact
+    risk: low
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-CISION-PR-ROI]
+    applicability: Momcozy PR Intelligence 系统解决的是行业普遍痛点，不是个例——把这个痛点量化可以在向 PR 团队推荐系统时增加说服力。
+    limitations: 基于行业调查，非 Momcozy 内部数据。
+
+  - claimId: CLM-MEAS-003
+    statement: Cision 推荐的 5 大 PR ROI 指标：① 媒体提及量与触达（quantitative）② 声量份额 SOV ③ 网站流量与来源 ④ Lead 生成 ⑤ 转化率（从 Earned Media 来源）。
+    claimType: operational-rule
+    risk: low
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-CISION-PR-ROI]
+    applicability: 直接用于 Momcozy PR Intelligence 系统的效果指标设计，对应业务价值文档中的「pitch 成功率」「风险提前量」等 outcome 指标。
+    limitations: Cision 自身是工具商，指标框架有促进工具采购的立场偏向。

@@ -151,3 +151,51 @@ concepts:
     canonicalDocument: kb/pr/knowledge-system/claims.yml
     evidenceRef: CLM-COMP-003
     related: [CONCEPT-THOUGHT-LEADERSHIP, CONCEPT-IBCLC]
+
+  # ── 阶段 B 新增概念 ──────────────────────────────────────────────
+
+  - conceptId: CONCEPT-GEO
+    term: 生成式引擎优化 GEO
+    aliases: [GEO, 生成式搜索优化, AI 搜索优化]
+    definition: 让品牌在 ChatGPT/Perplexity/Google AI Overviews 的生成式答案中被引用和推荐的实践。与 SEO（排名和点击）不同，GEO 优化的是 AI 引用频次和 Share of Answer。核心杠杆：实体清晰 + 内容可提取 + 多平台存在 + 品牌第三方提及。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-AI-001
+    conflictsWith:
+      - conceptId: CONCEPT-PAID-MEDIA
+        reason: GEO 靠 Earned Media 和品牌权威，不能靠付费内容获得 AI 引用
+    related: [CONCEPT-EARNED-MEDIA, CONCEPT-THOUGHT-LEADERSHIP, CONCEPT-CATEGORY-CODING]
+
+  - conceptId: CONCEPT-CATEGORY-CODING
+    term: 品类编码 Category Coding
+    aliases: [类别编码, AI 品类识别]
+    definition: AI 引擎将品牌与特定品类关联的第三方内容语料。如果用户用「wearable breast pump」搜索但品牌只有「breast pump」的第三方内容，AI 不会推荐——即使品牌实体很强。决定 AI 推荐的是语料而不是知识图谱强度。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-AI-004
+    related: [CONCEPT-GEO, CONCEPT-EARNED-MEDIA]
+
+  - conceptId: CONCEPT-FDA-CLASS-II
+    term: FDA II 类医疗器械 FDA Class II
+    aliases: [510k, 医疗器械清关]
+    definition: FDA 对电动吸奶器的分类（产品代码 HGX，法规 884.5160）。Class II 设备需要 510(k) 预市审查（Substantially Equivalent），在美国销售前必须获得 FDA 清关。「hospital-grade pump」标签没有 FDA 认可的定义。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-REG-001
+    related: [CONCEPT-CRISIS-PR]
+
+  - conceptId: CONCEPT-AMEC-IEF
+    term: AMEC 综合评估框架 AMEC IEF
+    aliases: [AMEC框架, PR 测量框架, Output Outcome Impact]
+    definition: 国际传播评估协会（AMEC）制定的 PR 测量行业标准框架，包含 Output（产出）→ Out-takes（受众反应）→ Outcomes（效果）→ Impact（商业影响）四层，配合 Barcelona Principles（明确反对 AVEs）。免费，支持 17 语言。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-MEAS-001
+    related: [CONCEPT-SOV]
+
+  - conceptId: CONCEPT-COMMUNITY-PLATFORM-AEO
+    term: 社区平台 AEO
+    aliases: [Reddit PR, 社区营销, Community AEO]
+    definition: 在 Reddit/Quora/YouTube 等社区平台建立真实品牌存在，使 AI 引用这些第三方社区内容来回答品类问题。社区平台占 AI 引用约 50%，Reddit 是单最大来源（约 21-40% 因引擎不同而异）。
+    canonicalDocument: kb/pr/knowledge-system/claims.yml
+    evidenceRef: CLM-AI-002
+    conflictsWith:
+      - conceptId: CONCEPT-PAID-MEDIA
+        reason: 社区平台不接受直接广告投放，必须通过真实帮助性贡献赢得存在
+    related: [CONCEPT-GEO, CONCEPT-EARNED-MEDIA]
