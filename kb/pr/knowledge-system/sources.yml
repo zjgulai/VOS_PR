@@ -428,3 +428,76 @@ sources:
     url: https://www.cision.com/resources/articles/measuring-proving-pr-roi/
     reviewedAt: "2026-08-13"
     notes: 37% 传播 leader 难以有效测量 PR 影响（Cision/PRWeek 2025 报告）；5 大 PR ROI 指标：媒体提及/SOV/网站流量/Lead 生成/转化率
+
+  # 研究包7：SOP 补充材料
+  - sourceId: SRC-FASTCOMPANY-MIC
+    title: Fast Company — Most Innovative Companies Application Guide
+    kind: official-web
+    authority: first-party
+    url: https://www.fastcompany.com/apply/most-innovative-companies
+    reviewedAt: "2026-08-13"
+    notes: 【第一方官方】截止 10 月；58 个行业品类；$535-895 入场费；官方 10 条申报指南：聚焦过去 12 个月、用指标证明、连接行业趋势
+
+  - sourceId: SRC-TIME-BEST-INVENTIONS
+    title: TIME Best Inventions Application (Official)
+    kind: official-web
+    authority: first-party
+    url: https://bestinventions.time.com/
+    reviewedAt: "2026-08-13"
+    notes: 【第一方官方】300 个入选 + 100 个特别提名；评审：原创性/效能/雄心/影响力；$535+ 申报费；Any milestone Oct-Oct 可申报
+
+  - sourceId: SRC-THEBUMP-SUBMISSIONS
+    title: The Bump — 2026 Best of Awards Submissions
+    kind: official-web
+    authority: first-party
+    url: https://www.thebump.com/news/best-of-the-bump-submissions
+    reviewedAt: "2026-08-13"
+    notes: 【第一方官方】2026 年 12 月 19 日截止；免费申报；26 品类含可穿戴吸奶器；880 个产品/320 个测试家庭
+
+  - sourceId: SRC-PARENTS-AWARD-SUBMIT
+    title: Parents — Best for Baby Awards Submission Guidelines
+    kind: official-web
+    authority: first-party
+    url: https://www.parents.com/parents-awards-submission-dates-guidelines-faqs-8717098
+    reviewedAt: "2026-08-13"
+    notes: 【第一方官方】免费提交；编辑审核→家长测试→专家评审；96% 读者因 Parents 推荐采取购买行动
+
+  - sourceId: SRC-PRESSVERIFIED-OPED
+    title: PressVerified — The Op-Ed Playbook: Tier-1 Outlets 2026
+    kind: industry-article
+    authority: third-party
+    url: https://pressverified.com/blog/op-ed-playbook-founders-tier-1-outlets-2026
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】2026 年最新 8 家 Tier-1 媒体投稿参数（字数/响应时间/费用/独家性）；Op-ed 6 段结构；Pitch 模板
+
+  - sourceId: SRC-PRESSPAGE-PRESS-KIT
+    title: Presspage — How to Create a Press Kit in 2026
+    kind: industry-article
+    authority: third-party
+    url: https://presspage.com/blog/how-to-create-a-press-kit
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】Press Kit 11 个标准组件；数字媒体室建设要求；2026 年需为 AI 搜索结构化内容
+
+  - sourceId: SRC-INSTANTPRESS-PRESS-KIT
+    title: InstantPress — What Journalists Actually Download from Press Kits
+    kind: industry-article
+    authority: third-party
+    url: https://www.instantpress.co/blog/how-to-create-a-press-kit
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】记者下载行为数据：Logo 95% / 产品图 85% / 头像 75% / Fact Sheet 65%；6 资产极简框架
+
+  - sourceId: SRC-PRESSRELEASEZEN-CRISIS
+    title: PressReleaseZen — Crisis Press Release Templates and Examples
+    kind: industry-article
+    authority: third-party
+    url: https://pressreleasezen.com/how-to-write-a-crisis-press-release-templates-examples-tips/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】危机声明结构：5Ws + 高管引语 + 具体行动 + 受影响方指引；速度与准确性平衡原则
+
+  - sourceId: SRC-EVERYTHING-PR-CRISIS
+    title: Everything-PR — Crisis Communications 30-Minute Playbook
+    kind: industry-article
+    authority: third-party
+    url: https://everything-pr.com/crisis-communications-statement-playbook
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】10-10-10 框架（确认事实/起草/审批各 10 分钟）；5 段式结构：Acknowledge-Empathize-Inform-Act-Commit
