@@ -208,6 +208,21 @@ PR_MEDIA_CONTACTS = [
      "不合作：旅游方向，不匹配", "P2"],
 ]
 
+PR_RULES = [
+    ["媒体 ROI 过滤规则", "月流量 <100万 且 报价 >$2,000 → 不推荐",
+     "工作日志筛掉 Angela Onwuzoo(108K)、Sydney Wingfield(400views) 的经验固化", "P0"],
+    ["保障曝光先问清", "凡'保障报道/曝光'但不明确是否挂链接/赞助标注/追踪链接 → 先问清再判断",
+     "工作日志 Tiffany Tse(SheKnows) 待判断的经验", "P0"],
+    ["媒体判断 5 维度", "必查：网站流量、受众地域、内容方向匹配、报价合理性、可追踪性",
+     "工作日志实操标准", "P0"],
+    ["海外 Earned Media 逻辑", "海外媒体不可'买版面保出稿'，编辑决定是否报道，新闻价值>品牌需求",
+     "一文吃透PR全貌（跨境 PR 底层逻辑）", "P0"],
+    ["Pitch 个性化 + 冷却期", "一对一 Pitch，群发模板会被编辑拉黑；同一编辑 pitch 频率过高需冷却",
+     "海外PR vs 国内公关（避坑）", "P1"],
+    ["PR 预算框架", "通稿月度 3 篇、单篇 ~$2,500、月度 6-8k；外链 $1,500/月",
+     "工作日志预算记录，需确认是否延续", "P1"],
+]
+
 
 def gen_pr_excel() -> None:
     wb = Workbook()
@@ -240,10 +255,15 @@ def gen_pr_excel() -> None:
         ["联系人", "媒体", "月流量", "报价", "AI合作结论", "优先级", "业务确认"],
         PR_MEDIA_CONTACTS, 7, [18, 24, 14, 22, 42, 8, 12])
 
+    ws = wb.create_sheet("5.规则确认")
+    _append_sheet(ws,
+        ["规则名称", "规则内容", "AI推荐依据", "优先级", "业务确认", "业务修订"],
+        PR_RULES, 5, [20, 50, 40, 8, 12, 20])
+
     out = PMO / "业务协作_PR团队" / "PR团队协作表.xlsx"
     out.parent.mkdir(parents=True, exist_ok=True)
     wb.save(out)
-    print(f"✓ {out.relative_to(PROJ)} (4 sheets)")
+    print(f"✓ {out.relative_to(PROJ)} (5 sheets)")
 
 
 if __name__ == "__main__":
