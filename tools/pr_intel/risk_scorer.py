@@ -135,7 +135,7 @@ def load_social_posts(limit: int = 0) -> list[dict]:
     import duckdb
     con = duckdb.connect(str(DB_PATH), read_only=True)
     q = ("SELECT post_id, platform_code, title, body_text, published_at, "
-         "like_count, comment_count, brand_mentions FROM social_posts "
+         "like_count, comment_count, brand_mentions, account_type FROM social_posts "
          "WHERE is_processed = FALSE OR is_processed IS NULL")
     if limit:
         q += f" LIMIT {limit}"
