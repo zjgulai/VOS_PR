@@ -38,6 +38,7 @@ from typing import Optional
 import httpx
 
 sys.path.insert(0, str(Path.home() / "Library/Python/3.9/lib/python/site-packages"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 def _load_zshrc_keys():
     try:
@@ -281,16 +282,17 @@ def search_instagram(keyword: str, limit: int = 20) -> list:
 
 
 def search_youtube(keyword: str, limit: int = 10) -> list:
-    """YouTube 关键词搜索视频"""
-    resp = httpx.get(
-        f"{TIKHUB_BASE}/api/v1/youtube/web/search_video",
-        headers=_get_headers(),
-        params={"search_query": keyword, "language_code": "en"},
-        timeout=15.0,
-    )
-    if resp.status_code != 200:
-        return []
-    return (resp.json().get("data") or {}).get("videos") or []
+    """YouTube 关键词搜索（走 Apify，TikHub YouTube 端点不可用）"""
+    from tools.social.youtube_collector import search_videos
+    videos = search_videos(keyword, limit)
+    return [{
+        "id": v.post_id,
+        "title": v.title,
+        "description": v.body_text,
+        "channelTitle": v.account_handle,
+        "viewCount": v.view_count,
+        "publishedAt": v.published_at,
+    } for v in videos]
 
 
 def _parse_tiktok_video(video: dict, kw_config: dict) -> Optional[CollabRecord]:

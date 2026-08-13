@@ -1,72 +1,35 @@
-"""
-tools/social/youtube_collector.py — YouTube 内容采集器（TikHub API）
+"""YouTube 采集器（Apify streamers~youtube-scraper）。
 
-是什么：通过 TikHub API 采集 YouTube 竞品频道视频和关键词搜索结果
-       TikHub YouTube API 无需 Google Cloud 配额，按次付费 $0.001/请求
-       channel_id 参数直接传 @handle，无需先查 UCxxxx channel ID
-
-API 端点：
-  GET https://api.tikhub.io/api/v1/youtube/web/get_channel_videos_v2
-    ?channel_id=@willowpump&sortBy=newest&contentType=videos
-  GET https://api.tikhub.io/api/v1/youtube/web/search_video
-    ?keyword=breast+pump+review
-  认证：Authorization: Bearer {TIKHUB_API_KEY}（与 TikTok 共用同一 Key）
-
-actual_status: CODE_UNVERIFIED（需在部署服务器配置 TIKHUB_API_KEY 后验证）
-
-快速测试：
-    python3 tools/social/youtube_collector.py --dry-run
-    python3 tools/social/youtube_collector.py --channel @willowpump --limit 5
+采集竞品视频与关键词搜索结果（S2/S3）。
+TikHub 的 YouTube 端点在当前 Key 等级下不可用（search 恒返 0），改用 Apify。
+品牌匹配与竞品账号从 config/competitor_dictionary.json 读取。
+actual_status: LIVE（2026-08-13 实测 searchQueries 返回 Momcozy 视频）。
 """
 from __future__ import annotations
 
 import hashlib
 import json
 import os
-
 import re as _re
-def _load_zshrc_keys():
-    try:
-        content = open(os.path.expanduser("~/.zshrc")).read()
-        for m in _re.finditer(r'export (\w+API\w*)="([^"]+)"', content):
-            k, v = m.group(1), m.group(2)
-            if not os.environ.get(k):
-                os.environ[k] = v
-    except Exception:
-        pass
-_load_zshrc_keys()
 import sys
 import time
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional
 
 import httpx
 
 sys.path.insert(0, str(Path.home() / "Library/Python/3.9/lib/python/site-packages"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+from tools.social.dictionary import get_brand_watchlist, load_dictionary
 
 PROJ = Path(__file__).resolve().parents[2]
 OUTPUT_DIR = PROJ / "data" / "processed" / "social"
 DB_PATH = PROJ / "data" / "warehouse" / "voc.duckdb"
 
-TIKHUB_BASE = "https://api.tikhub.io"
-
-COMPETITOR_CHANNELS = [
-    # P0 — 吸奶器直接竞品（channel_id 已验证）
-    {"brand": "eufy",        "handle": "@eufybaby",           "channel_id": "UC5TlekIUP9KxCD_aawBt_qA", "priority": "P0"},
-    {"brand": "elvie",       "handle": "@elvie",              "channel_id": "UCWoUFX2elO3DE09cdP4Y78Q", "priority": "P0"},
-    {"brand": "willow",      "handle": "@willowpump",         "channel_id": "UChgIEtG70rxzz-2mkR64Myg", "priority": "P0"},
-    {"brand": "spectra",     "handle": "@spectrababyusa",     "channel_id": "UCi0oDMjpc__Urp5kkRClgAg", "priority": "P0"},
-    {"brand": "medela",      "handle": "@medelaofficial",     "channel_id": "UC9PwVbd1UyoS0R8CfslBsOg", "priority": "P0"},
-    {"brand": "frida",       "handle": "@fridababy",          "channel_id": "UC-4k2uKsl1n23l6XlIQoCdw", "priority": "P1"},
-    # P1 — 喂养电器竞品
-    {"brand": "baby_brezza", "handle": "@babybrezza",         "channel_id": "UCFkaJtu9iB1phvZl3a6QR8g", "priority": "P0"},
-    # P1 — 其他（channel_id 部分验证）
-    {"brand": "lansinoh",    "handle": "@lansinoh",           "channel_id": "UC28FG6ilFF0ehzgzwyEv_lg", "priority": "P1"},
-    {"brand": "nanit",       "handle": "@nanit",              "channel_id": "UCzunQh6jG5aWP51-lMsvtxQ", "priority": "P1"},
-    {"brand": "haakaa",      "handle": "@haakaanz",           "channel_id": "UChp8nMco_CXCcrLe_vsSZMg", "priority": "P2"},
-]
+APIFY_BASE = "https://api.apify.com/v2"
+APIFY_ACTOR = "streamers~youtube-scraper"
 
 SEARCH_KEYWORDS = [
     "breast pump review 2026",
@@ -76,30 +39,31 @@ SEARCH_KEYWORDS = [
     "medela vs willow breast pump",
 ]
 
-BRAND_WATCHLIST = [
-    "momcozy", "medela", "willow", "elvie", "spectra", "lansinoh",
-    "babybuddha", "nanit", "owlet", "hatch", "breast pump",
-    "wearable pump", "hands free pump", "kleanpal",
-]
+
+def _load_zshrc_keys() -> None:
+    try:
+        content = open(os.path.expanduser("~/.zshrc")).read()
+        for m in _re.finditer(r'export (\w+API\w*)="([^"]+)"', content):
+            key, val = m.group(1), m.group(2)
+            if not os.environ.get(key):
+                os.environ[key] = val
+    except Exception:
+        pass
 
 
-def _get_headers() -> dict:
-    api_key = os.environ.get("TIKHUB_API_KEY", "")
-    if not api_key:
+_load_zshrc_keys()
+
+
+def _get_apify_token() -> str:
+    token = os.environ.get("APIFY_API_KEY", "")
+    if not token:
         raise EnvironmentError(
-            "TIKHUB_API_KEY not set.\n"
-            "  获取：https://user.tikhub.io/dashboard/api-marketplace\n"
-            "  设置：export TIKHUB_API_KEY=\'your-key\'"
+            "APIFY_API_KEY not set. export APIFY_API_KEY='your-token'"
         )
-    return {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+    return token
 
 
-def _mk_post_id(handle: str, video_id: str) -> str:
-    raw = f"youtube|{handle}|{video_id}".encode("utf-8")
-    return hashlib.sha1(raw).hexdigest()[:20]
-
-
-def _parse_count(raw) -> int:
+def _parse_int(raw) -> int:
     if isinstance(raw, int):
         return raw
     if isinstance(raw, str):
@@ -115,12 +79,17 @@ def _parse_count(raw) -> int:
     return 0
 
 
+def _mk_post_id(channel: str, video_id: str) -> str:
+    raw = f"youtube|{channel}|{video_id}".encode("utf-8")
+    return hashlib.sha1(raw).hexdigest()[:20]
+
+
 @dataclass
 class YouTubeVideo:
     post_id: str
     platform_code: str = "youtube"
     account_handle: str = ""
-    account_type: str = "competitor"
+    account_type: str = "creator"
     competitor_brand: str = ""
     content_type: str = "video"
     title: str = ""
@@ -140,7 +109,7 @@ class YouTubeVideo:
 
     def __post_init__(self) -> None:
         combined = f"{self.title} {self.body_text}".lower()
-        self.brand_mentions = [b for b in BRAND_WATCHLIST if b in combined]
+        self.brand_mentions = [b for b in get_brand_watchlist() if b in combined]
         if self.view_count > 500_000:
             self.is_viral_flag = True
 
@@ -148,95 +117,59 @@ class YouTubeVideo:
         return asdict(self)
 
 
-def fetch_channel_videos(handle: str, brand: str, limit: int = 20) -> list:
-    url = f"{TIKHUB_BASE}/api/v1/youtube/web/get_channel_videos_v2"
-    params = {"channel_id": handle, "sortBy": "newest", "contentType": "videos", "lang": "en-US"}
-    videos = []
-    fetched = 0
-    next_token = None
+def _parse_item(item: dict) -> YouTubeVideo:
+    video_id = item.get("id") or ""
+    url = item.get("url") or ""
+    if not video_id and "watch?v=" in url:
+        video_id = url.split("watch?v=")[-1].split("&")[0]
+    channel = item.get("channelName") or item.get("channelUsername") or ""
 
-    try:
-        while fetched < limit:
-            if next_token:
-                params["nextToken"] = next_token
-            resp = httpx.get(url, headers=_get_headers(), params=params, timeout=20.0)
-            if resp.status_code == 401:
-                raise EnvironmentError("TIKHUB_API_KEY 无效（401）")
-            if resp.status_code != 200:
-                print(f"  [WARN] {handle}: HTTP {resp.status_code}", file=sys.stderr)
-                break
-
-            data = resp.json()
-            items = (data.get("data") or {}).get("videos") or []
-            if not items:
-                break
-
-            for item in items:
-                vid_id = item.get("videoId") or item.get("id") or ""
-                if not vid_id:
-                    continue
-                post_id = _mk_post_id(handle, vid_id)
-                videos.append(YouTubeVideo(
-                    post_id=post_id,
-                    account_handle=handle,
-                    competitor_brand=brand,
-                    title=(item.get("title") or "")[:300],
-                    body_text=(item.get("description") or "")[:500],
-                    published_at=str(item.get("publishedAt") or ""),
-                    view_count=_parse_count(item.get("viewCount") or 0),
-                    like_count=_parse_count(item.get("likeCount") or 0),
-                    comment_count=_parse_count(item.get("commentCount") or 0),
-                    video_url=f"https://www.youtube.com/watch?v={vid_id}",
-                ))
-                fetched += 1
-                if fetched >= limit:
-                    break
-
-            next_token = (data.get("data") or {}).get("nextToken") or None
-            if not next_token:
-                break
-            time.sleep(0.3)
-
-    except EnvironmentError:
-        raise
-    except Exception as exc:
-        print(f"  [ERROR] fetch_channel_videos({handle}): {exc}", file=sys.stderr)
-
-    return videos
+    return YouTubeVideo(
+        post_id=_mk_post_id(channel, video_id),
+        account_handle=channel,
+        title=(item.get("title") or "")[:300],
+        body_text=(item.get("text") or "")[:500],
+        published_at=str(item.get("date") or ""),
+        view_count=_parse_int(item.get("viewCount") or 0),
+        like_count=_parse_int(item.get("likes") or 0),
+        comment_count=_parse_int(item.get("commentsCount") or 0),
+        video_url=url,
+    )
 
 
-def search_videos(keyword: str, limit: int = 10) -> list:
-    url = f"{TIKHUB_BASE}/api/v1/youtube/web/search_video"
-    params = {"keyword": keyword, "lang": "en-US"}
-    videos = []
-    try:
-        resp = httpx.get(url, headers=_get_headers(), params=params, timeout=20.0)
-        if resp.status_code != 200:
-            return []
-        data = resp.json()
-        items = (data.get("data") or {}).get("videos") or []
-        for item in items[:limit]:
-            vid_id = item.get("videoId") or item.get("id") or ""
-            handle = item.get("channelTitle") or ""
-            post_id = _mk_post_id(handle, vid_id)
-            videos.append(YouTubeVideo(
-                post_id=post_id,
-                account_handle=handle,
-                account_type="creator",
-                title=(item.get("title") or "")[:300],
-                body_text=(item.get("description") or "")[:300],
-                published_at=str(item.get("publishedAt") or ""),
-                view_count=_parse_count(item.get("viewCount") or 0),
-                video_url=f"https://www.youtube.com/watch?v={vid_id}",
-            ))
-    except EnvironmentError:
-        raise
-    except Exception as exc:
-        print(f"  [ERROR] search_videos({keyword}): {exc}", file=sys.stderr)
-    return videos
+def search_videos(keyword: str, limit: int = 20) -> list[YouTubeVideo]:
+    token = _get_apify_token()
+    resp = httpx.post(
+        f"{APIFY_BASE}/acts/{APIFY_ACTOR}/run-sync-get-dataset-items",
+        params={"token": token},
+        json={"searchQueries": [keyword], "maxResults": limit},
+        timeout=180.0,
+    )
+    if resp.status_code not in (200, 201):
+        print(f"  [WARN] search '{keyword}': HTTP {resp.status_code}", file=sys.stderr)
+        return []
+    items = resp.json()
+    return [_parse_item(it) for it in items if isinstance(it, dict)]
 
 
-def write_to_db(videos: list) -> int:
+def fetch_competitor_videos(limit_per_brand: int = 10) -> list[YouTubeVideo]:
+    d = load_dictionary()
+    competitors = d["competitors"]["pump"] + d["competitors"]["feeding_appliance"]
+    all_videos: list[YouTubeVideo] = []
+    for c in competitors:
+        name = c["name"]
+        try:
+            videos = search_videos(f"{name} review", limit_per_brand)
+            print(f"  [{c['priority']}] {name}: {len(videos)} 条")
+            all_videos.extend(videos)
+            time.sleep(1.0)
+        except EnvironmentError as e:
+            print(f"  ✗ {e}")
+            break
+    return all_videos
+
+
+def write_to_db(videos: list[YouTubeVideo]) -> int:
     if not videos:
         return 0
     try:
@@ -270,7 +203,7 @@ def write_to_db(videos: list) -> int:
     return inserted
 
 
-def save_json(videos: list, output_dir: Path) -> Path:
+def save_json(videos: list[YouTubeVideo], output_dir: Path) -> Path:
     output_dir.mkdir(parents=True, exist_ok=True)
     ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     out = output_dir / f"youtube_{ts}.json"
@@ -283,56 +216,40 @@ def save_json(videos: list, output_dir: Path) -> Path:
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="YouTube Collector via TikHub API")
+    parser = argparse.ArgumentParser(description="YouTube Collector via Apify")
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--channel", default="", help="@handle，如 @willowpump")
     parser.add_argument("--search", default="", help="搜索关键词")
     parser.add_argument("--all-competitors", action="store_true")
-    parser.add_argument("--priority", default="P0", choices=["P0", "P1"])
     parser.add_argument("--limit", type=int, default=20)
     parser.add_argument("--write-db", action="store_true")
     args = parser.parse_args()
 
     if args.dry_run:
-        print("YouTube 竞品频道配置（TikHub API）:")
-        for ch in COMPETITOR_CHANNELS:
-            print(f"  [{ch['priority']}] {ch['brand']:12} → {ch['handle']}")
-        print(f"\nAPI: {TIKHUB_BASE}/api/v1/youtube/web/get_channel_videos_v2")
-        print("认证: Bearer $TIKHUB_API_KEY（与 TikTok 共用）")
+        d = load_dictionary()
+        competitors = d["competitors"]["pump"] + d["competitors"]["feeding_appliance"]
+        print(f"搜索关键词: {len(SEARCH_KEYWORDS)} 个")
+        print(f"竞品（来自词典）: {len(competitors)} 个（按品牌名搜索）")
+        print(f"API: {APIFY_BASE}/acts/{APIFY_ACTOR}")
         sys.exit(0)
 
-    if not os.environ.get("TIKHUB_API_KEY"):
-        print("⚠ TIKHUB_API_KEY 未设置")
-        print("  获取：https://user.tikhub.io/dashboard/api-marketplace")
+    if not os.environ.get("APIFY_API_KEY"):
+        print("⚠ APIFY_API_KEY 未设置")
         sys.exit(0)
 
-    videos = []
+    videos: list[YouTubeVideo] = []
     if args.search:
-        print(f"搜索: {args.search}")
         videos = search_videos(args.search, args.limit)
-        print(f"  → {len(videos)} 条")
-    elif args.channel:
-        handle = args.channel if args.channel.startswith("@") else f"@{args.channel}"
-        brand = next((c["brand"] for c in COMPETITOR_CHANNELS if c["handle"] == handle), "unknown")
-        print(f"采集: {handle} ({brand})")
-        videos = fetch_channel_videos(handle, brand, args.limit)
-        print(f"  → {len(videos)} 条")
+        print(f"搜索 '{args.search}': {len(videos)} 条")
     else:
-        run_p1 = args.all_competitors or args.priority == "P1"
-        for ch in COMPETITOR_CHANNELS:
-            if ch["priority"] == "P1" and not run_p1:
-                continue
-            print(f"  [{ch['priority']}] {ch['brand']} ({ch['handle']})...")
-            vids = fetch_channel_videos(ch["handle"], ch["brand"], args.limit)
-            viral = sum(1 for v in vids if v.is_viral_flag)
-            print(f"       → {len(vids)} 条, 高互动 {viral}")
+        for kw in SEARCH_KEYWORDS:
+            vids = search_videos(kw, args.limit)
+            print(f"  '{kw}': {len(vids)} 条")
             videos.extend(vids)
-            time.sleep(0.5)
+            time.sleep(1.0)
 
     print(f"\n总计: {len(videos)} 条, 高互动: {sum(1 for v in videos if v.is_viral_flag)}")
     if videos:
         out = save_json(videos, OUTPUT_DIR)
         print(f"JSON → {out}")
         if args.write_db:
-            inserted = write_to_db(videos)
-            print(f"DuckDB → {inserted} 条")
+            print(f"DuckDB → {write_to_db(videos)} 条")

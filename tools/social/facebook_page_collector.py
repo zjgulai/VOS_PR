@@ -40,6 +40,9 @@ from pathlib import Path
 import httpx
 
 sys.path.insert(0, str(Path.home() / "Library/Python/3.9/lib/python/site-packages"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+from tools.social.dictionary import get_brand_watchlist, get_facebook_pages
 
 
 def _load_zshrc_keys():
@@ -62,24 +65,9 @@ DB_PATH = PROJ / "data" / "warehouse" / "voc.duckdb"
 APIFY_BASE = "https://api.apify.com/v2"
 APIFY_ACTOR = "apify~facebook-posts-scraper"
 
-# ── 竞品 Facebook 官方主页配置 ────────────────────────────────
-COMPETITOR_PAGES = [
-    {"brand": "eufy",         "page_url": "https://www.facebook.com/eufyofficial",    "priority": "P0"},
-    {"brand": "elvie",        "page_url": "https://www.facebook.com/elvie.co.uk",     "priority": "P0"},
-    {"brand": "willow",       "page_url": "https://www.facebook.com/onewillow",       "priority": "P0"},
-    {"brand": "spectra",      "page_url": "https://www.facebook.com/spectrababyusa",  "priority": "P0"},
-    {"brand": "medela",       "page_url": "https://www.facebook.com/medelausa",       "priority": "P0"},
-    {"brand": "baby_brezza",  "page_url": "https://www.facebook.com/babybrezza",      "priority": "P0"},
-    {"brand": "frida",        "page_url": "https://www.facebook.com/fridababy",       "priority": "P1"},
-    {"brand": "lansinoh",     "page_url": "https://www.facebook.com/lansinoh",        "priority": "P1"},
-    {"brand": "grownsy",      "page_url": "https://www.facebook.com/grownsybaby",     "priority": "P1"},
-    {"brand": "nanit",        "page_url": "https://www.facebook.com/nanit",           "priority": "P1"},
-]
-
-BRAND_WATCHLIST = [
-    "momcozy", "eufy", "elvie", "willow", "spectra", "medela",
-    "frida", "baby brezza", "kleanpal", "lansinoh", "grownsy",
-]
+def _competitor_pages() -> list[dict]:
+    pages = get_facebook_pages()
+    return [{"brand": bk, "page_url": url} for bk, url in pages.items()]
 
 
 def _get_apify_token() -> str:
@@ -126,7 +114,7 @@ class FacebookPost:
 
     def __post_init__(self) -> None:
         combined = self.body_text.lower()
-        self.brand_mentions = [b for b in BRAND_WATCHLIST if b in combined]
+        self.brand_mentions = [b for b in get_brand_watchlist() if b in combined]
         self.hashtags = _re.findall(r"#(\w+)", self.body_text)
         paid_signals = ["#ad", "#sponsored", "#gifted", "#partner", "paid partnership"]
         self.is_paid_collab = any(s in self.body_text.lower() for s in paid_signals)
@@ -141,8 +129,8 @@ def fetch_page_posts(page_url: str, brand: str, limit: int = 20,
     token = _get_apify_token()
 
     payload = {
-        "startUrls": [page_url],
-        "maxPostsPerProfile": limit,
+        "startUrls": [{"url": page_url}],
+        "resultsLimit": limit,
         "onlyPostsNewerThan": f"{days_back} days",
     }
 
@@ -155,19 +143,26 @@ def fetch_page_posts(page_url: str, brand: str, limit: int = 20,
 
     if resp.status_code == 401:
         raise EnvironmentError("APIFY_API_KEY 无效（401）")
-    if resp.status_code != 200:
+    if resp.status_code not in (200, 201):
         print(f"  [WARN] {page_url}: HTTP {resp.status_code}", file=sys.stderr)
         return []
 
-    items = resp.json() if isinstance(resp.json(), list) else []
+    items = resp.json()
+    if not isinstance(items, list):
+        items = []
     posts = []
     for item in items:
         pid = item.get("id") or item.get("postId") or item.get("url", "")[-20:]
         text = item.get("text") or item.get("message") or ""
         timestamp = item.get("timestamp") or item.get("time") or ""
-        likes = item.get("likes") or item.get("likesCount") or 0
-        comments = item.get("comments") or item.get("commentsCount") or 0
-        shares = item.get("shares") or item.get("sharesCount") or 0
+        likes = item.get("likes") or 0
+        comments = item.get("comments") or 0
+        shares = item.get("shares") or 0
+        def _i(v):
+            try:
+                return int(v)
+            except (TypeError, ValueError):
+                return 0
         post_url = item.get("url") or item.get("postUrl") or ""
 
         if isinstance(timestamp, (int, float)) and timestamp > 0:
@@ -184,10 +179,10 @@ def fetch_page_posts(page_url: str, brand: str, limit: int = 20,
             content_type="video" if item.get("isVideo") else "post",
             body_text=text[:500],
             published_at=published,
-            like_count=int(likes),
-            comment_count=int(comments),
-            share_count=int(shares),
-            is_viral_flag=int(likes) > 1000 or int(shares) > 100,
+            like_count=_i(likes),
+            comment_count=_i(comments),
+            share_count=_i(shares),
+            is_viral_flag=_i(likes) > 1000 or _i(shares) > 100,
             post_url=post_url,
         ))
 
@@ -252,9 +247,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.dry_run:
-        print(f"竞品 Facebook 主页: {len(COMPETITOR_PAGES)} 个")
-        for p in COMPETITOR_PAGES:
-            print(f"  [{p['priority']}] {p['brand']:15} → {p['page_url']}")
+        pages = _competitor_pages()
+        print(f"竞品 Facebook 主页（来自词典）: {len(pages)} 个")
+        for p in pages:
+            print(f"  {p['brand']:15} → {p['page_url']}")
         print(f"\n⚠ 需要 APIFY_API_KEY（费用约 $0.006/帖）")
         print(f"  设置：export APIFY_API_KEY='your-token'")
         print(f"  获取：https://console.apify.com → Settings → Integrations")
@@ -265,21 +261,18 @@ if __name__ == "__main__":
         print("  获取：https://console.apify.com → Settings → Integrations")
         sys.exit(0)
 
-    prio_order = {"P0": 0, "P1": 1}
-    max_p = prio_order.get(args.priority, 1)
     pages_to_run = []
+    pages = _competitor_pages()
 
     if args.page:
-        pages_to_run = [p for p in COMPETITOR_PAGES
-                        if p["brand"] == args.page or
-                        p["page_url"].endswith(args.page)]
+        pages_to_run = [p for p in pages
+                        if p["brand"] == args.page or p["page_url"].endswith(args.page)]
     else:
-        pages_to_run = [p for p in COMPETITOR_PAGES
-                        if prio_order.get(p["priority"], 1) <= max_p or args.all]
+        pages_to_run = pages if args.all else pages[:6]
 
     all_posts = []
     for page_cfg in pages_to_run:
-        print(f"  [{page_cfg['priority']}] {page_cfg['brand']} ({page_cfg['page_url']})...")
+        print(f"  {page_cfg['brand']} ({page_cfg['page_url']})...")
         try:
             posts = fetch_page_posts(
                 page_cfg["page_url"], page_cfg["brand"],
