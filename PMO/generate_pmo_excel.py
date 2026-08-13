@@ -223,6 +223,25 @@ PR_RULES = [
      "工作日志预算记录，需确认是否延续", "P1"],
 ]
 
+PR_MESSAGING = [
+    ["品牌定位", "母婴 DTC 品牌，可穿戴吸奶器 + 喂养电器",
+     "从竞品维度表 + 官网确认", ""],
+    ["核心话术-1", "Comfortable & Hands-Free（舒适、免手）",
+     "PR 方案原文核心信息，建议确认", ""],
+    ["核心话术-2", "FDA Cleared / Science-backed（FDA 许可 / 科学支撑）",
+     "PR 方案原文核心信息，建议确认", ""],
+    ["核心话术-3", "四重肽 + 9 植萃（成分浓度）",
+     "工作日志差异化话术，建议确认", ""],
+    ["核心话术-4", "EWG 认证 + 三重专家背书",
+     "工作日志差异化话术，建议确认", ""],
+    ["禁用表述-1", "不得承诺统一效果（'所有妈妈都适用'）",
+     "FTC 合规 + 母婴健康产品红线", ""],
+    ["禁用表述-2", "不得使用医疗/绝对化表述（'治疗''最佳''第一'）",
+     "FTC 代言指南 + 医疗产品合规", ""],
+    ["专家背书", "IBCLC 顾问 / 签约专家名单",
+     "待业务提供可对外背书专家", ""],
+]
+
 
 def gen_pr_excel() -> None:
     wb = Workbook()
@@ -260,10 +279,15 @@ def gen_pr_excel() -> None:
         ["规则名称", "规则内容", "AI推荐依据", "优先级", "业务确认", "业务修订"],
         PR_RULES, 5, [20, 50, 40, 8, 12, 20])
 
+    ws = wb.create_sheet("6.核心信息话术")
+    _append_sheet(ws,
+        ["类别", "内容（AI预填）", "AI推荐依据", "业务确认", "业务修订"],
+        PR_MESSAGING, 4, [14, 42, 40, 12, 20])
+
     out = PMO / "业务协作_PR团队" / "PR团队协作表.xlsx"
     out.parent.mkdir(parents=True, exist_ok=True)
     wb.save(out)
-    print(f"✓ {out.relative_to(PROJ)} (5 sheets)")
+    print(f"✓ {out.relative_to(PROJ)} (6 sheets)")
 
 
 if __name__ == "__main__":
