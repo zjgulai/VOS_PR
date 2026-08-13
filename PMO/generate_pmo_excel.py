@@ -187,6 +187,27 @@ PR_EXPERTS = [
      "Genuine Lactation，可穿戴泵专业", "P0"],
 ]
 
+PR_MEDIA_CONTACTS = [
+    ["Sarah Connor", "bestproducts.com", "1M/月", "免费（寄样+挂亚马逊链接）",
+     "建议合作：Momcozy 用户且孕期 10 周，测评/礼物指南", "P0"],
+    ["Hana Amaes", "Medical News Today", "17M/月", "医学 blog 500欧/1500字",
+     "建议推进：大流量，有孕哺护肤内容经验", "P0"],
+    ["Kate / Baby Chick", "baby-chick.com", "900万曝光/月", "$7,500-$15,000",
+     "建议合作：孕期/新手妈妈受众，组合套餐", "P0"],
+    ["Susey Harmer", "Today's Parent", "600万读者/月", "$18,500 / $11,000",
+     "待确认：权威强但价高，需曝光/点击数据", "P1"],
+    ["Tiffany Tse", "SheKnows", "8000万+/月", "待询价",
+     "待判断：需明确报道形式/是否挂链接/排期", "P1"],
+    ["Kari Bliss", "Sophisticated Whimsy", "未提供", "$1,500",
+     "待判断：6个月新手妈妈，需补媒体资料包", "P1"],
+    ["Sydney Wingfield", "The Skin (Substack)", "400-1000 views", "$300",
+     "小预算尝试：skincare 场景，曝光有限", "P2"],
+    ["Angela Onwuzoo", "healthwise.punchng", "108K/月", "—",
+     "不合作：尼日利亚受众，不相关", "P2"],
+    ["Hannah Payne", "threadsbyh.com", "无数据", "—",
+     "不合作：旅游方向，不匹配", "P2"],
+]
+
 
 def gen_pr_excel() -> None:
     wb = Workbook()
@@ -214,10 +235,15 @@ def gen_pr_excel() -> None:
         ["专家/资源", "领域", "可对外", "AI参考建议", "优先级", "业务确认"],
         PR_EXPERTS, 6, [22, 16, 12, 40, 8, 12])
 
+    ws = wb.create_sheet("4.媒体联系人库")
+    _append_sheet(ws,
+        ["联系人", "媒体", "月流量", "报价", "AI合作结论", "优先级", "业务确认"],
+        PR_MEDIA_CONTACTS, 7, [18, 24, 14, 22, 42, 8, 12])
+
     out = PMO / "业务协作_PR团队" / "PR团队协作表.xlsx"
     out.parent.mkdir(parents=True, exist_ok=True)
     wb.save(out)
-    print(f"✓ {out.relative_to(PROJ)} (3 sheets)")
+    print(f"✓ {out.relative_to(PROJ)} (4 sheets)")
 
 
 if __name__ == "__main__":
