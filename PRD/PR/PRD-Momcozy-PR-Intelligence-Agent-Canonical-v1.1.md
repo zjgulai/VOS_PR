@@ -1,26 +1,41 @@
 ---
-name: momcozy-pr-intelligence-agent-prd
-description: Momcozy 品牌 PR Intelligence AI Agent 产品需求文档，覆盖媒体与行业监测、核心媒体洞察、风险与机会识别、PR Action 转化和每周 PR Intelligence Report 的完整设计。当 PR、数据或研发团队需要设计和实施该系统时使用。
+name: momcozy-pr-intelligence-agent-canonical-v1-1
+description: Momcozy PR Intelligence Agent 整合版产品需求文档。以 P4 危机预警为 P0，保留品牌、竞品、媒体、机会与战略模块的后续规划，并统一证据、治理、Action 和验收规则。
 ---
 
-# Momcozy PR Intelligence Agent PRD
+# Momcozy PR Intelligence Agent PRD（Canonical v1.1）
 
-> 版本：v1.0
-> 文档状态：待业务评审
-> 文档日期：2026-08-12
+> 版本：v1.1
+> 文档状态：产品整合完成，待 PR、法务、产品安全和数据团队评审
+> 文档日期：2026-08-14
 > 目标团队：Momcozy PR、品牌传播、法务合规、产品安全、数据与研发团队
 > 核心逻辑：Media and Industry Monitoring → Insights → Opportunities and Risks → PR Actions
 > 研究口径：英文优先检索；媒体、法律与监管事实优先引用项目内已有 deep research 与官方来源；无法确认的内容标记为「未验证」或「此处未解决」
+
+## 0. 整合决策与文档边界
+
+本文件是 PR Intelligence 的唯一产品主规格。整合规则如下：
+
+| 来源 | 吸收内容 | 处理结果 |
+|---|---|---|
+| `momcozy_pr_intelligence_implementation_plan_2026-08-11.md` | 业务问题、证据与反证、组织治理、RACI、Definition of Done 和阶段路线 | 作为业务与治理依据吸收 |
+| 本文件原 v1.0 | 产品结构、状态、数据契约、错误、输出和验收 | 保留为主骨架 |
+| `momcozy-pr-intelligence-ai-agent-plan.pplx.md` | 带来源的媒体、竞品、监管和采购研究 | 仅作带时间戳研究附录；外部事实使用前复核 |
+| `momcozy-pr-intelligence-ai-agent-plan.ds.md` | 三问表达和报告展示思路 | 归档为概念稿，不作为需求或事实依据 |
+
+已确认的产品规划：P0 只验证 P4 危机预警，范围限定为美国市场、英语、pumping/feeding 品类；首期覆盖产品安全/召回/监管、隐私与数据、误导性宣传与评价真实性、快速升级的负面舆情四类风险。风险采用 `Sev0–Sev4`，由单一事件负责人组织法务、产品安全、隐私或 PR 领域共同确认，主指标为「风险确认与分级总时长」。
+
+待部门确认：具体 SKU 与别名、数据源与合同、分级阈值、SLA、事件负责人、领域审批人、历史样本、baseline 和 Go/No-Go 条件。未完成确认前，文中的相关数字只作为候选验收参数，不代表部门承诺。
 
 ## AI 速读卡
 
 - 产品一句话：把全球媒体、行业、竞品和核心媒体信号变成可追溯的 PR 洞察、机会、风险与待审批行动。
 - 核心循环：配置监测范围与数据源 → 采集 → 实体与话题分类 → 证据抽取 → 风险/机会评分 → 人工审批 → PR Action → 复盘。
-- 目标范围：品牌报道、母婴行业趋势、分赛道竞品、核心媒体画像、监管与产品安全信号、每周 PR Intelligence Report。
+- 目标范围：P0 聚焦美国英语 pumping/feeding 的 P4 危机预警；品牌健康、竞品、核心媒体、机会和战略分析按 P1–P3 扩展。
 - 硬约束：每条结论必须能回溯到来源和采集时间；区分事实、主张、推断与未知；AI 不自动联系记者、不自动发布声明。
-- 推荐默认：采购合规媒体数据源 + 自建智能；首期聚焦美国英语市场、pumping/feeding 赛道、20-40 家候选核心媒体。
+- 推荐默认：先用获准媒体源、官方监管源和允许使用的内部一方数据验证 P4；不以未经授权的社区采集补齐覆盖。
 - 发挥空间：看板视觉、报告版式、模型供应商、队列和云厂商可替换，但不能破坏证据链、风险分级和人工审批。
-- P0 验收：PR Analyst 能完成一次真实采集、查看证据、生成周报，并把一条机会或风险转为待审批 Action。
+- P0 验收：PR Analyst 能把一条获准真实风险信号转为 Evidence Card，经人工确认完成 `Sev0–Sev4` 分级、责任人指派、风险 Action 和结果回填；覆盖缺口全程可见。
 - 最容易翻车：把新闻条数当 Share of Voice、把单条匿名帖子当事实、把品牌自述当独立验证、让 Agent 自动对外沟通。
 - 超预期机会：Claim-Evidence-Counterevidence 卡、Trust Debt 指标、编辑选题冷却期、行动结果反哺模型评估集。
 
@@ -409,7 +424,7 @@ Momcozy PR Intelligence
 #### e) 待决问题
 
 1. Momcozy 生产环境是否已有 Meltwater、Cision、Muck Rack、Factiva 或 LexisNexis 等媒体数据订阅，现有权利和出口限制是什么。
-2. 首期市场是美国英语市场，还是同时覆盖英国、加拿大、德国、法国等市场。
+2. 美国英语市场内的目标媒体、监管来源、销售渠道和地域判定规则分别是什么。
 3. 内部一方数据（PR 台账、客服、退货、质保、产品安全）是否允许接入，以及以何种聚合粒度接入。
 
 ### 第 3.2 节 品牌与行业竞品分析 Media and Industry Monitoring
@@ -1587,7 +1602,7 @@ Opportunity = 0.20 x Strategic Fit + 0.15 x Momentum + 0.15 x Media Receptivity
 
 | 格式 | 使用场景 | 质量选项 | 备注 |
 |---|---|---|---|
-| Markdown | 周报、评审、内部分享 | 带来源、覆盖说明、生成版本 | P0 主交付格式 |
+| Markdown | 周报、评审、内部分享 | 带来源、覆盖说明、生成版本 | P1 周报格式；P0 仅用于 Evidence Card 和风险 Action brief |
 | JSON | API、二次分析、自动化消费 | schema version、evidence IDs、coverage | 机器可读，保留 null 语义 |
 | CSV | 报道、媒体、竞品、风险、Action 列表 | 按当前筛选导出 | 不默认导出完整原文和个人信息 |
 | HTML | 浏览器预览与邮件附件 | 内嵌图表和来源 | P1，可由 Markdown 渲染 |
@@ -1677,12 +1692,14 @@ reports/
 
 | 等级 | 范围 | 交付标准 |
 |---|---|---|
-| P0 | 监测范围与数据源管理、授权媒体库与监管源接入、Document/Claim/Evidence 数据模型、实体与话题分类、风险与机会评分、核心媒体画像、Markdown 周报、PR Action 草稿和人工审批 | 分析师可以完成一次真实采集、查看证据、生成周报，并把一条机会或风险转为待审核 Action；覆盖缺口可见 |
-| P1 | 竞品矩阵、叙事反叙事、媒体匹配、冷却期、产品 seeding 和专家 engagement、Action Board 状态流、质量监控、CSV/JSON 导出 | 团队能稳定使用媒体雷达、核心媒体、机会和风险页面，并对数据质量和行动状态进行管理 |
-| P2 | 受限社区商业授权接入、OpenSearch 语义证据检索、跨来源主张图谱、飞书/Slack 通知、HTML/PDF、模型离线评估 | 机会、风险、媒体和行动能在统一工作流内发现、审核、执行和复盘 |
-| P3 | 反馈闭环训练集、campaign 事前预警、编辑日历预测、预算与资源约束优化、跨市场多语种、API 供其他系统消费 | 系统能基于历史 Action 结果调整推荐，并支持品牌规模化 PR 决策 |
+| P0 | 美国英语 pumping/feeding 范围配置；获准媒体源、官方监管源和允许使用的内部一方数据；Document/Claim/Evidence；四类风险识别；`Sev0–Sev4` 人工确认；单一事件负责人；风险 Action 与结果回填 | 一条真实获准风险信号可完整经过「证据—风险候选—人工确认—分级—指派—Action—结果回填」；覆盖缺口可见，AI 不自动对外响应 |
+| P1 | 品牌健康度、竞品矩阵、核心媒体洞察、机会识别、媒体匹配、冷却期、周报和 Action Board | 团队能在 P4 之外持续使用品牌、竞品、媒体和机会模块，并对数据质量与行动状态进行管理 |
+| P2 | 议题设定、跨来源主张图谱、语义证据检索、消息通知、模型离线评估和跨部门效果复盘 | PR 机会、风险和议题能在统一工作流内发现、审核、执行和复盘 |
+| P3 | 战略决策支持、反馈评估集、预算与资源约束优化、跨市场多语言和受控 API 输出 | 系统能基于历史行动结果支持跨市场和资源配置判断 |
 
 ## 第十章：性能指标
+
+下表是按完整产品规划保留的候选指标。P0 只启用来源可追溯、风险识别、确认分级时长、覆盖与 Action 回填相关指标；其余指标在对应模块进入 P1–P3 后启用。所有无内部 baseline 的数值均须由业务负责人签字后生效。
 
 | 指标名称 | 目标值 | 测量方法 | 劣化阈值 |
 |---|---:|---|---:|
@@ -1706,15 +1723,15 @@ reports/
 
 ### 11.1 实现顺序建议
 
-你应先实现数据契约和一个可回放的离线样本闭环，再接真实数据源。推荐顺序：
+你必须先通过业务共识门，再安排实现。推荐顺序：
 
-1. 建立 dim 层、dwd_document、dwd_claim、dwd_evidence、ads_insight 和 ads_action 的 schema，以及固定 JSON/CSV fixture。
-2. 实现 connector interface、幂等键、游标、raw archive、coverage report 和失败日志。
-3. 先接授权媒体库和监管源，完成真实连接测试；不要先做未经授权的 Reddit 或 TikTok 抓取。
-4. 实现实体解析、话题分类、主张与证据抽取、风险与机会评分。先确保事实可回溯，再接 LLM 摘要。
-5. 实现 Markdown 周报和证据抽屉，再实现 Action 草稿、审批和复盘。
-6. 接入核心媒体画像后，增加竞品矩阵、冷却期和 pitch 建议。
-7. 最后引入 OpenSearch 语义检索、跨来源主张图谱和反馈闭环。
+1. 由 PR、法务、产品安全、隐私和数据负责人确认 P0 的四类风险、SKU、来源、责任人、分级规则、SLA、baseline 和停止条件。
+2. 用历史事件和正常样本形成固定评审集，逐条标注事实、证据、风险类别、严重度和正确升级路径。
+3. 定义最小 Source & Rights、Document、Claim、Evidence、Coverage、Incident 和 Risk Action 契约，确保缺失、零值、失败和范围外信号可区分。
+4. 只接一条获准媒体或监管链路与一条允许使用的内部链路，验证风险候选、反证和 Evidence Card；不先扩展到未经授权的平台。
+5. 实现人工确认、`Sev0–Sev4` 分级、单一事件负责人、领域共同确认、升级和结果回填，不实现自动对外响应。
+6. 用固定样本和真实试点执行 P0 验收；只有达到已签字的 Go/No-Go 条件，才进入品牌健康、竞品、核心媒体、机会和周报模块。
+7. P1–P3 模块仍沿用本文件的数据、证据、审批和错误边界，不另建一套相互冲突的流程。
 
 ### 11.2 最可能导致返工的三个决策
 
@@ -1756,7 +1773,7 @@ reports/
 
 1. 此处未解决：Momcozy 当前拥有哪些媒体数据库、记者数据库和数据供应商订阅，以及对应的权利和出口限制。
 2. 此处未解决：核心媒体清单、记者名单、竞品池和产品赛道由 PR 团队最终确认的范围。
-3. 此处未解决：首期市场范围、语言范围、时区和周报接收人与审批链。
+3. 此处未解决：美国英语 P0 的具体渠道范围、业务时区、通知对象和审批链。
 4. 此处未解决：内部一方数据（PR 台账、客服、退货、质保、产品安全）以何种权限和聚合粒度接入。
 5. 此处未解决：Action 是否需要接入飞书、Slack、Jira、Asana 或现有内容日历。
 6. 此处未解决：媒体数据供应商的收费、服务等级、历史回填范围和删除同步能力。
@@ -1785,11 +1802,11 @@ reports/
 ```bash
 # 1. 文档结构检查
 python3 /Users/lute/.agents/skills/qiaomu-ai-prd/scripts/lint_prd.py \
-  /Users/lute/Project/voc-data-product/VR/PRD-Momcozy-PR-Intelligence-Agent.md
+  /Users/lute/Project/voc-data-product/PRD/PR/PRD-Momcozy-PR-Intelligence-Agent-Canonical-v1.1.md
 
 # 2. 搜索产品文档中的待确认项和未验证边界
 rg -n "此处未解决|未验证|待授权|coverage|evidence|删除|Action|风险|机会" \
-  /Users/lute/Project/voc-data-product/VR/PRD-Momcozy-PR-Intelligence-Agent.md
+  /Users/lute/Project/voc-data-product/PRD/PR/PRD-Momcozy-PR-Intelligence-Agent-Canonical-v1.1.md
 
 # 3. 若实现了 Python 连接器，运行项目已有测试与类型检查
 python3 -m compileall tools app
@@ -1802,12 +1819,13 @@ python3 tools/validate_voc_dataset.py
 
 当且仅当以下条件全部满足，才可以把产品标记为首期完成：
 
-- 至少一个真实获准数据源和一个离线 fixture 数据源通过同一套 Document/Claim/Evidence 测试。
-- 所有报告的数字都能追溯到 DWS 查询和 evidence_set。
-- 数据源缺口、字段缺失、限速、删除和模型失败都有可见状态。
-- 风险有分级、SLA、事实包和人工结案；Action 有人工审核、执行状态和复盘字段。
+- PR、法务、产品安全、隐私和数据负责人已签字确认四类风险、SKU、来源、`Sev0–Sev4` 规则、SLA、owner、baseline 和停止条件。
+- 至少一条真实获准媒体或监管链路，以及一条允许使用的内部数据链路，通过同一套 Document/Claim/Evidence/Coverage 规则。
+- 一条真实 P4 信号能完成风险候选、证据与反证检查、人工确认、分级、单一事件负责人指派、领域共同确认、Risk Action 和结果回填。
+- 数据源缺口、字段缺失、限速、删除、模型失败、范围外内容和真实零值都有可见且互不混淆的状态。
+- P0 的风险确认与分级总时长按统一时间戳可计算，并达到已签字的 Go/No-Go 条件。
 - 不存在自动联系记者、自动发布声明、自动纠错或自动召回通知。
-- 运行 lint_prd.py 通过，研发验收剧本有日志、导出文件或截图证据。
+- 运行 `lint_prd.py` 通过，P0 验收剧本有评审记录、日志、导出文件或截图证据。
 
 ### 11.8 研究交付说明
 

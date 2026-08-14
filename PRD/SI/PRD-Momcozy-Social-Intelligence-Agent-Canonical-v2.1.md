@@ -1,25 +1,40 @@
 ---
-name: momcozy-social-intelligence-agent-prd
-description: Momcozy 社媒智能监测 AI Agent 产品需求文档，涵盖用户讨论洞察、竞品社媒动作、平台趋势、Creator 分析、证据链、数据采集、数据仓库、AI 分析和 Social Media Action。当产品、数据或研发团队需要设计和实施该系统时使用。
+name: momcozy-social-intelligence-agent-canonical-v2-1
+description: Momcozy Social Intelligence Agent 整合版产品需求文档。以高价值用户痛点到可审批 Action 为 P0，采用 YouTube 优先、Reddit 同期并行的产品路径，并统一 S1–S4、Evidence、Coverage、Action 和治理规则。
 ---
 
-# Momcozy Social Intelligence Agent PRD
+# Momcozy Social Intelligence Agent PRD（Canonical v2.1）
 
-> 版本：v2.0
-> 文档状态：待业务评审
-> 文档日期：2026-08-12
+> 版本：v2.1
+> 文档状态：产品整合完成，待社媒、内容、法务和数据团队评审
+> 文档日期：2026-08-14
 > 目标团队：Momcozy 社媒团队、内容团队、Creator 合作团队、品牌与产品团队、数据与研发团队
 > 研究口径：英文优先检索；平台能力以官方文档为准；无法确认的内容标记为「未验证」或「此处未解决」
+
+## 0. 整合决策与文档边界
+
+本文件是 Social Intelligence 的唯一产品主规格。整合规则如下：
+
+| 来源 | 吸收内容 | 处理结果 |
+|---|---|---|
+| 本文件原 v2.0（SI-BASE） | 来源等级、数据契约、Coverage、Evidence、删除、审批和错误治理 | 保留为主骨架 |
+| `PRD-Momcozy-Social-Intelligence-Agent-v2.md` | S1–S4 业务语义、YouTube/Reddit 数据字段、Creator 披露检查 | 按模块吸收，不把全部模块放入 P0 |
+| `PRD-Momcozy-Social-Intelligence-Agent-v3-DeepResearch.md` | S1 高价值用户痛点到 Action 的薄切方法 | 吸收薄切思路；修正 Reddit 单平台优先和 P0 范围过宽问题 |
+| `PRD-Momcozy-Social-Intelligence-Agent-ds.md` | 三问表达、业务场景和报告结构 | 归档为愿景稿，不作为需求、授权或技术事实依据 |
+
+已确认的产品规划：P0 的唯一业务结果是「从获准真实内容中发现高价值用户痛点，形成带 Evidence 的结论，经人工确认后转为可审批、可回填的 Social Action」。YouTube 是主线和产品级 Go/No-Go 路径；Reddit 同期并行并独立验收，不能用 Reddit 通过替代 YouTube 通过，也不能直接比较两个平台的绝对提及量。
+
+待部门确认：高价值痛点标准、产品与语言范围、YouTube 频道和搜索范围、Reddit Subreddit 清单、Action 类型与负责人、平台授权、历史样本、baseline、试点周期和 Go/No-Go 条件。现有 Reddit 工作台只视为待核对的可复用资产，不视为数据、授权或端到端流程已经通过。
 
 ## AI 速读卡
 
 - 产品一句话：把跨平台公开社媒信号变成可追溯的母婴用户洞察、竞品判断、趋势机会和待审批行动。
 - 核心循环：配置监测范围 → 采集 → 标准化与质量检查 → AI 分析 → 证据核验 → Action 审批 → 记录结果。
-- 目标平台：Reddit、Facebook Groups、Instagram、Facebook Pages、YouTube、TikTok；接入按平台能力矩阵分阶段交付。
+- 目标平台：P0 以 YouTube 为主线、Reddit 同期并行；Meta、TikTok 和其他平台在 P1–P3 按授权与业务价值扩展。
 - 硬约束：不绕过登录、权限、验证码或平台限制；每条结论必须能回溯到来源和采集时间；AI 不直接对外发帖。
-- 推荐默认：先用 Reddit、YouTube 和已授权的品牌自有账号验证闭环，Meta/TikTok 的外部监听采用批准或 licensed provider 连接器。
+- 推荐默认：分别展示 YouTube 与 Reddit 的 Coverage、错误和验收结果，共用 Evidence 与 Action 语义，不把一方的缺失字段伪造成另一方字段。
 - 发挥空间：看板视觉、报告版式、模型供应商、队列和云厂商可以替换，但不能破坏数据契约和证据链。
-- P0 验收：社媒分析师能配置一个监测任务，得到带来源证据的周报，并把一条建议转为可跟踪 Action。
+- P0 验收：社媒分析师能从 YouTube 主线真实样本中确认一条高价值用户痛点，查看原始证据、覆盖范围和不确定性，并形成待审批 Action 与结果回填；Reddit 同期用同一语义独立验收。
 - 最容易翻车：把 Research API 当作商业监听 API、把抓不到的数据写成零、把模型猜测写成事实、把私密群组当作可采集对象。
 - 超预期机会：证据覆盖率、需求到内容机会图谱、Creator 合作时机卡、行动结果反哺模型。
 
@@ -354,7 +369,7 @@ Momcozy Social Intelligence
 | 部分可用 | 只能获取部分字段或覆盖有限 | 黄色 Partial | 字段恢复或人工确认继续使用 |
 | 待授权 | 凭证缺失、过期或平台审核未通过 | 橙色 Action needed | 完成授权并测试通过 |
 | 已暂停 | 管理员暂停或平台风险触发熔断 | 蓝色 Paused | 管理员恢复 |
-| 质量异常 | 连续运行无数据、重复率异常或 schema 变化 | 红色 Quality issue | 修��连接器并通过回归样本 |
+| 质量异常 | 连续运行无数据、重复率异常或 schema 变化 | 红色 Quality issue | 修复连接器并通过回归样本 |
 
 #### d) 依赖关系
 
@@ -381,7 +396,7 @@ Momcozy Social Intelligence
 
 ```text
 +--------------------------------------------------------------------------------+
-| 用户洞察 过去 7 天 | Reddit 重点 | Facebook Groups 重点 | 其他平台辅助            |
+| 用户洞察 过去 7 天 | YouTube 主线 | Reddit 并行 | 其他平台待扩展           |
 +-------------------+----------------+-------------------+-------------------------+
 | 讨论量              | 1,284           | 覆盖 6 个已授权范围   | 数据覆盖率 72%           |
 | 上升话题            | 法兰适配、清洁、返工泵奶                                   |
@@ -962,7 +977,7 @@ user query
 
 #### 1. 竞品为何未必具备此功能
 
-这是基于公开行业架构的推断。平台连接权限、字段、时效和数据供应商经常不同，普通看板更容易把缺失值隐藏在聚合结果中。��产品把覆盖状态作为一级业务数据，避免把某个平台没有数据误解为用户没有讨论。
+这是基于公开行业架构的推断。平台连接权限、字段、时效和数据供应商经常不同，普通看板更容易把缺失值隐藏在聚合结果中。本产品把覆盖状态作为一级业务数据，避免把某个平台没有数据误解为用户没有讨论。
 
 #### 2. 本产品如何实现
 
@@ -1416,8 +1431,8 @@ class SocialConnector:
 
 | 平台 | 首期推荐策略 | 可采集对象 | 关键限制 | 业务承诺 |
 |---|---|---|---|---|
-| Reddit | 官方 API 与已批准账号 | Subreddit 帖子、评论、标题、作者作用域引用、互动指标 | 当前 Data API 规则、商业用途和限速需以账号实际条款为准 | P0 可验证 Reddit 重点社区，但不承诺历史全量 |
-| YouTube | 官方 Data API v3 | 频道、视频、标题、描述、统计、公开评论线程、搜索结果 | search.list 有单独配额；搜索结果不是全量市场；字幕未必可得 | P0 可做竞品、Creator 和评论分析 |
+| YouTube | 官方 Data API v3 | 频道、视频、标题、描述、统计、公开评论线程、搜索结果 | search.list 有单独配额；搜索结果不是全量市场；字幕未必可得 | P0 主线；必须独立跑通 S1 到 Action，并决定产品级 Go/No-Go |
+| Reddit | 官方 API、已批准账号或经确认的 licensed provider | Subreddit 帖子、评论、标题、作者作用域引用、互动指标 | 商业用途、可用字段、历史范围和限速需以实际条款为准 | P0 同期并行、独立验收；不承诺历史全量，不替代 YouTube 结果 |
 | Instagram | 自有 Business/Creator 授权或 approved provider | 自有媒体、账号指标，外部公开内容取决于权限/供应商 | 外部 Hashtag、竞品和评论覆盖必须现场验证 | P1，能力逐字段展示 |
 | Facebook Pages | 自有 Page 授权或 approved provider | 自有 Page 内容和指标；外部 Page 视权限 | Meta 权限、App Review 和字段变化 | P1，先接自有账号 |
 | Facebook Groups | 只接合法授权、公开且明确允许的数据源 | Group 内容取决于权限与供应商 | 私密群组不采；官方 Graph 能力需现场验证 | P1/P2，重点是覆盖状态和人工导入降级 |
@@ -1548,7 +1563,7 @@ Action 右键
 
 | 格式 | 使用场景 | 质量选项 | 备注 |
 |---|---|---|---|
-| Markdown | 日报、周报、评审、内部分享 | 带来源、覆盖说明、生成版本 | P0 主交付格式 |
+| Markdown | 日报、周报、评审、内部分享 | 带来源、覆盖说明、生成版本 | P1 报告格式；P0 仅用于 Evidence Card 和 Social Action brief |
 | JSON | API、二次分析、自动化消费 | schema version、evidence IDs、coverage | 机器可读，保留 null 语义 |
 | CSV | 话题、内容、指标、Creator 列表 | 按当前筛选导出 | 不默认导出完整原文个人信息 |
 | HTML | 浏览器预览与邮件附件 | 内嵌图表和来源 | P1，可由 Markdown 渲染 |
@@ -1616,7 +1631,7 @@ reports/
                                   |
                      +------------+-------------+
                      |                          |
-             可并行：语言、实��、情感、      必须顺序：视频字幕可用性
+             可并行：语言、实体、情感、      必须顺序：视频字幕可用性
              规则分类、指标聚合               --> 内容主题与证据摘要
                      |                          |
                      +------------+-------------+
@@ -1638,12 +1653,14 @@ reports/
 
 | 等级 | 范围 | 交付标准 |
 |---|---|---|
-| P0 | 监测范围配置、连接器注册、Reddit 与 YouTube 基础采集、CanonicalMention、原始归档、基础话题/情感/证据、Markdown 周报、Action 草稿和人工审核 | 分析师可以完成一次真实采集、查看证据、生成周报并把一条建议转为待审核 Action；数据缺口可见 |
-| P1 | Meta 自有账号授权、Facebook Groups 合法数据源接入、竞品内容基线、Creator 时间线、趋势快照、质量监控、Action Board 状态流 | 团队能够稳定使用周报、竞品和 Creator 页面，并对数据质量和行动状态进行管理 |
-| P2 | TikTok 商业授权或 licensed provider、OpenSearch 语义证据检索、跨平台需求图谱、飞书/Slack 通知、HTML/PDF、模型离线评估 | 热点窗口、Creator 合作和用户需求可以在统一工作流内发现、审核、执行和复盘 |
-| P3 | 反馈闭环训练集、内容 brief 模板库、预算/资源约束优化、实验对照、内容结果回流、跨市场多语言、API 供其他系统消费 | 系统能基于历史 Action 结果调整推荐，并支持品牌规模化运营决策 |
+| P0 | YouTube 主线与 Reddit 同期并行的范围、权利和 Coverage；CanonicalMention 与 Evidence；S1 高价值用户痛点识别；人工确认；Action 草稿、审批和结果回填 | YouTube 独立跑通「真实内容—Coverage—痛点—Evidence—人工确认—Action—结果」并通过产品级 Go/No-Go；Reddit 用同一语义独立验收，不替代 YouTube 结果 |
+| P1 | S2 竞品动作、S4 Creator 分析、基础周报、质量监控和完整 Action Board；按批准范围增加品牌自有账号数据 | 团队能稳定把用户、竞品和 Creator 结论转成内容、合作或产品反馈任务 |
+| P2 | S3 趋势时机、跨平台需求到内容机会图谱、语义证据检索、消息通知、HTML/PDF 和模型离线评估 | 趋势、Creator 和用户需求可在统一流程内发现、审核、执行和复盘 |
+| P3 | 反馈评估集、内容模板、预算与资源约束、实验对照、内容结果回流、跨市场多语言和受控 API 输出 | 系统能基于历史行动结果调整建议，并支持规模化社媒决策 |
 
 ## 第十章：性能指标
+
+下表是完整产品的候选指标。P0 只启用 YouTube/Reddit Coverage、证据可追溯、S1 质量、人工确认、Action 审批和结果回填相关指标；其他指标在对应模块进入 P1–P3 后启用。无内部 baseline 的数值须经业务评审后生效。
 
 | 指标名称 | 目标值 | 测量方法 | 劣化阈值 |
 |---|---:|---|---:|
@@ -1668,15 +1685,15 @@ reports/
 
 ### 11.1 实现顺序建议
 
-你应先实现数据契约和一个可回放的离线样本闭环，再接真实平台。推荐顺序：
+你必须先通过业务共识门，再安排实现。推荐顺序：
 
-1. 建立 `dim_monitor_scope`、`dwd_canonical_mention`、`dwd_evidence`、`ads_insight` 和 `ads_action` 的 schema，以及固定 JSON/CSV fixture。
-2. 实现 connector interface、幂等键、游标、raw archive、coverage report 和失败日志。
-3. 先接 Reddit 和 YouTube，完成真实连接测试；不要先做未经批准的 Facebook Groups 或 TikTok 抓取。
-4. 实现规则指标、基础分类、话题聚类和 evidence gate。先确保事实可回溯，再接 LLM 摘要。
-5. 实现 Markdown 周报和证据抽屉，再实现 Action 草稿、审批和复盘。
-6. 接入自有 Meta 账号后，增加竞品、Creator 和趋势模块；外部 Meta/TikTok 数据必须等待授权或 licensed provider 验证。
-7. 最后再引入 OpenSearch 语义检索、跨平台图谱和结果反馈闭环。
+1. 由社媒、内容、法务和数据负责人确认高价值痛点标准、P0 产品范围、YouTube 频道与内容窗口、Reddit Subreddit、Action 类型、负责人、baseline 和停止条件。
+2. 用被采纳与被否定的真实历史案例形成固定评审集，标注痛点、证据、适用人群、业务价值、错误原因和预期 Action。
+3. 确认 YouTube 与 Reddit 各自的权利、可用字段、保存删除规则和 Coverage 口径；两条链路分别验收，不共享虚构字段。
+4. 定义最小 MonitorScope、CanonicalMention、Evidence、Coverage、Insight 和 SocialAction 契约，确保缺失、零值、失败和范围外内容可区分。
+5. 先跑通 YouTube 主线的 S1 → Evidence → 人工确认 → Action → 结果回填；Reddit 同期复用统一语义并完成独立验收。
+6. 只有 YouTube 达到已签字的产品级 Go/No-Go，才把 P0 标记为通过；Reddit 的状态单独记录。
+7. S2、S4、周报进入 P1，S3 趋势进入 P2；Meta、TikTok 和其他平台仅在权利与业务价值确认后扩展。
 
 ### 11.2 最可能导致返工的三个决策
 
@@ -1746,11 +1763,11 @@ reports/
 ```bash
 # 1. 文档结构检查
 python3 /Users/lute/.agents/skills/qiaomu-ai-prd/scripts/lint_prd.py \
-  /Users/lute/Project/voc-data-product/VR/PRD-Momcozy-Social-Intelligence-Agent.md
+  /Users/lute/Project/voc-data-product/PRD/SI/PRD-Momcozy-Social-Intelligence-Agent-Canonical-v2.1.md
 
 # 2. 搜索产品文档中的待确认项和未验证边界
 rg -n "此处未解决|未验证|待授权|coverage|evidence|删除|Action" \
-  /Users/lute/Project/voc-data-product/VR/PRD-Momcozy-Social-Intelligence-Agent.md
+  /Users/lute/Project/voc-data-product/PRD/SI/PRD-Momcozy-Social-Intelligence-Agent-Canonical-v2.1.md
 
 # 3. 若实现了 Python 连接器，运行项目已有测试与类型检查
 python3 -m compileall tools app
@@ -1763,12 +1780,13 @@ python3 tools/validate_voc_dataset.py
 
 当且仅当以下条件全部满足，才可以把产品标记为首期完成：
 
-- 至少一个真实获准连接器和一个离线 fixture 连接器通过同一套 CanonicalMention 测试。
-- 所有报告的数字都能追溯到 DWS 查询和 evidence_set。
-- 平台缺口、字段缺失、限速、删除和模型失败都有可见状态。
-- Action 有人工审核、执行状态和复盘字段。
+- 社媒、内容、法务和数据负责人已签字确认高价值痛点、P0 范围、Action 类型、owner、baseline、试点周期和停止条件。
+- YouTube 真实获准样本独立完成 MonitorScope、CanonicalMention、Coverage、Evidence、S1 Insight、人工确认、Social Action 和结果回填。
+- YouTube 达到已签字的产品级 Go/No-Go；Reddit 以同一语义完成独立验收并单独记录结果，不能替代 YouTube。
+- 两个平台的缺口、字段缺失、限速、删除、模型失败、范围外内容和真实零值都有可见且互不混淆的状态。
+- 所有已确认 Insight 和 Action 都能追溯到 evidence_set；Action 有人工审核、执行状态和复盘字段。
 - 不存在自动绕过平台权限、自动对外发帖或未经确认的 Creator 联系流程。
-- 运行 `lint_prd.py` 通过，研发验收剧本有日志、导出文件或截图证据。
+- 运行 `lint_prd.py` 通过，P0 验收剧本有评审记录、日志、导出文件或截图证据。
 
 ### 11.8 研究交付说明
 
@@ -1776,4 +1794,4 @@ python3 tools/validate_voc_dataset.py
 
 ### 11.9 复盘后的下一步
 
-下一步不是立刻开发六个平台的抓取器，而是由社媒、法务、数据和研发共同完成一页“平台接入确认表”：每个平台列出授权类型、可采字段、历史范围、刷新频率、保存期限、删除机制、供应商费用和责任人。确认表通过后，从 Reddit 与 YouTube 的真实数据样本开始 P0 验收；未通过的平台保持待授权状态，不影响已验证链路交付。
+下一步不是立刻开发六个平台的抓取器，而是由社媒、法务、数据和研发共同完成一页「平台接入确认表」：每个平台列出授权类型、可采字段、历史范围、刷新频率、保存期限、删除机制、供应商费用和责任人。确认表通过后，以 YouTube 真实数据为主线、Reddit 同期并行开展 P0 验收；未通过的平台保持待授权状态。
