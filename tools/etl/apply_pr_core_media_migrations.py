@@ -43,6 +43,8 @@ EXPECTED_TABLES = frozenset(
         "ads_media_risk",
         "ads_action",
         "ads_feedback",
+        "ctl_action_transition",
+        "ctl_brief_review",
         "ctl_deletion_audit",
         "ctl_deletion_target",
     }
@@ -66,6 +68,10 @@ class SchemaAudit:
     present_tables: list[str]
     missing_tables: list[str]
     unexpected_tables: list[str]
+
+    @property
+    def ok(self) -> bool:
+        return not self.missing_tables and not self.unexpected_tables
 
 
 def _migration_files(migration_dir: Path) -> list[Path]:

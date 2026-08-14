@@ -77,12 +77,16 @@ _SELECTOR_COLUMNS = {
     "ads_opportunity": {"opportunity_id", "journalist_id", "evidence_set_id"},
     "ads_media_risk": {"media_risk_id", "document_id", "journalist_id", "evidence_set_id"},
     "ads_action": {"action_id", "journalist_id", "evidence_set_id"},
+    "ctl_action_transition": {"action_id", "transition_id"},
+    "ctl_brief_review": {"brief_id", "review_id"},
 }
 
 _EXECUTION_ORDER = {
+    "ctl_action_transition": 5,
     "ads_action": 10,
     "ads_opportunity": 20,
     "ads_media_risk": 30,
+    "ctl_brief_review": 35,
     "ads_media_brief": 40,
     "bridge_evidence_set_item": 50,
     "dwd_evidence": 60,
@@ -152,6 +156,36 @@ def _add(
     targets.append(_TargetSpec(table, serialized, action, count))
 
 
+def _add_deleted_action(
+    con: duckdb.DuckDBPyConnection,
+    targets: list[_TargetSpec],
+    action_id: str,
+) -> None:
+    _add(
+        con,
+        targets,
+        "ctl_action_transition",
+        {"action_id": action_id},
+        "delete_row",
+    )
+    _add(con, targets, "ads_action", {"action_id": action_id}, "delete_row")
+
+
+def _add_deleted_brief(
+    con: duckdb.DuckDBPyConnection,
+    targets: list[_TargetSpec],
+    brief_id: str,
+) -> None:
+    _add(
+        con,
+        targets,
+        "ctl_brief_review",
+        {"brief_id": brief_id},
+        "delete_row",
+    )
+    _add(con, targets, "ads_media_brief", {"brief_id": brief_id}, "delete_row")
+
+
 def _document_targets(
     con: duckdb.DuckDBPyConnection,
     document_id: str,
@@ -184,13 +218,12 @@ def _document_targets(
 
     _add(con, targets, "ads_media_risk", {"document_id": document_id}, "delete_row")
     for evidence_set_id in sorted(evidence_set_ids):
-        _add(
-            con,
-            targets,
-            "ads_media_brief",
-            {"evidence_set_id": evidence_set_id},
-            "delete_row",
-        )
+        brief_rows = con.execute(
+            "SELECT brief_id FROM pr_core_media.ads_media_brief WHERE evidence_set_id = ?",
+            [evidence_set_id],
+        ).fetchall()
+        for brief_row in brief_rows:
+            _add_deleted_brief(con, targets, str(brief_row[0]))
         _add(
             con,
             targets,
@@ -203,13 +236,7 @@ def _document_targets(
             [evidence_set_id],
         ).fetchall()
         for action_row in action_rows:
-            _add(
-                con,
-                targets,
-                "ads_action",
-                {"action_id": str(action_row[0])},
-                "delete_row",
-            )
+            _add_deleted_action(con, targets, str(action_row[0]))
     for signal_id, _ in signal_rows:
         action_rows = con.execute(
             "SELECT action_id FROM pr_core_media.ads_action "
@@ -217,13 +244,7 @@ def _document_targets(
             [str(signal_id)],
         ).fetchall()
         for action_row in action_rows:
-            _add(
-                con,
-                targets,
-                "ads_action",
-                {"action_id": str(action_row[0])},
-                "delete_row",
-            )
+            _add_deleted_action(con, targets, str(action_row[0]))
 
     for evidence_id in evidence_ids:
         _add(
@@ -297,13 +318,13 @@ def _journalist_targets(
     _add(con, targets, "ads_action", {"journalist_id": journalist_id}, "redact_journalist_link")
     _add(con, targets, "ads_opportunity", {"journalist_id": journalist_id}, "redact_journalist_link")
     _add(con, targets, "ads_media_risk", {"journalist_id": journalist_id}, "redact_journalist_link")
-    _add(
-        con,
-        targets,
-        "ads_media_brief",
-        {"scope_type": "journalist", "scope_id": journalist_id},
-        "delete_row",
-    )
+    brief_rows = con.execute(
+        "SELECT brief_id FROM pr_core_media.ads_media_brief "
+        "WHERE scope_type = 'journalist' AND scope_id = ?",
+        [journalist_id],
+    ).fetchall()
+    for brief_row in brief_rows:
+        _add_deleted_brief(con, targets, str(brief_row[0]))
     _add(con, targets, "dws_journalist_period", {"journalist_id": journalist_id}, "delete_row")
     _add(con, targets, "dwd_relationship_event", {"journalist_id": journalist_id}, "delete_row")
     _add(con, targets, "dwd_pitch_constraint", {"journalist_id": journalist_id}, "delete_row")

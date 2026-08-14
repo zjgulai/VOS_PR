@@ -50,6 +50,8 @@ EXPECTED_TABLES = {
     "ads_media_risk",
     "ads_action",
     "ads_feedback",
+    "ctl_action_transition",
+    "ctl_brief_review",
     "ctl_deletion_audit",
     "ctl_deletion_target",
 }
@@ -122,7 +124,8 @@ def seed_lifecycle_graph(db: Path) -> None:
             ('constraint_fixture', 'journalist_fixture', 'edition_fixture', 'recent_contact',
              '2026-08-10T00:00:00Z', '2026-09-09T00:00:00Z', 'active',
              'relationship_fixture', 'pr_lead', '2026-08-14T00:00:00Z',
-             '2026-08-14T00:00:00Z', '2026-08-14T00:00:00Z');
+             '2026-08-14T00:00:00Z', '2026-08-14T00:00:00Z', NULL,
+             '["relationship_fixture"]', 'rule-v1', NULL);
             INSERT INTO pr_core_media.dws_journalist_period VALUES
             ('journalist_fixture', '2026-08-01T00:00:00Z', '2026-08-14T00:00:00Z',
              '{}', '{}', 1, 'complete', '2026-08-14T00:00:00Z');
@@ -131,12 +134,19 @@ def seed_lifecycle_graph(db: Path) -> None:
              '2026-08-14T00:00:00Z', NULL, NULL, '2026-08-12T00:00:00Z',
              '2026-08-12T00:00:00Z', 1, '{}', NULL, 'not_present', NULL, NULL, 'observe',
              NULL, 'complete', '[]', 'evidence_set_fixture', 'rule-v1', NULL, 'rule-v1',
-             NULL, 'verified', '2026-08-14T00:00:00Z', NULL);
+             NULL, 'draft', '2026-08-14T00:00:00Z', NULL,
+             '[{"evidence_ids":["evidence_fixture"],"fact_id":"fact_fixture","fact_type":"observed_source_statement","signal_id":"signal_fixture","text":"Observed source statement: Fixture claim"}]',
+             '[]',
+             '["evidence_fixture"]', 'fixture-v1', '["constraint_fixture"]',
+             'edition_fixture', 'journalist_fixture');
+            INSERT INTO pr_core_media.ctl_brief_review VALUES
+            ('brief_review_fixture', 'brief_fixture', 'create', 'draft', 'draft',
+             'system_fixture', NULL, '2026-08-14T00:00:00Z');
             INSERT INTO pr_core_media.ads_opportunity VALUES
             ('opportunity_fixture', 'edition_fixture', 'journalist_fixture', 0.8, 0.7, 0.6,
              0.9, NULL, 0.0, 0.0, 'high', 'Fixture angle', 'Fixture timing',
              'evidence_set_fixture', 'verified', '2026-08-14T00:00:00Z',
-             '2026-08-14T00:00:00Z');
+             '2026-08-14T00:00:00Z', 'unknown');
             INSERT INTO pr_core_media.ads_media_risk VALUES
             ('risk_fixture', 'document_fixture', 'edition_fixture', 'journalist_fixture',
              'quality', 'direct', 'direct', 'direct', 'Fixture risk span', 'unknown',
@@ -148,6 +158,10 @@ def seed_lifecycle_graph(db: Path) -> None:
              'Fixture angle', NULL, 'media_relations', NULL, 'Fixture metric', 'Fixture risk',
              '["constraint_fixture"]', '["signal_fixture"]', 'evidence_set_fixture',
              'pending_review', 'draft', NULL, NULL, '2026-08-14T00:00:00Z',
+             '2026-08-14T00:00:00Z', NULL, NULL, 'brief_fixture');
+            INSERT INTO pr_core_media.ctl_action_transition VALUES
+            ('transition_fixture', 'action_fixture', 'create', 'pending_review',
+             'pending_review', 'draft', 'draft', 'system_fixture', NULL,
              '2026-08-14T00:00:00Z');
             """
         )
@@ -163,19 +177,79 @@ class MigrationTests(unittest.TestCase):
             first = apply_migrations(db, MIGRATION_DIR)
             second = apply_migrations(db, MIGRATION_DIR)
             audit = verify_schema_path(db)
+            con = duckdb.connect(str(db), read_only=True)
+            columns = {
+                str(row[1])
+                for row in con.execute(
+                    "PRAGMA table_info('pr_core_media.ads_opportunity')"
+                ).fetchall()
+            }
+            constraint_columns = {
+                str(row[1])
+                for row in con.execute(
+                    "PRAGMA table_info('pr_core_media.dwd_pitch_constraint')"
+                ).fetchall()
+            }
+            brief_columns = {
+                str(row[1])
+                for row in con.execute(
+                    "PRAGMA table_info('pr_core_media.ads_media_brief')"
+                ).fetchall()
+            }
+            action_columns = {
+                str(row[1])
+                for row in con.execute(
+                    "PRAGMA table_info('pr_core_media.ads_action')"
+                ).fetchall()
+            }
+            con.close()
 
         self.assertEqual(
-            ["001_pr_core_media_p0", "002_pr_core_media_deletion_audit"],
+            [
+                "001_pr_core_media_p0",
+                "002_pr_core_media_deletion_audit",
+                "003_pr_core_media_opportunity_presence",
+                "004_pr_core_media_relationship_audit_fields",
+                "005_pr_core_media_brief_action_audit",
+                "006_pr_core_media_brief_review_audit",
+            ],
             first.applied,
         )
         self.assertEqual([], first.skipped)
         self.assertEqual([], second.applied)
         self.assertEqual(
-            ["001_pr_core_media_p0", "002_pr_core_media_deletion_audit"],
+            [
+                "001_pr_core_media_p0",
+                "002_pr_core_media_deletion_audit",
+                "003_pr_core_media_opportunity_presence",
+                "004_pr_core_media_relationship_audit_fields",
+                "005_pr_core_media_brief_action_audit",
+                "006_pr_core_media_brief_review_audit",
+            ],
             second.skipped,
         )
         self.assertEqual([], audit.missing_tables)
         self.assertEqual(EXPECTED_TABLES, set(audit.present_tables))
+        self.assertIn("momcozy_presence", columns)
+        self.assertTrue(
+            {"topic_key", "evidence_refs_text", "rule_version", "override_evidence_ref"}
+            <= constraint_columns
+        )
+        self.assertTrue(
+            {
+                "fact_items_text",
+                "inference_items_text",
+                "evidence_ids_text",
+                "registry_version",
+                "pitch_constraint_ids_text",
+                "edition_id",
+                "journalist_id",
+            }
+            <= brief_columns
+        )
+        self.assertTrue(
+            {"approved_by_role", "approved_at", "brief_id"} <= action_columns
+        )
 
     def test_migration_preserves_existing_main_schema_objects(self) -> None:
         with TemporaryDirectory() as directory:
@@ -323,6 +397,8 @@ class MigrationTests(unittest.TestCase):
                     "ads_opportunity",
                     "ads_media_risk",
                     "ads_action",
+                    "ctl_action_transition",
+                    "ctl_brief_review",
                 }.issubset(document_tables)
             )
             self.assertTrue(
@@ -391,6 +467,15 @@ class MigrationTests(unittest.TestCase):
                 con.close()
             self.assertEqual((None, None, "deleted", "deleted://document_fixture"), document)
             self.assertEqual(("deleted://envelope_fixture", 0, "deleted"), envelope)
+            con = duckdb.connect(str(db), read_only=True)
+            try:
+                count = con.execute(
+                    "SELECT count(*) FROM pr_core_media.ctl_action_transition "
+                    "WHERE action_id = 'action_fixture'"
+                ).fetchone()[0]
+            finally:
+                con.close()
+            self.assertEqual(0, count)
 
 
 if __name__ == "__main__":

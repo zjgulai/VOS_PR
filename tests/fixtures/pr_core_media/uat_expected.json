@@ -1,0 +1,105 @@
+{
+  "version": "1.0",
+  "fixture_type": "synthetic_gold_set",
+  "synthetic_only": true,
+  "market": "US",
+  "language": "en",
+  "category": "pumping",
+  "signal_cases": [
+    {
+      "case_id": "competitor_positive_editorial",
+      "url": "https://example.test/reviews/eufy-positive",
+      "title": "Eufy S1 Pro breast pump review",
+      "text": "The Eufy S1 Pro is quiet, comfortable, and easy to use.",
+      "content_type": "review",
+      "sponsorship_status": "editorial",
+      "expected_entity": "eufy",
+      "expected_stance": "positive"
+    },
+    {
+      "case_id": "competitor_negative_sponsored",
+      "url": "https://example.test/reviews/elvie-negative",
+      "title": "Sponsored Elvie Stride test",
+      "text": "Sponsored: The Elvie Stride was noisy, uncomfortable, and disappointing in this test.",
+      "content_type": "review",
+      "sponsorship_status": "sponsored",
+      "expected_entity": "elvie",
+      "expected_stance": "negative"
+    },
+    {
+      "case_id": "competitor_mixed_affiliate",
+      "url": "https://example.test/guides/eufy-mixed",
+      "title": "Affiliate guide to the Eufy S1 Pro",
+      "text": "The Eufy S1 Pro is quiet and comfortable, but its suction is weak and it can leak.",
+      "counterevidence": [
+        {
+          "document_id": "document_lab_retest_fixture",
+          "quote_span": "A later independent lab retest did not reproduce the reported leakage.",
+          "observed_at": "2026-08-14T00:00:00Z",
+          "evidence_grade": "synthetic_gold"
+        }
+      ],
+      "content_type": "listicle",
+      "sponsorship_status": "affiliate",
+      "expected_entity": "eufy",
+      "expected_stance": "mixed"
+    },
+    {
+      "case_id": "competitor_syndicated",
+      "url": "https://example.test/news/willow-syndicated",
+      "title": "Willow Go review republished from a partner",
+      "text": "The Willow Go is portable and easy to use.",
+      "content_type": "review",
+      "sponsorship_status": "syndicated",
+      "expected_entity": "willow",
+      "expected_stance": "positive"
+    },
+    {
+      "case_id": "momcozy_observed_quality",
+      "url": "https://example.test/reviews/momcozy-quality",
+      "title": "Momcozy M9 breast pump quality review",
+      "text": "The Momcozy M9 review found repeated motor failure and described the unit as defective and unsafe.",
+      "content_type": "review",
+      "sponsorship_status": "editorial",
+      "expected_presence": "observed",
+      "expected_risk_type": "quality",
+      "expected_risk_review_status": "pending_review"
+    },
+    {
+      "case_id": "momcozy_not_observed",
+      "url": "https://example.test/guides/pump-comparison",
+      "title": "Wearable breast pump comparison",
+      "text": "This covered comparison discusses Spectra S1 and Medela pumps.",
+      "content_type": "listicle",
+      "sponsorship_status": "editorial",
+      "expected_presence": "not_observed_in_covered_data"
+    },
+    {
+      "case_id": "unrelated_recall_false_positive",
+      "url": "https://example.test/news/vehicle-recall",
+      "title": "Automaker recall follows unrelated lawsuit",
+      "text": "An automaker announced a vehicle recall after an unrelated lawsuit.",
+      "content_type": "news",
+      "sponsorship_status": "editorial",
+      "expected_risk_review_status": "rejected_by_relevance_gate",
+      "expected_risk_priority": "none"
+    }
+  ],
+  "acceptance_scenarios": [
+    {"scenario": 1, "name": "workbook_registry", "expected_codes": ["11_outlets", "48_candidate_journalists", "source_rows_preserved"]},
+    {"scenario": 2, "name": "edition_conflict", "expected_codes": ["edition_review_required", "deterministic_brief_blocked"]},
+    {"scenario": 3, "name": "byline_degradation", "expected_codes": ["journalist_null", "media_level_only"]},
+    {"scenario": 4, "name": "content_disclosure", "fixture_refs": ["competitor_positive_editorial", "competitor_negative_sponsored", "competitor_mixed_affiliate", "competitor_syndicated"]},
+    {"scenario": 5, "name": "coverage_failures", "expected_codes": ["no_match", "source_unavailable", "rate_limited", "schema_changed", "profile_invalid"]},
+    {"scenario": 6, "name": "competitor_view", "fixture_refs": ["competitor_positive_editorial", "competitor_negative_sponsored", "competitor_mixed_affiliate"]},
+    {"scenario": 7, "name": "momcozy_gap", "fixture_refs": ["momcozy_not_observed"], "expected_codes": ["not_observed_in_covered_data"]},
+    {"scenario": 8, "name": "risk_false_positive", "fixture_refs": ["unrelated_recall_false_positive"], "expected_codes": ["rejected_by_relevance_gate", "priority_none"]},
+    {"scenario": 9, "name": "direct_quality_risk", "fixture_refs": ["momcozy_observed_quality"], "expected_codes": ["pending_review", "no_external_action"]},
+    {"scenario": 10, "name": "relationship_cooldown", "expected_codes": ["recent_contact_30d", "same_topic_cooldown"]},
+    {"scenario": 11, "name": "media_brief", "expected_codes": ["coverage_window", "sample_size", "uncertainty", "evidence"]},
+    {"scenario": 12, "name": "journalist_brief_degradation", "expected_codes": ["verified_identity_required", "old_version_preserved"]},
+    {"scenario": 13, "name": "action_approval", "expected_codes": ["pending_approval", "external_execution_absent"]},
+    {"scenario": 14, "name": "deterministic_replay", "expected_codes": ["stable_ids", "versioned_output"]},
+    {"scenario": 15, "name": "p0_boundary", "expected_codes": ["no_severity_scale", "no_crisis_sla", "no_war_room"]}
+  ]
+}
