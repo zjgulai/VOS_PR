@@ -1,0 +1,64 @@
+{
+  "pr": {
+    "app_name": "Momcozy PR团队业务确认表",
+    "app_token": "GZTmb54suab4NxsXumRc3MBUn4b",
+    "url": "https://feishu.cn/base/GZTmb54suab4NxsXumRc3MBUn4b",
+    "tables": {
+      "1.核心媒体与编辑": {
+        "table_id": "tbl3iN2plEuQjwLL",
+        "rows": 12
+      },
+      "2.周报接收人": {
+        "table_id": "tblq9O8P99jKGo1A",
+        "rows": 3
+      },
+      "3.专家与样机库": {
+        "table_id": "tblUeWNpjalxVwv7",
+        "rows": 2
+      },
+      "4.媒体联系人库": {
+        "table_id": "tblPEWlGQxq1bg9f",
+        "rows": 9
+      },
+      "5.规则确认": {
+        "table_id": "tblYoezLsPxucvVD",
+        "rows": 6
+      },
+      "6.核心信息话术": {
+        "table_id": "tblzEFYmstDNgXTr",
+        "rows": 8
+      }
+    }
+  },
+  "social": {
+    "app_name": "Momcozy 社媒团队业务确认表",
+    "app_token": "KfXrb10FOaDSKwsajQBcssm1nmc",
+    "url": "https://feishu.cn/base/KfXrb10FOaDSKwsajQBcssm1nmc",
+    "tables": {
+      "1.FacebookGroups群组": {
+        "table_id": "tbl9eAh4drk8u8b9",
+        "rows": 5
+      },
+      "2.KOL关注池": {
+        "table_id": "tblPVn1j71QkHoxe",
+        "rows": 7
+      },
+      "3.竞品社媒账号": {
+        "table_id": "tblwgbBSWzmbgCDv",
+        "rows": 28
+      },
+      "4.周报接收人": {
+        "table_id": "tblD15qYRUFo4m1k",
+        "rows": 2
+      },
+      "5.Creator评估表": {
+        "table_id": "tblDMRaaBz3ppAJ0",
+        "rows": 5
+      },
+      "6.趋势监测配置": {
+        "table_id": "tbluYzNirXsby554",
+        "rows": 6
+      }
+    }
+  }
+}
