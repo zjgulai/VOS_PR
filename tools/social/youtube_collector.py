@@ -10,7 +10,6 @@ from __future__ import annotations
 import hashlib
 import json
 import os
-import re as _re
 import sys
 import time
 from dataclasses import asdict, dataclass, field
@@ -38,21 +37,6 @@ SEARCH_KEYWORDS = [
     "best breast pump working moms",
     "medela vs willow breast pump",
 ]
-
-
-def _load_zshrc_keys() -> None:
-    try:
-        content = open(os.path.expanduser("~/.zshrc")).read()
-        for m in _re.finditer(r'export (\w+API\w*)="([^"]+)"', content):
-            key, val = m.group(1), m.group(2)
-            if not os.environ.get(key):
-                os.environ[key] = val
-    except Exception:
-        pass
-
-
-_load_zshrc_keys()
-
 
 def _get_apify_token() -> str:
     token = os.environ.get("APIFY_API_KEY", "")
@@ -102,8 +86,8 @@ class YouTubeVideo:
     engagement_rate: float = 0.0
     is_viral_flag: bool = False
     brand_mentions: list = field(default_factory=list)
-    country_code: str = "US"
-    language: str = "en"
+    country_code: str = "unknown"
+    language: str = "unknown"
     is_processed: bool = False
     video_url: str = ""
 
@@ -178,9 +162,9 @@ def write_to_db(videos: list[YouTubeVideo]) -> int:
         return 0
     con = duckdb.connect(str(DB_PATH))
     inserted = 0
-    for v in videos:
-        d = v.to_dict()
-        try:
+    try:
+        for v in videos:
+            d = v.to_dict()
             con.execute("""
                 INSERT OR IGNORE INTO social_posts
                 (post_id, platform_code, account_handle, account_type,
@@ -197,9 +181,10 @@ def write_to_db(videos: list[YouTubeVideo]) -> int:
                 d["country_code"], d["language"], d["is_processed"],
             ])
             inserted += 1
-        except Exception:
-            pass
-    con.close()
+    except Exception as exc:
+        raise RuntimeError(f"failed to write YouTube video {v.post_id}") from exc
+    finally:
+        con.close()
     return inserted
 
 

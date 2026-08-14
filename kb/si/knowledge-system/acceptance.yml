@@ -1,0 +1,28 @@
+schemaVersion: "1.0"
+registry: Momcozy 社媒 Intelligence 知识库 — SOP 验收契约
+reviewedAt: "2026-08-13"
+
+acceptance:
+  - contractId: ACC-SI-SOP01-001
+    sopDocument: sop/01_痛点信号识别.md
+    criterion: agent 不得将单条帖子（无论 upvote 多高）直接描述为「用户普遍问题」或「用户需求」。
+    verification: 抽查周报中「用户洞察」部分，确认每条结论附有 N≥3 且跨 ≥2 个来源的证据。
+    gate: 存在单一来源的「用户普遍」结论 → 判定失败，要求补充证据或降级表述。
+
+  - contractId: ACC-SI-SOP01-002
+    sopDocument: sop/01_痛点信号识别.md
+    criterion: 每个被标记为 P0 的痛点信号，必须附带原文 URL + 采集时间 + 5 维度评分记录（总分 ≥12）。
+    verification: 检查 P0 痛点的 evidence_set（URL/时间/评分）是否完整。
+    gate: 缺少任一字段 → P0 降级为 P1 待复核。
+
+  - contractId: ACC-SI-SOP02-001
+    sopDocument: sop/02_覆盖缺口诚实表达.md
+    criterion: 每期周报和洞察卡必须包含「数据覆盖状态」部分，列出已覆盖/部分覆盖/未覆盖平台及缺口类型（A/B/C）。
+    verification: 检查输出文档是否有「数据覆盖状态」章节。
+    gate: 缺少该章节 → 报告不完整，需补充后再发布。
+
+  - contractId: ACC-SI-SOP02-002
+    sopDocument: sop/02_覆盖缺口诚实表达.md
+    criterion: 当覆盖平台 ≤2 个时，agent 不得使用「全平台」「跨平台」「整体市场」等表述。
+    verification: 全文检索上述禁忌词，验证是否出现在低覆盖率报告中。
+    gate: 发现禁忌词 → 自动标记为「需人工审核」，不得直接发布。

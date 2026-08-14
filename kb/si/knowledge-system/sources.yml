@@ -1,0 +1,248 @@
+schemaVersion: "1.0"
+registry: Momcozy 社媒 Intelligence 知识库 — 来源注册表
+reviewedAt: "2026-08-13"
+crossAuditPolicy: 每条 claim 标注独立来源数；≥2 独立来源标 L1；单一来源标 L2 待核实
+
+sources:
+  # ── 研究包1：TikTok 算法机制与趋势传播路径 ──────────────────────
+  - sourceId: SRC-SOCIALPILOT-TIKTOK-ALGO
+    title: SocialPilot — The 2026 TikTok Algorithm Explained
+    kind: industry-article
+    authority: third-party
+    url: https://www.socialpilot.co/blog/tiktok-algorithm
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】算法三大信号：用户互动/视频信息/设备账号设置；2025 末新增「followers-first」初始分发；completion rate 优先
+
+  - sourceId: SRC-HOOTSUITE-TIKTOK-ALGO
+    title: Hootsuite — How the TikTok Algorithm Works in 2026
+    kind: industry-article
+    authority: third-party
+    url: https://blog.hootsuite.com/tiktok-algorithm/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】watch time/completion 最强信号；saves/shares 比 likes 权重高；Search value 是 2026 新 ranking factor；63% 首屏 3 秒
+
+  - sourceId: SRC-SPROUT-TIKTOK-ALGO
+    title: Sprout Social — TikTok Algorithm 2026
+    kind: industry-article
+    authority: third-party
+    url: https://sproutsocial.com/insights/tiktok-algorithm/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】saves/shares 权重高于 likes；「Qualified Views」5 秒定义；edutainment（教育+娱乐）是 2026 病毒公式；Search value 直接 ranking
+
+  - sourceId: SRC-TIKLIVEAPI-ALGO
+    title: TikLiveAPI — TikTok Algorithm 2026 (Public Data)
+    kind: research
+    authority: third-party
+    url: https://www.tikliveapi.com/blog/tiktok-algorithm-2026-what-we-know-from-public-data/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】公开计数器验证：watch time/shares/saves 是核心；followers 不是 FYP 主要 ranking 输入；声音使用是核心信号；首次 200-500 观看是 seed cohort
+
+  - sourceId: SRC-LIRRA-TREND-LIFECYCLE
+    title: Lirra — How Long Do TikTok Trends Last (1000+ Trends)
+    kind: research
+    authority: third-party
+    url: https://lirra.org/blog/how-long-do-tiktok-trends-last/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】Publicis Groupe 1000+ 趋势分析：仅 27% 存活超 2 周，近 50% 5 天内消失；sound 3-7 天、format 2-4 周、event 1-2 周；5,000-20,000 视频数 = 增长窗口
+
+  - sourceId: SRC-SOCIALZAI-TREND-PHASES
+    title: SocialzAI — TikTok Trend Playbook 2026 (4-Phase)
+    kind: industry-article
+    authority: third-party
+    url: https://socialz.ai/blog/trend-tiktok
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】4 阶段：Origin(D1-3)/Acceleration(D3-7)/Peak Saturation(D7-14)/Decline(D14+)；Phase 2 是最高杠杆窗口；30-40% trend / 60-70% old 内容配比
+
+  - sourceId: SRC-CHARTLEX-SOUND-SEEDING
+    title: Chartlex — TikTok Sound Seeding Playbook 2026
+    kind: industry-article
+    authority: third-party
+    url: https://www.chartlex.com/blog/marketing/tiktok-sound-seeding-playbook-2026
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】NetInfluencer 215 活动：nano reach-efficiency 54.9x vs mega 1.0x；20-40 nano/micro 声量播种；75% 流行 TikTok 歌源于 creator 营销
+
+  - sourceId: SRC-FASTCOMPANY-CML
+    title: Fast Company — TikTok Commercial Music Library (CML)
+    kind: industry-news
+    authority: third-party
+    url: https://www.fastcompany.com/91539144/inside-the-secret-tiktok-library-that-turns-songs-into-brand-soundtracks
+    reviewedAt: "2026-08-13"
+    notes: TikTok 商业音乐库（CML）：7M 商业账号可用 1.5M 曲目；品牌不能用普通音乐库需商业授权；1 首曲目 150K 视频使用
+
+  - sourceId: SRC-PUBLICIS-TREND-DURATION
+    title: Publicis Groupe — 1000+ Trending Hashtags Analysis (via Lirra)
+    kind: research
+    authority: third-party
+    url: https://lirra.org/blog/how-long-do-tiktok-trends-last/
+    reviewedAt: "2026-08-13"
+    notes: 【第一方研究】1000+ 热门 hashtag 7 国 6 个月分析；仅 27% 存活超 2 周；趋势参与窗口约 3-5 天
+
+  # ── 研究包2：Reddit 社区行为与信号提取 ──────────────────────────
+  - sourceId: SRC-RAWNEED-REDDIT-LISTENING
+    title: Rawneed — Reddit Social Listening Complete 2026 Guide
+    kind: industry-article
+    authority: third-party
+    url: https://rawneed.com/guides/reddit-social-listening/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】brand monitoring vs social listening 区分；单条愤怒评论是噪音，40 条跨 3 子版块是信号；分层：品牌提及/品类/情绪/新兴投诉/切换信号
+
+  - sourceId: SRC-REDSHIP-PAIN-POINT
+    title: Redship — Find Customer Pain Points on Reddit (Founder's Playbook)
+    kind: industry-article
+    authority: third-party
+    url: https://redship.io/blog/reddit-pain-point-research
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】5 步法：选 5-10 子版块→搜痛点短语→编码分类→验证强度→测试方案；5 维度强度评分（频次/跨社区/现有方案/付费意愿/时效）
+
+  - sourceId: SRC-RAWNEED-PAIN-SCORE
+    title: Rawneed — How We Score Reddit Thread (Pain + Willingness to Pay)
+    kind: industry-article
+    authority: third-party
+    url: https://rawneed.com/guides/how-we-score-pain-and-willingness-to-pay/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】LLM 结构化字段评分：pain_signal 0-100 + wtp_tier high/medium/low/none；枚举字段聚合；每个字段链接回原文
+
+  - sourceId: SRC-SPROUT-REDDIT-LISTENING
+    title: Sprout Social — Reddit Social Listening Strategies
+    kind: industry-article
+    authority: third-party
+    url: https://sproutsocial.com/insights/reddit-social-listening/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】Reddit 长文评论=免费连续市场调研；危机常在 niche 子版块滋生→单帖高 upvote 快速病毒；Newswhip 预警窗口
+
+  - sourceId: SRC-CHATTERSIFT-TRACE
+    title: Chattersift — Reddit Brand Monitoring TRACE Framework
+    kind: industry-article
+    authority: third-party
+    url: https://chattersift.com/blog/reddit-brand-monitoring-guide/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】TRACE：Track/Review/Act/Comply/Evaluate；6 标准提及评分（相关性/风险/意图/社区契合/可见性/可行动性）；9:1 自推广比
+
+  - sourceId: SRC-INSIGHTIOS-REDDIT-RESEARCH
+    title: Insightios — How to Use Reddit for DTC Research
+    kind: industry-article
+    authority: third-party
+    url: https://www.insightios.com/blog/how-to-use-reddit-for-dtc-research
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】推荐请求帖子最高信号；投诉/失望帖揭示品类空白；对比/切换帖揭示竞品迁移触发；未筛选体验帖；至少 3 子版块 20-30 帖
+
+  - sourceId: SRC-KONNECT-REDDIT-FORUM
+    title: Konnect Insights — Reddit and Forum Listening
+    kind: industry-article
+    authority: third-party
+    url: https://konnectinsights.com/blogs/reddit-forum-listening-customer-feedback-social-listening/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】Reddit 提前 数周预警产品失败/声誉事件；产品质 5 帖/7 天同一子版块=触发质量审查；engagement-weighted 信号优先
+
+  - sourceId: SRC-REDDTRENDS-REDDIT-RESEARCH
+    title: ReddTrends — Reddit Market Research Guide
+    kind: industry-article
+    authority: third-party
+    url: https://www.reddtrends.com/blog/reddit-market-research-guide
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】痛点聚类三维度：frequency/recency/engagement；一条 loud thread 是 anecdote，跨周跨版块是 signal；Reddit 偏年轻男 US
+
+  - sourceId: SRC-QUIMBY-REDDIT-BABY
+    title: Quimby Digital — Reddit Marketing for Baby & Parenting Brands
+    kind: industry-article
+    authority: third-party
+    url: https://quimbydigital.com/top-reddit-marketing-agencies-for-baby-brands/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】母婴 Reddit 社区高度审查安全/成分/伦理声明；家长子版块=live focus group；反营销文化强，moderator 权力大；倾听为主、参与为刻意低频
+
+  # ── 研究包3：母婴 Creator 生态深度图谱 ──────────────────────────
+  - sourceId: SRC-INFLUENCERFEE-PARENTING
+    title: InfluencerFee — Baby and Kids Influencer Pricing
+    kind: industry-article
+    authority: third-party
+    url: https://influencerfee.com/blog/baby-kids-influencer-pricing/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】母婴各层费率：nano $100-700/Micro $400-4500/Mid $2000-18000/Macro $10000-65000（IG Reel）；母婴高于普通 lifestyle 15-30%
+
+  - sourceId: SRC-WIRED-CHILDREN-BABY-BENCHMARK
+    title: Wired/creatorflow — IG Engagement Rate Benchmarks
+    kind: industry-article
+    authority: third-party
+    url: https://creatorflow.so/blog/instagram-engagement-rate-benchmarks-2026/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】63M 帖分析：母婴垂类 IG 互动率 1.23% 平均，但仍高于部分品类；creator 互动率比 brand 高 5-10x
+
+  - sourceId: SRC-USESNIPPET-PARENTING-BENCHMARK
+    title: Usesnippet — Parenting Creator Engagement Benchmarks
+    kind: industry-article
+    authority: third-party
+    url: https://usesnippet.app/tools/tiktok-engagement-calculator/benchmarks/parenting
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】母婴 Nich IG 平均互动 2.9%、TikTok 3.3%（高于一般品类）；Nano（1K-10K）IG 4.8%/TikTok 5.5%；account size 越大互动越低
+
+  - sourceId: SRC-COLLABONLY-BABY-INFLUENCER
+    title: CollabOnly — Find IG Mom Influencers for Baby Brands
+    kind: industry-article
+    authority: third-party
+    url: https://collabonly.com/blog/posts/how-baby-brands-find-instagram-mom-influencers/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】母婴子垂直匹配 + 人生阶段验证是核心（孩子年龄必须匹配产品）：检查最近 9 帖/Story highlights/bio/最近 3 Reels；评论质量优先于 follower 数
+
+  - sourceId: SRC-PEW-HEALTH-INFLUENCERS
+    title: Pew Research — America's Health & Wellness Influencers
+    kind: research
+    authority: first-party
+    url: https://www.pewresearch.org/data-labs/2026/05/07/moms-coaches-doctors-entrepreneurs-who-are-americas-health-and-wellness-influencers/
+    reviewedAt: "2026-08-13"
+    notes: 【第一方权威】6828 个健康垂直 influencer 主页分析；41% 是医疗专业人士，31% coach，28% 企业家；64% 是女性；女性更爱标注「mom/mother」；健康信息 10 人 4 人从 influencer 获取
+
+  - sourceId: SRC-CHARTLEX-NANO-REACH
+    title: Chartlex — Nano Creator Reach-Efficiency 2026
+    kind: industry-article
+    authority: third-party
+    url: https://www.chartlex.com/blog/marketing/tiktok-sound-seeding-playbook-2026
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】NetInfluencer 215 活动：nano（1-10K）reach-efficiency 54.9x vs mega 1.0x；nano $10-150/视频
+
+  - sourceId: SRC-EMPLIFI-FRAUD
+    title: Emplifi — Fake Followers Detection
+    kind: industry-article
+    authority: third-party
+    url: https://emplifi.io/resources/blog/ways-to-check-if-your-brand-influencer-has-fake-followers/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】假粉 5 信号：突然 follower 峰/评论与 follower 比低/通用重复评论/互动与规模不匹配/受众地域不匹配；85% 消费者愿意为 authentic brand 付更多
+
+  - sourceId: SRC-CREATORSCORE-BRAND-SAFETY
+    title: CreatorScore — Creator Brand Safety Red Flags
+    kind: industry-article
+    authority: third-party
+    url: https://creatorscore.io/blog/creator-brand-safety-red-flags
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】品牌安全红线：仇恨言论/NSFW/假粉/engagement pod/缺 FTC 披露/毒性评论/争议历史；knockout 因子；bot>60% 封顶 20 分
+
+  - sourceId: SRC-FTC-ENDORSEMENT-101
+    title: FTC — Disclosures 101 for Social Media Influencers
+    kind: official-web
+    authority: first-party
+    url: https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers
+    reviewedAt: "2026-08-13"
+    notes: 【第一方官方】influencer 必须清晰显著披露与品牌 material connection；免费产品也算；披露要与内容一起、不混 hashtag；品牌需监控 influencer 合规
+
+  - sourceId: SRC-FTC-FAKE-REVIEW-RULE
+    title: FTC — Final Rule Banning Fake Reviews (2024-08)
+    kind: official-web
+    authority: first-party
+    url: https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials
+    reviewedAt: "2026-08-13"
+    notes: 【第一方官方】禁止买卖假粉/假社媒指标；2025-12 FTC 警告 10 公司违规，每违例罚最高 $53,088
+
+  - sourceId: SRC-STORIKA-FRAUD
+    title: Storika — Influencer Fraud Detection (2026)
+    kind: industry-article
+    authority: third-party
+    url: https://www.storika.ai/guides/influencer-fraud-detection
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】FTC Consumer Review Rule + 2025 警告信；筛查时机=签约前；contract 要含不造假 warranty + audit right；跨平台规范
+
+  - sourceId: SRC-INFLUENCITY-REDFLAGS
+    title: Influencity — Red Flags in Influencer Analytics
+    kind: industry-article
+    authority: third-party
+    url: https://influencity.com/blog/en/red-flags-in-influencer-analytics-every-brand-should-know
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】5 红旗：假互动/高 follower 低互动/受众不匹配/缺 tracking/内容品牌不契合；doubtful followers >25% 需警惕

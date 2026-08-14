@@ -1,0 +1,212 @@
+schemaVersion: "1.0"
+registry: Momcozy 社媒 Intelligence 知识库 — 主张注册表
+reviewedAt: "2026-08-13"
+coverageMode: reviewed-semantic-sample
+crossAuditPolicy: 每条 claim 标注独立来源数；≥2 独立来源标 L1；单一来源标 L2 待核实
+
+claims:
+  # ── 研究包1：TikTok 算法机制与趋势传播路径 ──────────────────────
+  - claimId: CLM-SI-TT-001
+    statement: TikTok 算法核心排序信号分层：watch time + completion rate 最强，saves/shares/follows 次之，likes/comment 中等，设备/账号设置最弱。2025 末起新增「followers-first 初始分发」——先用创作者自己的 follower 测试池反应决定是否推广。
+    claimType: operational-rule
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: 5 个独立来源（SocialPilot + Hootsuite + Sprout + TikLiveAPI + Socialsync）一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-SOCIALPILOT-TIKTOK-ALGO, SRC-HOOTSUITE-TIKTOK-ALGO, SRC-SPROUT-TIKTOK-ALGO, SRC-TIKLIVEAPI-ALGO]
+    applicability: 指导 Momcozy TikTok 内容策略：优化前 1.5-3 秒钩子，提升完成率；优先争取 saves/shares 而非 likes。
+    limitations: 算法权重未公开且持续变化；基于公开数据与创作者观察。
+
+  - claimId: CLM-SI-TT-002
+    statement: TikTok 趋势生命周期：sound 类 3-7 天、format 类 2-4 周、event 类 1-2 周。Publicis Groupe 1000+ 趋势研究：仅 27% 存活超 2 周，近 50% 5 天消失。
+    claimType: external-fact
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: Lirra（Publicis 数据）+ SocialzAI 4 阶段 + TikLiveAPI 一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-PUBLICIS-TREND-DURATION, SRC-LIRRA-TREND-LIFECYCLE, SRC-SOCIALZAI-TREND-PHASES]
+    applicability: 直接用于趋势参与窗口判断：S3 模块需每日检查，sound 趋势 3-5 天内必须行动。
+    limitations: 数据基于热门 hashtag；小众 sound 生命周期可能更短。
+
+  - claimId: CLM-SI-TT-003
+    statement: 判断是否仍处 sound 趋势增长窗口的快捷标准：查看该 sound 的总视频数。1,000 以下太早；1,000-5,000 早期上升；5,000-20,000 增长窗口（算法在助推，尽快发）；20,000-100,000 晚期；100,000 以上饱和已过峰。
+    claimType: operational-rule
+    risk: high
+    verification: cross-audit-verified
+    crossAuditNote: Lirra + SocialzAI 两个来源给出同一 5,000-20,000 窗口标准
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-LIRRA-TREND-LIFECYCLE, SRC-SOCIALZAI-TREND-PHASES]
+    applicability: 直接写入趋势参与 SOP 作为可操作判断阈值。
+    limitations: 视频数是粗指标；需结合 niche 相关性判断。
+
+  - claimId: CLM-SI-TT-004
+    statement: TikTok 声音是算法核心 ranking 信号。算法记录每个 sound 的 engagement 历史，高完成率 sound 会给使用它的新视频更大首分发（positive feedback loop）。TikTok 商业账号不能用普通音乐库，需用 Commercial Music Library（CML）或单独授权，否则有下架/禁用风险。
+    claimType: operational-rule
+    risk: high
+    verification: cross-audit-verified
+    crossAuditNote: TikLiveAPI + SoundCloud研 究 + IJSRP 学术综述 + Fast Company CML + Foxi 一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-TIKLIVEAPI-ALGO, SRC-FASTCOMPANY-CML]
+    applicability: 指导 Momcozy TikTok 品牌账号音乐使用合规 + 内容策略（利用 trending sound 助力）。
+    limitations: CML 使用限制跨平台；普通音乐库用于商业内容可能违规。
+
+  - claimId: CLM-SI-TT-005
+    statement: TikTok 2026 引入「Search value」作为直接 ranking 指标——算法「听」视频字幕和语音内容与搜索查询匹配，奖励直接回答问题的视频。64% Gen Z 用户像用 Google 一样在 TikTok 搜索。1-5 个 hashtag 达最高 reach 率（1.16%），过度用 #FYP 无效。
+    claimType: operational-rule
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: Hootsuite + Sprout + Socialsync 多个来源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-HOOTSUITE-TIKTOK-ALGO, SRC-SPROUT-TIKTOK-ALGO]
+    applicability: Momcozy 内容需做「搜索优化」：标题/字幕/语音含母婴品类关键词（如「best wearable pump」）。
+    limitations: Search value 权重未公布，但多个来源确认其存在。
+
+  - claimId: CLM-SI-TT-006
+    statement: TikTok 声量播种（sound seeding）：用 20-40 个 nano/micro creator（多在 1-10K follower）在 5-7 天窗口内用同一 10-15 秒 clip 发视频，让算法判定为真实趋势。NetInfluencer 215 活动：nano reach-efficiency 54.9x vs mega 1.0x。约 75% 流行 TikTok 歌源于这种 creator 营销。
+    claimType: operational-rule
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: Chartlex + Slow Oak + Billboard 多来源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-CHARTLEX-SOUND-SEEDING]
+    applicability: Momcozy 若想推自家的「声音」/品牌声量，用 nano 播种而非大 creator。
+    limitations: 需分清 organic 与 paid；「制造趋势」有 FTC 披露要求。
+
+  # ── 研究包2：Reddit 社区行为与信号提取 ──────────────────────────
+  - claimId: CLM-SI-RD-001
+    statement: Reddit 社交聆听核心原则：单条愤怒评论是噪音（anecdote），40 条评论跨 3 个子版块在一个月内汇聚同一投诉才是信号（pattern）。区分「brand monitoring」（只追踪品牌名）与「social listening」（更广：品类/竞品/用户语言/新兴投诉/切换信号）。
+    claimType: operational-rule
+    risk: critical
+    verification: cross-audit-verified
+    crossAuditNote: Rawneed + ReddTrends + Sprout + Konnect 一致（「40 条跨 3 子版块」被多来源使用）
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-RAWNEED-REDDIT-LISTENING, SRC-REDDTRENDS-REDDIT-RESEARCH, SRC-SPROUT-REDDIT-LISTENING]
+    applicability: 直接写入痛点信号识别 SOP——防止「单一负面放大为危机」。
+    limitations: 阈值（40 条/3 版块/1 月）是经验值，需校准。
+
+  - claimId: CLM-SI-RD-002
+    statement: Reddit 痛点信号提取 5 步法：① 选 5-10 个目标子版块（活动度>10 帖/天且真实评论）② 搜痛点短语（「I wish there was」「Frustrated with」「Help!」等）③ 编码分类（精确原文/子版块/upvotes/现有方案/付费意愿）④ 用 engagement 信号验证强度（100+ upvotes/50+ 评论/跨版块/90 天内=强信号）⑤ 测试方案。5 维度强度评分：frequency/cross-community/existing solutions/willingness to pay/recency。
+    claimType: operational-rule
+    risk: high
+    verification: cross-audit-verified
+    crossAuditNote: Redship 5 步法 + Rawneed 评分框架 + ReddTrends 三维度一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-REDSHIP-PAIN-POINT, SRC-RAWNEED-PAIN-SCORE, SRC-REDDTRENDS-REDDIT-RESEARCH]
+    applicability: 直接支撑痛点信号识别 SOP 的核心方法论。
+    limitations: 需要人工验证强度；AI 评分要回链原文。
+
+  - claimId: CLM-SI-RD-003
+    statement: Reddit 提前数周预警品牌风险：产品失败/声誉事件常在 niche 子版块先出现（如 23 条帖 2 周内），比主流媒体早数天到数周。高 upvote 单帖可快速病毒化主导 Google 搜索并溢出主流新闻。预警指标：同子版块 5+ 帖/7 天描述同一产品失败=触发质量审查准备 holding statement。
+    claimType: external-fact
+    risk: critical
+    verification: cross-audit-verified
+    crossAuditNote: Konnect（23 帖） + Sprout（niche 子版块危机） + Chattersift 一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-KONNECT-REDDIT-FORUM, SRC-SPROUT-REDDIT-LISTENING, SRC-CHATTERSIFT-TRACE]
+    applicability: Momcozy S1 需高频扫描 r/breastfeeding 等核心版块，产品质 5+ 帖/7 天立即处理。
+    limitations: 具体阈值（23 帖/5 帖）为个案观察，需持续校准。
+
+  - claimId: CLM-SI-RD-004
+    statement: Reddit 提及需分级处理（TRACE 框架）：单条提及按 6 标准评分（相关性/风险/意图/社区契合/可见性/可行动性）决定忽略/日志/回复/上报。9:1 自推广比是 moderators 广泛执行的红线。母婴社区对安全/成分/伦理声明审查最严，moderator 有删除/封禁大权，单次判断失误可上升为跨平台声誉危机。
+    claimType: operational-rule
+    risk: high
+    verification: cross-audit-verified
+    crossAuditNote: Chattersift TRACE + Quimby 母婴社区规范一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-CHATTERSIFT-TRACE, SRC-QUIMBY-REDDIT-BABY]
+    applicability: 直接指导 Momcozy Reddit 参与策略——倾听为主，参与为刻意低频。
+    limitations: 9:1 是 Reddiquette 建议非硬规则，但被实际采纳。
+
+  - claimId: CLM-SI-RD-005
+    statement: Reddit 帖子类型的信号价值排序：推荐请求帖（最高信号，一帖引出多人决策过程）> 投诉/失望帖（揭示品类空白）> 对比/切换帖（揭示竞品迁移触发）> 未筛选体验帖。评论比帖标题承载更多品牌提及，只查标题会漏掉大部分信号。
+    claimType: operational-rule
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: Insightios 帖子类型排序 + Reddscan 评论搜索一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-INSIGHTIOS-REDDIT-RESEARCH, SRC-REDDSCAN-REDDIT]
+    applicability: Momcozy 采集器需搜评论+标题，优先处理推荐请求帖。
+    limitations: 取决于品类；母婴社区需要适配。
+
+  # ── 研究包3：母婴 Creator 生态深度图谱 ──────────────────────────
+  - claimId: CLM-SI-CR-001
+    statement: 母婴 Creator 分层与费率（2026）：Nano（1-10K）$10-150/帖，Micro（10-100K）$50-800，Mid（100-500K）$800-5000，Macro（500K-2M）$5000-65000（IG Reel）。母婴费率高于一般 lifestyle 15-30%（高信任品类溢价）。
+    claimType: market-fact
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: InfluencerFee + JoinHaus + Infloq 三源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-INFLUENCERFEE-PARENTING]
+    applicability: 直接用于 Creator 合作预算与 tier 选择。
+    limitations: 费率因 creator 个体差异大，需逐 case 评估。
+
+  - claimId: CLM-SI-CR-002
+    statement: 母婴垂类 engagement rate 高于一般品类：IG 母婴平均 2.9%（TikTok 3.3%），Nano（1-10K）IG 4.8%/TikTok 5.5%，top 10% 达 8.5%+。account size 越大互动率越低（Nano 4.8% → Macro 1.5%）。
+    claimType: external-fact
+    risk: low
+    verification: cross-audit-verified
+    crossAuditNote: Usesnippet + CreatorFlow + Dash Social 多源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-USESNIPPET-PARENTING-BENCHMARK, SRC-WIRED-CHILDREN-BABY-BENCHMARK]
+    applicability: 评估 Creator 健康度基准——nano/micro 常被低估，互动率是核心。
+    limitations: 各核算方法（by views/followers）差异大。
+
+  - claimId: CLM-SI-CR-003
+    statement: 母婴 Creator 选定核心：子垂直匹配 + 人生阶段验证优先于 follower 数。一个 100K follower 但有 4 岁孩子的账号，对新生儿 swaddle 品牌的价值低于 3K follower 正在记录 baby 前 12 周的 nano mom。检查指标：最近 9 帖孩子年龄 + Story highlights + bio + 最近 3 Reels 是否仍在当前生活阶段。
+    claimType: operational-rule
+    risk: high
+    verification: source-reviewed
+    crossAuditNote: CollabOnly（最权威）+ InfluencerFee 一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-COLLABONLY-BABY-INFLUENCER]
+    applicability: 直接写入 Creator 评估 SOP——孩子年龄匹配 Momcozy 产品是硬门槛。
+    limitations: 需人工审核（每次 10-15 分钟）。
+
+  - claimId: CLM-SI-CR-004
+    statement: Creator 假粉/engagement pod 识别红黑名单 5 信号：① 突然 follower 峰（无病毒内容解释）② 评论与 follower 比异常低（50K follower 只 11 评论）③ 通用重复评论/同一小批账号 ④ 互动与规模不匹配（likes 不随 follower 增长）⑤ 受众地域不匹配。bot>60% 或 pod 活动>80% 视为危险。FTC 2024 Consumer Review Rule 禁止买卖假粉/假社媒指标，违者每违例罚最高 $53,088。
+    claimType: operational-rule
+    risk: critical
+    verification: cross-audit-verified
+    crossAuditNote: Emplifi + CreatorScore + Influencity + Storika 多源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-EMPLIFI-FRAUD, SRC-CREATORSCORE-BRAND-SAFETY, SRC-INFLUENCITY-REDFLAGS, SRC-STORIKA-FRAUD]
+    applicability: 直接写入 Creator 评估 SOP 红黑名单机制 + FTC 合规。
+    limitations: 需要工具或人工核验；单信号非定论。
+
+  - claimId: CLM-SI-CR-005
+    statement: FTC 商业披露要求（母婴母婴品类）：influencer 收到任何 value（免费产品/付款/佣金）推荐品牌产品，必须清晰显著披露 material connection；只 tag 品牌不算足够披露（NAD Skims 案例确认仅 tag 不算）。品牌有义务「合理程序培训 + 监控 + 补救」influencer 网络的披露合规，否则可能担责。
+    claimType: legal-context
+    risk: critical
+    verification: cross-audit-verified
+    crossAuditNote: FTC Disclosures 101 + FTC Endorsement Guides + NAD Skims 案例一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-FTC-ENDORSEMENT-101, SRC-FTC-FAKE-REVIEW-RULE]
+    applicability: 直接约束 Momcozy Creator 合作流程——必须预审帖 + 监控披露 + 记录。
+    limitations: 不构成法律意见，具体合规需法务确认。
+
+  - claimId: CLM-SI-CR-006
+    statement: Pew 研究：美国 40% 成年人（50 岁以下 50%）从 influencer/podcast 获取健康与 wellness 信息；6828 个健康垂直 influencer 中 41% 自称医疗专业人士，64% 为女性，女性更倾向标注「mom/mother」（17%）。母婴 influencer 是健康信息获取的信任来源。
+    claimType: external-fact
+    risk: low
+    verification: source-reviewed
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-PEW-HEALTH-INFLUENCERS]
+    applicability: 支撑 Momcozy 与母婴健康 Creator 合作的战略价值；也提示医疗声明需谨慎。
+    limitations: Pew 聚焦 100K+ 大 influencer，nano/micro 生态未全覆盖。

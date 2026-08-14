@@ -1,0 +1,300 @@
+{
+  "fixture_only": true,
+  "scope": {
+    "scope_id": "scope_youtube_p0_pumping_us_en_v1_fixture",
+    "scope_version": "1.0-fixture",
+    "workspace_id": "momcozy_social",
+    "provider": "youtube_data_api",
+    "strategy": "official_api",
+    "use_case": "analytics_and_reporting_comment_pain_insight",
+    "products": [
+      {
+        "standard_model": "M9",
+        "aliases": ["BP223"]
+      },
+      {
+        "standard_model": "M5 Smart",
+        "aliases": ["BP380"]
+      }
+    ],
+    "regions": ["US"],
+    "languages": ["en"],
+    "approved_channel_ids": ["UC_FIXTURE_MOMCOZY"],
+    "queries": ["Momcozy M9 review", "Momcozy M5 review"],
+    "status": "fixture_only"
+  },
+  "collection": {
+    "run_id": "run_youtube_p0_v0_fixture_001",
+    "video_id": "video_fixture_001",
+    "channel_id": "UC_FIXTURE_MOMCOZY",
+    "collected_at": "2026-08-14T00:00:00Z",
+    "refreshed_at": "2026-08-14T00:00:00Z",
+    "refresh_or_delete_at": "2026-09-13T00:00:00Z",
+    "raw_object_ref": "fixture://youtube_p0/v0_fixture.json"
+  },
+  "comment_thread_pages": [
+    {
+      "kind": "youtube#commentThreadListResponse",
+      "etag": "etag_thread_page_fixture",
+      "pageInfo": {
+        "totalResults": 1,
+        "resultsPerPage": 1
+      },
+      "items": [
+        {
+          "kind": "youtube#commentThread",
+          "etag": "etag_thread_fixture_001",
+          "id": "thread_fixture_001",
+          "snippet": {
+            "channelId": "UC_FIXTURE_MOMCOZY",
+            "videoId": "video_fixture_001",
+            "topLevelComment": {
+              "kind": "youtube#comment",
+              "etag": "etag_comment_top_fixture_001",
+              "id": "comment_top_fixture_001",
+              "snippet": {
+                "videoId": "video_fixture_001",
+                "textDisplay": "Synthetic fixture: cleaning takes too long at work.",
+                "textOriginal": "Synthetic fixture: cleaning takes too long at work.",
+                "authorDisplayName": "Fixture Author",
+                "authorChannelId": {
+                  "value": "UC_FIXTURE_AUTHOR_001"
+                },
+                "canRate": true,
+                "viewerRating": "none",
+                "likeCount": 2,
+                "publishedAt": "2026-08-10T10:00:00Z",
+                "updatedAt": "2026-08-10T10:00:00Z"
+              }
+            },
+            "canReply": true,
+            "totalReplyCount": 2,
+            "isPublic": true
+          },
+          "replies": {
+            "comments": [
+              {
+                "kind": "youtube#comment",
+                "etag": "etag_reply_fixture_001",
+                "id": "comment_reply_fixture_001",
+                "snippet": {
+                  "parentId": "comment_top_fixture_001",
+                  "textDisplay": "Synthetic fixture: I have the same cleaning problem.",
+                  "textOriginal": "Synthetic fixture: I have the same cleaning problem.",
+                  "authorDisplayName": "Fixture Reply Author 1",
+                  "authorChannelId": {
+                    "value": "UC_FIXTURE_AUTHOR_002"
+                  },
+                  "canRate": true,
+                  "viewerRating": "none",
+                  "likeCount": 1,
+                  "publishedAt": "2026-08-10T11:00:00Z",
+                  "updatedAt": "2026-08-10T11:00:00Z"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "reply_pages_by_parent": {
+    "comment_top_fixture_001": [
+      {
+        "kind": "youtube#commentListResponse",
+        "etag": "etag_reply_page_fixture",
+        "pageInfo": {
+          "totalResults": 2,
+          "resultsPerPage": 2
+        },
+        "items": [
+          {
+            "kind": "youtube#comment",
+            "etag": "etag_reply_fixture_001",
+            "id": "comment_reply_fixture_001",
+            "snippet": {
+              "parentId": "comment_top_fixture_001",
+              "textDisplay": "Synthetic fixture: I have the same cleaning problem.",
+              "textOriginal": "Synthetic fixture: I have the same cleaning problem.",
+              "authorDisplayName": "Fixture Reply Author 1",
+              "authorChannelId": {
+                "value": "UC_FIXTURE_AUTHOR_002"
+              },
+              "canRate": true,
+              "viewerRating": "none",
+              "likeCount": 1,
+              "publishedAt": "2026-08-10T11:00:00Z",
+              "updatedAt": "2026-08-10T11:00:00Z"
+            }
+          },
+          {
+            "kind": "youtube#comment",
+            "etag": "etag_reply_fixture_002",
+            "id": "comment_reply_fixture_002",
+            "snippet": {
+              "parentId": "comment_top_fixture_001",
+              "textDisplay": "Synthetic fixture: assembly is also difficult.",
+              "textOriginal": "Synthetic fixture: assembly is also difficult.",
+              "authorDisplayName": "Fixture Reply Author 2",
+              "authorChannelId": {
+                "value": "UC_FIXTURE_AUTHOR_003"
+              },
+              "canRate": true,
+              "viewerRating": "none",
+              "likeCount": 0,
+              "publishedAt": "2026-08-10T12:00:00Z",
+              "updatedAt": "2026-08-10T12:00:00Z"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coverage_cases": [
+    {
+      "name": "complete",
+      "input": {
+        "items_count": 3,
+        "next_page_token": null,
+        "error_reason": null,
+        "page_cap_reached": false,
+        "made_for_kids": false
+      },
+      "expected": "complete_for_defined_scope"
+    },
+    {
+      "name": "page_cap",
+      "input": {
+        "items_count": 100,
+        "next_page_token": "NEXT_FIXTURE",
+        "error_reason": null,
+        "page_cap_reached": true,
+        "made_for_kids": false
+      },
+      "expected": "partial_page_cap"
+    },
+    {
+      "name": "comments_disabled",
+      "input": {
+        "items_count": 0,
+        "next_page_token": null,
+        "error_reason": "commentsDisabled",
+        "page_cap_reached": false,
+        "made_for_kids": false
+      },
+      "expected": "comments_disabled"
+    },
+    {
+      "name": "made_for_kids",
+      "input": {
+        "items_count": 0,
+        "next_page_token": null,
+        "error_reason": null,
+        "page_cap_reached": false,
+        "made_for_kids": true
+      },
+      "expected": "made_for_kids_no_comments"
+    },
+    {
+      "name": "video_missing",
+      "input": {
+        "items_count": 0,
+        "next_page_token": null,
+        "error_reason": "videoNotFound",
+        "page_cap_reached": false,
+        "made_for_kids": false
+      },
+      "expected": "video_unavailable"
+    },
+    {
+      "name": "permission",
+      "input": {
+        "items_count": 0,
+        "next_page_token": null,
+        "error_reason": "forbidden",
+        "page_cap_reached": false,
+        "made_for_kids": false
+      },
+      "expected": "permission_denied"
+    },
+    {
+      "name": "quota",
+      "input": {
+        "items_count": 0,
+        "next_page_token": "NEXT_FIXTURE",
+        "error_reason": "quotaExceeded",
+        "page_cap_reached": false,
+        "made_for_kids": false
+      },
+      "expected": "quota_exhausted"
+    },
+    {
+      "name": "transient",
+      "input": {
+        "items_count": 0,
+        "next_page_token": null,
+        "error_reason": "backendError",
+        "page_cap_reached": false,
+        "made_for_kids": false
+      },
+      "expected": "transient_error"
+    },
+    {
+      "name": "schema",
+      "input": {
+        "items_count": 0,
+        "next_page_token": null,
+        "error_reason": "schemaMismatch",
+        "page_cap_reached": false,
+        "made_for_kids": false
+      },
+      "expected": "schema_mismatch"
+    },
+    {
+      "name": "zero",
+      "input": {
+        "items_count": 0,
+        "next_page_token": null,
+        "error_reason": null,
+        "page_cap_reached": false,
+        "made_for_kids": false
+      },
+      "expected": "zero_comments_confirmed"
+    }
+  ],
+  "lifecycle_records": [
+    {
+      "record_id": "mention_fixture_top_001",
+      "comment_id": "comment_top_fixture_001",
+      "raw_object_ref": "fixture://youtube_p0/v0_fixture.json#comment_top_fixture_001",
+      "evidence_ids": ["evidence_fixture_001"],
+      "insight_ids": ["insight_fixture_001"],
+      "action_ids": ["action_fixture_001"],
+      "source_status": "active",
+      "refresh_or_delete_at": "2026-09-13T00:00:00Z",
+      "deletion_requested_at": null
+    },
+    {
+      "record_id": "mention_fixture_missing_001",
+      "comment_id": "comment_missing_fixture_001",
+      "raw_object_ref": "fixture://youtube_p0/v0_fixture.json#comment_missing_fixture_001",
+      "evidence_ids": ["evidence_fixture_missing_001"],
+      "insight_ids": [],
+      "action_ids": [],
+      "source_status": "missing",
+      "refresh_or_delete_at": "2026-09-13T00:00:00Z",
+      "deletion_requested_at": null
+    },
+    {
+      "record_id": "mention_fixture_delete_001",
+      "comment_id": "comment_delete_fixture_001",
+      "raw_object_ref": "fixture://youtube_p0/v0_fixture.json#comment_delete_fixture_001",
+      "evidence_ids": ["evidence_fixture_delete_001"],
+      "insight_ids": ["insight_fixture_delete_001"],
+      "action_ids": [],
+      "source_status": "active",
+      "refresh_or_delete_at": "2026-09-13T00:00:00Z",
+      "deletion_requested_at": "2026-08-14T00:00:00Z"
+    }
+  ]
+}

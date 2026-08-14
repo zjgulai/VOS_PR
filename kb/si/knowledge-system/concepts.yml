@@ -1,0 +1,119 @@
+schemaVersion: "1.0"
+registry: Momcozy 社媒 Intelligence 知识库 — 概念图谱
+reviewedAt: "2026-08-13"
+
+concepts:
+  # ── TikTok 算法与趋势 ─────────────────────────────────────────
+  - conceptId: CONCEPT-FYP
+    term: For You Page (FYP)
+    aliases: [FYP, 推荐页, 算法推荐]
+    definition: TikTok 的个性化推荐 feed，由 AI 系统基于「用户互动 > 视频信息 > 账号设置」三层信号实时生成，不依赖 follower 关系。2025 末起改为先测试 creator 自身 follower 池，再决定是否广泛推送。
+    canonicalDocument: kb/si/knowledge-system/claims.yml
+    evidenceRef: CLM-SI-TT-001
+
+  - conceptId: CONCEPT-COMPLETION-RATE
+    term: 完成率 Completion Rate
+    aliases: [视频完成率, 播放完成度]
+    definition: 用户实际观看时长 / 视频时长的比值，是 TikTok 算法最强单项信号。2026 年基准约 70%，低于此阈值限制分发。Replays（循环观看）等同于高完成率，算法给予额外奖励。
+    canonicalDocument: kb/si/knowledge-system/claims.yml
+    evidenceRef: CLM-SI-TT-001
+
+  - conceptId: CONCEPT-TREND-LIFECYCLE
+    term: 趋势生命周期 Trend Lifecycle
+    aliases: [TikTok 趋势周期, 内容趋势时效]
+    definition: TikTok 趋势遵循「Origin → Acceleration → Peak Saturation → Decline」四阶段（Publicis 1000+ 趋势数据：仅 27% 超过 2 周，约 50% 5 天消失）。Sound 类 3-7 天、format 2-4 周、event 1-2 周。最高杠杆参与窗口在 Acceleration 阶段（5,000-20,000 使用量）。
+    canonicalDocument: kb/si/knowledge-system/claims.yml
+    evidenceRef: CLM-SI-TT-002
+
+  - conceptId: CONCEPT-SOUND-SEEDING
+    term: 声量播种 Sound Seeding
+    aliases: [TikTok sound seeding, 音乐播种]
+    definition: 品牌雇用 20-40 个 nano/micro creator 在 5-7 天窗口内用同一 10-15 秒 clip 发视频，让算法判定该 sound 为有机趋势。Nano reach-efficiency 54.9x（vs Mega 1.0x）。约 75% 流行 TikTok 歌曲背后有此类 creator 营销。
+    canonicalDocument: kb/si/knowledge-system/claims.yml
+    evidenceRef: CLM-SI-TT-006
+
+  - conceptId: CONCEPT-CML
+    term: TikTok 商业音乐库 Commercial Music Library
+    aliases: [CML, 商业音乐, TikTok 授权音乐]
+    definition: TikTok 品牌账号（商业/广告账号）必须使用的授权音乐库（150 万曲目）。使用普通音乐库的商业内容面临下架/禁用风险。与创作者合作内容可能涉及单独授权协议。
+    canonicalDocument: kb/si/knowledge-system/claims.yml
+    evidenceRef: CLM-SI-TT-004
+
+  # ── Reddit 社区与信号 ────────────────────────────────────────
+  - conceptId: CONCEPT-SIGNAL-VS-NOISE
+    term: 信号 vs 噪音 Signal vs Noise
+    aliases: [Reddit 信号识别, 噪音过滤]
+    definition: 核心原则：单条负面帖子是 anecdote（噪音），跨 3+ 子版块、40+ 评论、1 个月内出现同一投诉才是 pattern（信号）。高 upvote ratio（>95%）+ 高评论数 + 跨子版块出现 = 最强 signal。
+    canonicalDocument: kb/si/sop/01_痛点信号识别.md
+    evidenceRef: CLM-SI-RD-001
+
+  - conceptId: CONCEPT-PAIN-POINT-INTENSITY
+    term: 痛点强度 Pain Point Intensity
+    aliases: [痛点评分, 信号强度]
+    definition: 5 维度评估：① 频次（提及次数/时间段）② 跨社区（跨几个子版块）③ 现有方案（是否被满足？满足程度）④ 付费意愿（愿意为解决方案付多少）⑤ 时效（最近 90 天内 = 更高权重）。同时满足 4-5 个维度 = 高优先级产品/内容机会。
+    canonicalDocument: kb/si/sop/01_痛点信号识别.md
+    evidenceRef: CLM-SI-RD-002
+
+  - conceptId: CONCEPT-TRACE-FRAMEWORK
+    term: TRACE 框架
+    aliases: [Reddit brand monitoring 框架]
+    definition: Reddit 品牌监测五步：Track（建立关键词集）→ Review（6 标准评分：相关性/风险/意图/社区契合/可见性/可行动）→ Act（决定：忽略/日志/回复/上报 PR/上报产品）→ Comply（检查子版块规则/垃圾政策）→ Evaluate（衡量 SOV/情感/洞察捕获）。
+    canonicalDocument: kb/si/sop/01_痛点信号识别.md
+    evidenceRef: CLM-SI-RD-004
+
+  # ── Creator 生态 ─────────────────────────────────────────────
+  - conceptId: CONCEPT-CREATOR-TIERS
+    term: Creator 分层 Creator Tiers
+    aliases: [influencer 分层, KOL 层级]
+    definition: Nano（<10K）/ Micro（10-100K）/ Mid（100-500K）/ Macro（500K-2M）/ Mega（>2M）。母婴品类 Nano engagement 最高（IG 4.8%/TikTok 5.5%），成本最低；Macro 覆盖广但互动低。母婴垂类费率比一般 lifestyle 高 15-30%。
+    canonicalDocument: kb/si/knowledge-system/claims.yml
+    evidenceRef: CLM-SI-CR-001
+
+  - conceptId: CONCEPT-CREATOR-LIFECYCLE-MATCH
+    term: 生命周期匹配 Lifecycle Match
+    aliases: [Creator 人生阶段匹配, 母婴匹配]
+    definition: 母婴 Creator 评估最关键维度：Creator 孩子的当前年龄/生命阶段必须与 Momcozy 目标产品匹配。一个 100K follower 但孩子 4 岁的账号，价值低于孩子刚出生的 3K nano mom。检查：最近 9 帖孩子年龄 + bio + Story highlights 是否在产品对应阶段。
+    canonicalDocument: kb/si/sop/03_Creator评估与合作判断.md
+    evidenceRef: CLM-SI-CR-003
+
+  - conceptId: CONCEPT-CREATOR-RED-FLAGS
+    term: Creator 红旗 Creator Red Flags
+    aliases: [假粉识别, engagement pod, 品牌安全]
+    definition: 触发红旗的 5 信号：① 无病毒内容的突然 follower 峰 ② 评论/follower 比异常低 ③ 通用重复评论（同一批账号）④ likes 不随 follower 增长 ⑤ 受众地域与产品市场不匹配。bot>60% 或 pod>80% 视为危险，不应合作。FTC 罚款每违例最高 $53,088。
+    canonicalDocument: kb/si/sop/03_Creator评估与合作判断.md
+    evidenceRef: CLM-SI-CR-004
+
+  - conceptId: CONCEPT-FTC-DISCLOSURE
+    term: FTC 商业披露 FTC Material Connection Disclosure
+    aliases: [FTC 披露, #ad 披露, sponsored 披露]
+    definition: 任何品牌提供 value（产品/付款/佣金）让 influencer 推荐，influencer 必须清晰显著披露（显眼位置，不混在 hashtag 海中）。单独 tag 品牌不满足（NAD Skims 确认）。品牌有监控义务——influencer 漏披露可能归责品牌。
+    canonicalDocument: kb/si/knowledge-system/claims.yml
+    evidenceRef: CLM-SI-CR-005
+
+  # ── SI 独有核心概念 ──────────────────────────────────────────
+  - conceptId: CONCEPT-COVERAGE-GAP
+    term: 数据覆盖缺口 Coverage Gap
+    aliases: [采集缺口, 平台缺口, 数据盲区]
+    definition: 平台数据未被采集到的部分（技术限制/ToS 限制/资源未配置）。诚实表达缺口是 SI 系统的铁律：缺口必须标注类型（技术/ToS/资源）、影响范围（哪些洞察受影响）、替代方案（其他平台/人工补充）。缺口≠数据为零。
+    canonicalDocument: kb/si/sop/02_覆盖缺口诚实表达.md
+    evidenceRef: CLM-SI-RD-003
+
+  - conceptId: CONCEPT-QUALIFIED-VIEW
+    term: 有效观看 Qualified View
+    aliases: [TikTok Qualified View, 5 秒观看]
+    definition: TikTok 2026 引入的新指标：视频观看超过 5 秒才计为「Qualified View」，是算法判断内容质量的最低门槛之一。completion rate 仍是主要信号，但 Qualified View 是触发更广泛分发的条件。
+    canonicalDocument: kb/si/knowledge-system/claims.yml
+    evidenceRef: CLM-SI-TT-001
+
+  - conceptId: CONCEPT-SOCIAL-LISTENING-S1
+    term: 社媒聆听 Social Listening (S1)
+    aliases: [Social Listening, 社交聆听, 用户讨论洞察]
+    definition: 跨平台系统化采集公开社媒讨论，提取品牌/品类/用户需求相关的信号，超越品牌提及监测（Brand Monitoring）。S1 核心：识别用户真实需求/痛点/疑问/正负面反馈/上升话题，输出可执行洞察而非报告数字。
+    canonicalDocument: kb/si/wiki_社媒Intelligence知识库.md
+
+  - conceptId: CONCEPT-ENGAGEMENT-RATE
+    term: 互动率 Engagement Rate
+    aliases: [ER, 互动率, 参与率]
+    definition: (likes + comments + saves + shares) / followers 或 / views（因平台不同）。母婴 TikTok nano 平均 5.5%，IG 4.8%；Macro 降至 1.5% 左右。评估 Creator 时互动率远比 follower 数重要。2%+ IG 是健康基准，TikTok 3%+ 正常。
+    canonicalDocument: kb/si/knowledge-system/claims.yml
+    evidenceRef: CLM-SI-CR-002
