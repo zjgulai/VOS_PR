@@ -1,0 +1,68 @@
+{
+  "version": "1.0-draft",
+  "status": "contract_baseline_pending_business_signoff",
+  "category": "pumping",
+  "signal_types": [
+    "recent_topic",
+    "topic_shift",
+    "competitor_view",
+    "momcozy_mention",
+    "momcozy_gap",
+    "media_risk",
+    "content_disclosure"
+  ],
+  "stances": [
+    "positive",
+    "negative",
+    "mixed",
+    "neutral",
+    "unknown"
+  ],
+  "content_types": [
+    "review",
+    "listicle",
+    "news",
+    "feature",
+    "opinion",
+    "social_post",
+    "unknown"
+  ],
+  "sponsorship_statuses": [
+    "editorial",
+    "sponsored",
+    "affiliate",
+    "syndicated",
+    "unknown"
+  ],
+  "momcozy_presence_statuses": [
+    "observed",
+    "not_observed_in_covered_data",
+    "source_unavailable",
+    "unknown"
+  ],
+  "media_risk_types": [
+    "product_safety",
+    "quality",
+    "privacy",
+    "authenticity",
+    "legal",
+    "reputational"
+  ],
+  "pitch_reason_codes": [
+    "recent_contact_30d",
+    "same_topic_cooldown",
+    "do_not_contact",
+    "relationship_risk",
+    "conflict_of_interest",
+    "insufficient_evidence",
+    "asset_gap",
+    "unverified_identity"
+  ],
+  "action_types": [
+    "media_pitch",
+    "product_seeding",
+    "expert_engagement",
+    "topic_entry",
+    "risk_response"
+  ]
+}

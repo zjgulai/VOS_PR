@@ -1,0 +1,65 @@
+{
+  "version": "1.0",
+  "capabilities": [
+    {
+      "version": "1.0-draft",
+      "source_id": "synthetic_parents_rss",
+      "outlet_name": "Parents",
+      "outlet_id": "outlet_6ce834139509cc20",
+      "edition_id": "edition_325c53d417cb8438",
+      "source_type": "synthetic_feed",
+      "collection_method": "rss",
+      "entrypoint": "https://example.test/parents/feed.xml",
+      "permission_status": "pending",
+      "permission_evidence_ref": "fixture:pending",
+      "rights_label": "metadata_only",
+      "allowed_fields": [
+        "title",
+        "canonical_url",
+        "author_text",
+        "published_at"
+      ],
+      "retention_days": null,
+      "collection_frequency": "fixture",
+      "historical_window_days": 30,
+      "credential_ref": null,
+      "access_status": "untested",
+      "last_tested_at": null,
+      "last_success_at": null,
+      "fallback_method": "manual_url",
+      "fallback_source_id": "synthetic_parents_manual",
+      "owner_role": "data_engineering",
+      "reviewer_role": "legal_data_governance"
+    },
+    {
+      "version": "1.0-draft",
+      "source_id": "synthetic_parents_manual",
+      "outlet_name": "Parents",
+      "outlet_id": "outlet_6ce834139509cc20",
+      "edition_id": "edition_325c53d417cb8438",
+      "source_type": "manual_submission",
+      "collection_method": "manual_url",
+      "entrypoint": null,
+      "permission_status": "manual_only",
+      "permission_evidence_ref": "fixture:manual_only",
+      "rights_label": "metadata_only",
+      "allowed_fields": [
+        "submitted_url",
+        "title",
+        "author_text",
+        "published_at"
+      ],
+      "retention_days": null,
+      "collection_frequency": "on_demand",
+      "historical_window_days": 30,
+      "credential_ref": null,
+      "access_status": "untested",
+      "last_tested_at": null,
+      "last_success_at": null,
+      "fallback_method": "none",
+      "fallback_source_id": null,
+      "owner_role": "pr_analyst",
+      "reviewer_role": "data_governance"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Synthetic Core Media Feed</title>
+    <link>https://example.test/</link>
+    <description>Local-only fixture.</description>
+    <item>
+      <title>First pump review</title>
+      <link>https://example.test/articles/first</link>
+      <guid>fixture-first</guid>
+      <author>Editor One</author>
+      <pubDate>Wed, 12 Aug 2026 10:00:00 GMT</pubDate>
+      <description>Evidence-backed comparison.</description>
+    </item>
+    <item>
+      <title>First pump review duplicate</title>
+      <link>https://example.test/articles/first</link>
+      <guid>fixture-first-duplicate</guid>
+      <author>Editor One</author>
+      <pubDate>Wed, 12 Aug 2026 10:00:00 GMT</pubDate>
+      <description>Duplicate URL.</description>
+    </item>
+    <item>
+      <title>Second pump review without date</title>
+      <link>https://example.test/articles/second</link>
+      <guid>fixture-second</guid>
+      <author>Editor Two</author>
+      <description>Published date intentionally missing.</description>
+    </item>
+  </channel>
+</rss>

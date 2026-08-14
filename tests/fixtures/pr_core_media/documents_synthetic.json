@@ -1,0 +1,46 @@
+{
+  "metadata_envelope": {
+    "records": [
+      {
+        "title": "Metadata-only article",
+        "canonical_url": "https://example.test/articles/metadata",
+        "author_text": "Editor Fixture",
+        "published_at": "2026-08-12T10:00:00Z",
+        "summary_excerpt": "excerpt_fixture_marker",
+        "full_text": "full_body_fixture_marker"
+      }
+    ]
+  },
+  "normalization_records": [
+    {
+      "canonical_url": "https://Example.test/articles/review?utm_source=fixture&variant=blue#section",
+      "title": "Tested wearable pump review",
+      "author_text": "Editor Verified",
+      "published_at": "Wed, 12 Aug 2026 10:00:00 GMT",
+      "summary_excerpt": "Independent comparison with measured results.",
+      "sponsorship_disclosure": null,
+      "is_syndicated": false,
+      "canonical_document_id": null
+    },
+    {
+      "canonical_url": "https://example.test/articles/invalid-time",
+      "title": "Pump launch analysis",
+      "author_text": "Editor Unverified",
+      "published_at": "not-a-time",
+      "summary_excerpt": "Timing is intentionally invalid.",
+      "sponsorship_disclosure": "This article contains affiliate links.",
+      "is_syndicated": false,
+      "canonical_document_id": null
+    },
+    {
+      "canonical_url": "https://example.test/articles/syndicated",
+      "title": "Syndicated pump feature",
+      "author_text": "Editor Verified",
+      "published_at": "2026-08-11T09:00:00Z",
+      "summary_excerpt": "Republished fixture.",
+      "sponsorship_disclosure": null,
+      "is_syndicated": true,
+      "canonical_document_id": null
+    }
+  ]
+}

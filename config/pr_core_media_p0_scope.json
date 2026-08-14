@@ -1,0 +1,74 @@
+{
+  "version": "1.0",
+  "scope_id": "scope_pr_core_media_p0_us_en_pumping_v1",
+  "scope_version": "1.0-draft",
+  "status": "pending_business_signoff",
+  "markets": [
+    "US"
+  ],
+  "languages": [
+    "en"
+  ],
+  "category": "pumping",
+  "incremental_days": 30,
+  "baseline_days": 180,
+  "expected_outlets": 11,
+  "expected_candidate_journalists": 48,
+  "outlets": [
+    {
+      "canonical_name": "Forbes Personal Shopper",
+      "edition_status": "pending"
+    },
+    {
+      "canonical_name": "Consumer Reports",
+      "edition_status": "pending"
+    },
+    {
+      "canonical_name": "Parents",
+      "edition_status": "pending"
+    },
+    {
+      "canonical_name": "Babylist",
+      "edition_status": "pending"
+    },
+    {
+      "canonical_name": "Made for Mums",
+      "edition_status": "pending"
+    },
+    {
+      "canonical_name": "The Bump",
+      "edition_status": "pending"
+    },
+    {
+      "canonical_name": "What to Expect",
+      "edition_status": "pending"
+    },
+    {
+      "canonical_name": "BabyCenter",
+      "edition_status": "pending"
+    },
+    {
+      "canonical_name": "Women’s Health",
+      "edition_status": "pending"
+    },
+    {
+      "canonical_name": "MomJunction",
+      "edition_status": "pending"
+    },
+    {
+      "canonical_name": "Good Housekeeping",
+      "edition_status": "pending"
+    }
+  ],
+  "source_workbook": {
+    "path": "PMO/业务协作_社媒团队/momcozy pr 媒体关系全年规划表.xlsx",
+    "sheet": "吸奶器核心媒体池",
+    "approval_status": "requires_standard_xlsx"
+  },
+  "dictionary": {
+    "path": "config/competitor_dictionary.json",
+    "version": "1.0",
+    "approval_status": "pending_business_signoff"
+  },
+  "gate0_ref": "PRD/work_log/2026-08-14_PR核心媒体洞察P0_业务与数据签字表-v1.0.md"
+}
