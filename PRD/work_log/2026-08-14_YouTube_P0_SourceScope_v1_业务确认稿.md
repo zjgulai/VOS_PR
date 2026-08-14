@@ -2,7 +2,7 @@
 name: youtube-p0-source-scope-v1
 description: YouTube P0 首期产品、频道、查询、市场、语言、时间、评论范围、痛点分类与签字项。用于社媒部门冻结真实采集和 UAT 边界。
 date: 2026-08-14
-status: 方案 A 产品规划已确认，待社媒部门签字
+status: 方案 A 产品规划已确认，V1 preflight 已启动，待社媒部门签字
 stage: 决策门 2——数据、权利与覆盖
 scope_version: 1.0-draft
 selected_scope: M9/BP223 + M5 Smart/BP380
@@ -48,6 +48,8 @@ selected_scope: M9/BP223 + M5 Smart/BP380
 | C. Pumping + Feeding | 同时加入 W1、KleanPal Pro 等喂养电器 | 覆盖两个品类 | 痛点 taxonomy、竞品、Action owner 和数据分布不同 | 不建议首期合并 |
 
 用户已于 2026-08-14 确认按方案 A 启动 V0 离线验证。该确认属于产品规划决策，不替代社媒部门对频道、关键词、时间窗口、taxonomy、Action 和 UAT 样本的签字。社媒部门如果改选 B 或 C，必须同时重审频道、关键词、排除词、taxonomy、人工样本和 UAT 容量，不能只增加产品名。
+
+2026-08-14 用户进一步授权启动 V1 决策节点。当前授权范围为 preflight 和本地 HTTP 合同实施，不替代社媒部门对 SourceScope 的签字，也不是真实 API 调用授权。固定频道、历史窗口、query、taxonomy、Action 和 UAT 样本仍保持「待确认」。
 
 ---
 

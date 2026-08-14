@@ -210,3 +210,190 @@ claims:
     sourceRefs: [SRC-PEW-HEALTH-INFLUENCERS]
     applicability: 支撑 Momcozy 与母婴健康 Creator 合作的战略价值；也提示医疗声明需谨慎。
     limitations: Pew 聚焦 100K+ 大 influencer，nano/micro 生态未全覆盖。
+
+  # ── 研究包4：Facebook Groups ──────────────────────────────────
+  - claimId: CLM-SI-FB-001
+    statement: Facebook Groups 月活 18 亿用户，25M+ 公开群。Groups 有机覆盖率远高于 Pages（Pages 仅 1-5% followers，Groups 通知驱动可达更高比例）。私密群是最真实讨论发生地——母婴私密群用户因「只有妈妈」而更愿意分享真实痛点和产品反馈。
+    claimType: market-fact
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: Hootsuite + Brandlix + GroupsWatcher 三源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-HOOTSUITE-FBGROUPS, SRC-BRANDLIX-FBGROUPS, SRC-GROUPSWATCHER-MONITORING]
+    applicability: S1 用户讨论必须覆盖 FB Groups，尤其私密群。
+    limitations: 私密群数据获取有 API 限制，需专用工具。
+
+  - claimId: CLM-SI-FB-002
+    statement: 主流 social listening 工具无法监测 Facebook Groups（Facebook 限制了 API 对群组内容的访问）。大多数声称「监测 Facebook」的工具实际只覆盖公开 Pages，而非 Groups。母婴最真实的讨论在 Private Groups，未被绝大多数品牌监测到。
+    claimType: external-fact
+    risk: critical
+    verification: cross-audit-verified
+    crossAuditNote: GroupsWatcher + Hootsuite + The Conversation 一致确认此监测盲区
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-GROUPSWATCHER-MONITORING, SRC-HOOTSUITE-FBGROUPS]
+    applicability: 直接写入覆盖缺口 SOP——FB Groups 监测缺口是 B 型（ToS 限制）。
+    limitations: GroupsWatcher 等专用工具有付费门槛，需评估。
+
+  - claimId: CLM-SI-FB-003
+    statement: 母婴 FB Groups 存在商业化风险：admin 可能是商业公司，帖子赞助不透明。University of Melbourne 研究：成员在不知情情况下向商业化群提供育儿数据。识别信号：About 页有「广告/赞助」说明、admin 是 business page、成员列表含 Pages。
+    claimType: operational-rule
+    risk: high
+    verification: cross-audit-verified
+    crossAuditNote: ABC News 案例 + The Conversation 学术分析两源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-ABCNEWS-MUMS-GROUP, SRC-CONVERSATION-PARENTING-GROUPS]
+    applicability: S1 监测时需标注目标群组是否商业化——商业化群的「真实用户声音」信噪比更低。
+    limitations: 商业化程度因群组不同差异很大。
+
+  # ── 研究包5：竞品内容情报方法论 ──────────────────────────────
+  - claimId: CLM-SI-CI-001
+    statement: 竞品高表现内容的 4 大结构：① Hook（前 1.5-3 秒，触发「不能不看」的理由）② Story Arc（问题→过程→结果，或 Before/After）③ Value Delivery（教育性/娱乐性/情感共鸣）④ CTA（明确或隐性：保存/分享/评论触发）。「edutainment」（教育+娱乐）是 2026 最高病毒公式。
+    claimType: operational-rule
+    risk: low
+    verification: cross-audit-verified
+    crossAuditNote: Sprout + Hootsuite + TikLiveAPI 多源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-SPROUT-COMPETITOR-LISTENING, SRC-HOOTSUITE-COMPETITOR-ANALYSIS, SRC-TIKLIVEAPI-COMPETITOR]
+    applicability: 直接用于竞品高表现内容拆解 SOP（Phase C）的分析框架。
+    limitations: 框架通用，母婴品类需结合具体内容形式验证。
+
+  - claimId: CLM-SI-CI-002
+    statement: 评估竞品 TikTok 内容是否「真的火」：不看 play_count（受分发影响），看前 24-72 小时的 save_rate（collect/play）和 share_rate（share/play）和 engaged_action_rate（(share+collect+comment)/play）。早期高比率 = 算法会推；早期低比率 = 会在小池子里死掉。
+    claimType: operational-rule
+    risk: high
+    verification: source-reviewed
+    crossAuditNote: TikLiveAPI 实测数据框架，Sprout 部分一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-TIKLIVEAPI-COMPETITOR, SRC-SPROUT-COMPETITOR-LISTENING]
+    applicability: S2 竞品监控中判断竞品爆款的早期信号，指导 Momcozy 跟进决策。
+    limitations: save_rate/share_rate 需创作者账号内部数据，外部只能用公开 counts。
+
+  # ── 研究包6：社媒效果测量 ──────────────────────────────────────
+  - claimId: CLM-SI-ME-001
+    statement: Social Listening 核心 KPI 体系分 4 层：① Awareness（SOV 声量份额、品牌提及量、reach）② Engagement（互动率、saves/shares、评论质量）③ 洞察质量（痛点识别率、趋势参与时效<72h）④ 行动效果（Action 采纳率、Creator 合作 EMV）。避免只看 vanity metrics（粉丝数/播放量）。
+    claimType: methodology
+    risk: low
+    verification: cross-audit-verified
+    crossAuditNote: Sprout + Hootsuite 两个主要分析工具厂商一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-SPROUT-SOCIAL-METRICS, SRC-HOOTSUITE-SOCIAL-KPI]
+    applicability: 直接用于 Momcozy SI 系统的 KPI 设计和周报指标体系。
+    limitations: 各平台计算方法不统一，需标准化口径。
+
+  - claimId: CLM-SI-ME-002
+    statement: Creator 合作 ROI 5 大指标：① Reach（触达人数）② EMV-Earned Media Value（媒体曝光价值，约 $5-10/1000 reached）③ Engagement Rate（互动率，母婴 Nano 5.5% 为基准）④ Referral Traffic（来自创作者内容的网站流量）⑤ Attribution（可追踪的实际转化）。优先顺序：attribution > referral > EMV > engagement > reach。
+    claimType: methodology
+    risk: low
+    verification: cross-audit-verified
+    crossAuditNote: Influencity + Hootsuite 两源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-INFLUENCITY-CREATOR-ROI, SRC-HOOTSUITE-SOCIAL-KPI]
+    applicability: 指导 Momcozy Creator 合作的效果衡量标准，避免只看曝光。
+    limitations: Attribution 难以精确追踪（多点触达），EMV 是估算非实际值。
+
+
+  # ── Phase B 研究包4：Facebook Groups ──────────────────────────
+  - claimId: CLM-SI-FB-001
+    statement: Facebook Groups 1.8 亿/月活跃用户，25M+ 公开群。FB Groups 有机覆盖率远高于 Pages（Pages 仅触达 1-5% followers，Groups 通知驱动直接入 feed）。母婴 FB Groups 是家长获取同伴支持和产品信息的核心渠道。
+    claimType: market-fact
+    risk: low
+    verification: cross-audit-verified
+    crossAuditNote: Hootsuite + Brandlix + GroupsWatcher 三源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-HOOTSUITE-FBGROUPS, SRC-BRANDLIX-FBGROUPS]
+    applicability: 支撑 FB Groups 作为 S1 用户讨论重点监测平台的战略价值。
+    limitations: 数据为全平台，母婴垂类需单独验证。
+
+  - claimId: CLM-SI-FB-002
+    statement: 大多数 social listening 工具只能监测公开 Facebook Pages，无法监测 Facebook Groups（API 受限）。私密 Groups = 最真实讨论发生地。专用工具（如 Groups Watcher）可监测公开+私密群，但需核查 ToS 合规性。
+    claimType: operational-rule
+    risk: high
+    verification: cross-audit-verified
+    crossAuditNote: GroupsWatcher + The Conversation + ABC News 三源确认 FB Groups 监测有 API 限制 + 私密群价值
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-GROUPSWATCHER-MONITORING, SRC-ABCNEWS-MUMS-GROUP]
+    applicability: 直接写入覆盖缺口 SOP：FB Groups 是 B 型缺口（ToS 限制），标注为部分覆盖。
+    limitations: 私密群监测在不同工具、不同辖区有不同合规风险，需法务确认。
+
+  - claimId: CLM-SI-FB-003
+    statement: 母婴 FB Groups 存在商业化黑幕风险：admin 可能是商业公司，帖子以赞助形式变现但对成员不透明。高信任社区 = 高商业影响风险。品牌进入需检查：admin 背景/group rules 是否提及商业/成员是否含 Pages/赞助帖是否标注。
+    claimType: operational-rule
+    risk: critical
+    verification: cross-audit-verified
+    crossAuditNote: ABC News（澳洲 Canberra Mums 案例）+ The Conversation（学术分析）两源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-ABCNEWS-MUMS-GROUP, SRC-CONVERSATION-PARENTING-GROUPS]
+    applicability: Creator/Group 合作前需做尽职调查；Momcozy 如果赞助母婴群组内容，必须确保赞助标注透明（FTC 合规）。
+    limitations: 主要来自澳洲案例，美国 ToS 和 FTC 要求可能不同。
+
+  # ── Phase B 研究包5：竞品内容情报 ──────────────────────────────
+  - claimId: CLM-SI-CI-001
+    statement: 竞品 TikTok/IG 内容分析核心：看前 24-72 小时的 save_rate + share_rate + engaged_action_rate（不是 play_count）。这 3 个早期比率才能预测算法是否会推广。play_count 是结果，比率是原因。
+    claimType: operational-rule
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: TikLiveAPI 公开数据研究 + Hootsuite + Sprout 一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-TIKLIVEAPI-COMPETITOR, SRC-HOOTSUITE-COMPETITOR-ANALYSIS]
+    applicability: 直接写入竞品高表现内容拆解 SOP（Phase C）的核心判断逻辑。
+    limitations: save/share 数据只对创作者可见（in-app analytics），公开 API 只提供 play/like/comment/share/collect。
+
+  - claimId: CLM-SI-CI-002
+    statement: 高表现竞品内容共同特征（5 大要素）：① 前 1.5-3 秒强 hook（完播率决定分发）② 教育+娱乐双轨（edutainment）③ 清晰单一核心主张 ④ 触发 saves 的信息密度（值得收藏）⑤ 结尾 loopability（视频结尾引向开头）。爆款公式：强 hook + 高搜索价值（回答明确问题）+ <90 秒。
+    claimType: operational-rule
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: Sprout + Hootsuite + TikLiveAPI + Socialsync 多源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-SPROUT-TIKTOK-ALGO, SRC-TIKLIVEAPI-COMPETITOR]
+    applicability: 竞品内容拆解 SOP（Phase C）的分析维度框架。
+    limitations: 母婴垂类可能有品类偏差，需用实际数据校准。
+
+  - claimId: CLM-SI-CI-003
+    statement: 竞品社媒 SOV（声量份额）是 S2 核心 KPI：自己品牌提及 / (自己 + 主要竞品提及总量）× 100%。竞品内容监测需追踪：发布频率/内容类型分布/Creator 合作信号（#ad/#sponsored/TikTok Creator Marketplace 信号）/爆款内容触发因素。
+    claimType: operational-rule
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: Hootsuite + Sprout 两源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-HOOTSUITE-COMPETITOR-ANALYSIS, SRC-SPROUT-COMPETITOR-LISTENING]
+    applicability: 直接用于 S2 竞品监控模块的 KPI 定义和周报指标。
+    limitations: SOV 计算依赖采集覆盖的完整性，需诚实标注采集范围。
+
+  # ── Phase B 研究包6：社媒效果测量 ──────────────────────────────
+  - claimId: CLM-SI-KPI-001
+    statement: SI 系统核心 KPI 分 4 层：① Awareness（总 reach/impressions/SOV）② Engagement（互动率/saves/shares/评论质量）③ Insight 质量（痛点识别率/洞察转 Action 率/Action 采纳率）④ 时效性（趋势参与时效 <72h/风险发现提前量/Creator 合作窗口命中率）。避免只看 vanity metrics（总点赞数/follower 数）。
+    claimType: operational-rule
+    risk: low
+    verification: cross-audit-verified
+    crossAuditNote: Sprout + Hootsuite + AMEC IEF 三源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-SPROUT-SOCIAL-METRICS, SRC-HOOTSUITE-SOCIAL-KPI]
+    applicability: 直接用于 SI 系统的效果指标设计，对应业务价值文档的 outcome 指标。
+    limitations: Insight 质量和时效性指标需要产品侧埋点支持。
+
+  - claimId: CLM-SI-KPI-002
+    statement: Creator 合作 ROI 5 大指标：① Reach（触达规模）② EMV（Earned Media Value，每 1000 触达 $5-10）③ Engagement（实际互动，比 reach 更真实）④ Referral Traffic（带来多少官网/亚马逊流量）⑤ Attribution（可归因的直接销售/注册）。EMV 是估算值，attribution 是最难但最有说服力的数字。
+    claimType: operational-rule
+    risk: medium
+    verification: cross-audit-verified
+    crossAuditNote: Influencity + Hootsuite + Sprout 三源一致
+    evidenceGrade: L1-public-or-runtime
+    asOf: "2026-08-13"
+    sourceRefs: [SRC-INFLUENCITY-CREATOR-ROI, SRC-HOOTSUITE-SOCIAL-KPI]
+    applicability: 直接用于 Momcozy Creator 合作效果评估框架，指导 S4 模块的 Action 复盘。
+    limitations: EMV 是行业估算值，各平台/工具计算方式不同；attribution 需要 UTM 链接/折扣码等追踪设置。

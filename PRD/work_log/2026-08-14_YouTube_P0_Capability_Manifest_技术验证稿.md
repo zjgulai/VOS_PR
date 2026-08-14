@@ -2,7 +2,7 @@
 name: youtube-p0-capability-manifest
 description: YouTube P0 官方 API 连接器的能力清单、字段映射、错误语义、Coverage、生命周期、验证阶段、验收证据与当前缺口。
 date: 2026-08-14
-status: V0 fixture-only 已通过，V1 未授权
+status: V0 fixture-only 已通过，V1 preflight 与本地合同已通过，真实连接阻断
 stage: 决策门 2——数据、权利与覆盖
 manifest_version: 1.0-draft
 ---
@@ -15,14 +15,15 @@ manifest_version: 1.0-draft
 |---|---|---|
 | 官方 YouTube Data API 文档能力 | 已核验 | 官方文档，只读研究 |
 | Google Cloud / YouTube API 项目 | 未核验 | 未读取凭证或项目配置 |
-| 官方视频发现连接器 | 未实现或未定位到可复用实现 | 本地代码搜索 |
-| 官方评论线程连接器 | 未实现或未定位到可复用实现 | 本地代码搜索 |
-| 官方回复补齐 | 未实现或未定位到可复用实现 | 本地代码搜索 |
+| 官方视频发现连接器 | V1 只读 client 已实现 `channels.list` 与 `videos.list`；未实现 uploads/search 发现 | 本地 HTTP 合同测试，未调用官方 API |
+| 官方评论线程连接器 | V1 只读 client 已实现 `commentThreads.list` 参数、分页和结构化错误 | 本地 HTTP 合同测试，未读取真实评论 |
+| 官方回复补齐 | V1 只读 client 已实现 `comments.list(parentId)` | 本地 HTTP 合同测试，未读取真实回复 |
 | 当前 `youtube_collector.py` | 视频发现能力未变；V0 已移除个人 profile 读取、US/en 硬填和数据库错误吞没 | 行为测试 + 静态检查 |
 | S1 评论数据 | 未验证 | 样本无评论正文、thread/reply ID |
 | Coverage | V0 完成 10 类状态映射；真实分页和 CoverageReport 未实现 | 合成 fixture |
 | 30 天刷新/删除 | V0 完成 3 类定位/动作 fixture；真实调度和删除未实现 | 合成 fixture |
-| 产品级判断 | `NO_GO` | V0 通过不解除 G2、G3、G5–G10 |
+| V1 preflight | `NO_GO` | 只有 preflight 准备授权通过；Rights、SourceScope、live 授权、runtime、secret 和样本 ID 均未通过 |
+| 产品级判断 | `NO_GO` | 本地客户端合同通过不解除 G2、G3、G5–G10 |
 
 本 Manifest 定义“需要证明什么”，不授权读取个人凭证、调用真实 API 或修改生产数据。真实只读连接测试必须在 Rights Matrix 和执行审批通过后运行。
 
@@ -62,12 +63,12 @@ P0 连接器不得读取 `~/.zshrc`、用户 shell profile、仓库 `.env` 或�
 
 | 能力 ID | 端点 | P0 用途 | 关键输入 | 关键输出 | 默认 quota | 当前状态 |
 |---|---|---|---|---|---:|---|
-| C1 | `channels.list` | 取得批准频道的 uploads playlist 等元数据 | `id`、`part` | channel、related playlists | 1 unit | 待连接验证 |
+| C1 | `channels.list` | 取得批准频道的 uploads playlist 等元数据 | `id`、`part` | channel、related playlists | 1 unit | 本地合同通过；真实待连接 |
 | C2 | `playlistItems.list` | 遍历批准频道的 uploads | `playlistId`、`pageToken`、`maxResults<=50` | video IDs、`nextPageToken` | 1 unit | 待连接验证 |
 | C3 | `search.list` | 有限关键词发现视频 | `q`、`type=video`、时间、region/language、`pageToken` | 候选 video IDs、页 token | 独立 100 calls/day，每次 1 | 待连接验证 |
-| C4 | `videos.list` | 补齐视频状态、频道、发布时间和统计 | video IDs、`part` / `fields` | video metadata/statistics | 1 unit | 待连接验证 |
-| C5 | `commentThreads.list` | 获取视频顶层评论和线程 | `videoId`、`order=time`、`textFormat=plainText`、`pageToken`、`maxResults<=100` | thread、top-level comment、reply count、`nextPageToken` | 1 unit | 待连接验证 |
-| C6 | `comments.list` | 补齐指定顶层评论的全部可访问回复 | `parentId`、`textFormat=plainText`、`pageToken`、`maxResults<=100` | replies、`nextPageToken` | 1 unit | 待连接验证 |
+| C4 | `videos.list` | 补齐视频状态、频道、发布时间和统计 | video IDs、`part` / `fields` | video metadata/statistics | 1 unit | 本地合同通过；真实待连接 |
+| C5 | `commentThreads.list` | 获取视频顶层评论和线程 | `videoId`、`order=time`、`textFormat=plainText`、`pageToken`、`maxResults<=100` | thread、top-level comment、reply count、`nextPageToken` | 1 unit | 本地合同通过；真实待连接 |
+| C6 | `comments.list` | 补齐指定顶层评论的全部可访问回复 | `parentId`、`textFormat=plainText`、`pageToken`、`maxResults<=100` | replies、`nextPageToken` | 1 unit | 本地合同通过；真实待连接 |
 
 quota 数值依据 2026-08-14 核验的官方文档。实施前重新核验，不在 Manifest 中写死每日采集量。
 
@@ -214,7 +215,7 @@ quota 数值依据 2026-08-14 核验的官方文档。实施前重新核验，�
 | 静默异常扫描 | 关键路径无通用 `pass` | `PASS`：现有 collector 无 finding |
 | 生命周期 fixture | 30 天刷新/删除和源删除可定位 | `PASS`：refresh/source missing/delete request 均可定位 |
 
-V0 于 2026-08-14 以合成 fixture 通过。该结果只证明离线契约、状态映射和已检查的代码安全行为，不证明官方 API 权限、真实字段、quota、稳定性、保存删除任务或业务价值。V1 仍受 Rights Matrix 和执行授权阻断。
+V0 于 2026-08-14 以合成 fixture 通过。该结果只证明离线契约、状态映射和已检查的代码安全行为，不证明官方 API 权限、真实字段、quota、稳定性、保存删除任务或业务价值。V1 preflight 准备实施已获用户授权，真实连接仍受 Rights Matrix、SourceScope 和 live 执行授权阻断。
 
 ### V1：官方 API 最小只读连接
 
@@ -229,6 +230,8 @@ V0 于 2026-08-14 以合成 fixture 通过。该结果只证明离线契约、�
 | 失败语义 | 一个 comments disabled 或 fixture | 不写零评论 |
 
 V1 是只读 smoke，不证明业务覆盖、稳定性或洞察价值。
+
+当前实测：机器 preflight 返回 `NO_GO`、`live_request_allowed=false`、`live_request_attempted=false`。未通过项为 R1、R4–R6、R17–R19 及其证据引用，SourceScope 签字、live 只读授权、批准运行环境、runtime secret 和三个样本 ID。因此本轮没有发起官方 API 请求。
 
 ### V2：冻结范围 Coverage 验证
 
@@ -293,7 +296,7 @@ V3 通过后，才能重新评估 YouTube 产品级 Go/No-Go。
 | Coverage schema | 第 6 节状态 | 待填写 | 数据负责人 | 待填写 | 待实现 |
 | 生命周期 | 30 天刷新/删除 + 删除请求 | 待填写 | 数据 + 隐私 | 待填写 | 待实现 |
 | V0 owner/date | 离线与静态门 | 2026-08-14 本轮自动化验证 | 研发待复核 | 15 tests + V0 JSON report | `PASS fixture-only` |
-| V1 owner/date | 官方只读 smoke | 待填写 | 数据/研发 | 待填写 | 权利门阻断 |
+| V1 owner/date | 官方只读 smoke | preflight/client 本地实施：2026-08-14；live 待填写 | 数据/研发待指定 | 13 tests + preflight JSON report | 本地合同通过；真实连接权利门阻断 |
 | V2 owner/date | 冻结范围 Coverage | 待填写 | 数据 + 社媒 | 待填写 | 依赖 V1 |
 | V3 owner/date | 生命周期 + S1 UAT | 待填写 | 四方 | 待填写 | 依赖 V2 |
 
@@ -303,8 +306,8 @@ V3 通过后，才能重新评估 YouTube 产品级 Go/No-Go。
 
 | Deep Research 门槛 | 本 Manifest 证据 | 当前结果 |
 |---|---|---|
-| G3 评论级连接 | V1 | No-Go：未验证 |
-| G4 凭证与错误 | V0 + 第 7 节 | 部分通过：离线安全行为通过；官方 runtime/secret 未验证 |
+| G3 评论级连接 | V1 | No-Go：本地 HTTP 合同通过，官方真实评论未验证 |
+| G4 凭证与错误 | V0 + 第 7 节 | 部分通过：客户端使用 `X-Goog-Api-Key` 且本地报告无 secret；官方 runtime/secret 仍未验证 |
 | G5 数据契约 | 第 5 节 + fixture | No-Go：fixture 通过，生产 schema 未扩展 |
 | G6 Coverage | 第 6 节 + V2 | No-Go：10 类映射通过，真实分页未验证 |
 | G7 生命周期 | V3 + lifecycle result | No-Go：定位 fixture 通过，真实任务未实现 |
@@ -362,3 +365,41 @@ python3 tools/validate_youtube_p0_v0.py
 ```
 
 实测结果：退出码 `0`，`overall_status=PASS`；6 个检查全部 `PASS`；标准化 3 条合成评论；Coverage 10 个 case 无 mismatch；3 条生命周期记录分别得到 `refresh_due`、`mark_source_missing` 和 `delete_due_to_request`。证据等级为 `fixture_only`。
+
+---
+
+## 14. V1 preflight 执行记录
+
+### 14.1 已实施资产
+
+| 资产 | 作用 | 证据等级 |
+|---|---|---|
+| [`youtube_p0_v1_preflight.json`](../../config/youtube_p0_v1_preflight.json) | 保存 Rights、SourceScope、live 授权、runtime、secret 和样本 ID 状态，不保存 key | 当前审批记录草案 |
+| [`youtube_p0_v1.py`](../../tools/social/youtube_p0_v1.py) | 只有所有必要状态和 `evidence_ref` 通过时才返回 `READY` | 本地行为测试 |
+| [`youtube_official_connector.py`](../../tools/social/youtube_official_connector.py) | 只读 `channels.list`、`videos.list`、`commentThreads.list`、`comments.list`；key 通过 header 发送 | 本地 HTTP 合同测试 |
+| [`validate_youtube_p0_v1.py`](../../tools/validate_youtube_p0_v1.py) | 默认只运行 preflight；仅显式传入 `--live` 且所有门通过时才创建官方客户端 | 本地 CLI 与负向阻断测试 |
+
+### 14.2 TDD 与当前判定
+
+1. 首轮 RED：7 个测试因 V1 模块和 CLI 缺失而失败。
+2. 第一轮 GREEN 暴露本机代理干扰 loopback 合同服务器；将 loopback 与运行环境代理分离后通过。
+3. 审批证据 RED：`APPROVED` 无 `evidence_ref` 时曾被误判为 `READY`；已改为 `NO_GO`。
+4. Coverage 口径 RED：`channelNotFound` 曾被映射为未定义状态；现保留原始 reason，`coverage_status=null`。
+5. live runner RED：缺少受控 smoke 函数与 `--live` 阻断时，2 个测试失败；已实现成只返回计数、ID 和页标记的脱敏证据摘要。
+6. 条件完成 RED：`APPROVED_WITH_CONDITIONS` 曾在条件未满足时返回 `READY`；现必须同时满足 `rights_conditions[Ri]=true`。
+7. 运输错误 RED：连接失败曾直接抛出 `httpx` 异常；现返回不含 key 的 `transportError` / `transient_error`。
+8. 最终定向 GREEN：13 个 V1 测试通过。
+
+当前命令：
+
+```bash
+python3 tools/validate_youtube_p0_v1.py
+```
+
+当前结果：退出码 `1`，`overall_status=NO_GO`，`live_request_allowed=false`，`live_request_attempted=false`。这是预期的安全阻断，不是 V1 真实连接通过。
+
+显式 `--live` 命令已实现，但在当前 pending 记录上仍在创建 HTTP client 前返回同一 `NO_GO`：
+
+```bash
+python3 tools/validate_youtube_p0_v1.py --live
+```

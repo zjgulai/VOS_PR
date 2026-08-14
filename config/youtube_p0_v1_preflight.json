@@ -1,0 +1,62 @@
+{
+  "record_version": "1.0-draft",
+  "preflight_execution": {
+    "status": "APPROVED",
+    "scope": "preflight_only",
+    "approved_at": "2026-08-14",
+    "evidence_ref": "PRD/work_log/2026-08-14_YouTube_P0_Capability_Manifest_技术验证稿.md#14-v1-preflight-执行记录"
+  },
+  "rights": {
+    "R1": "PENDING_REVIEW",
+    "R4": "PENDING_REVIEW",
+    "R5": "PENDING_REVIEW",
+    "R6": "PENDING_REVIEW",
+    "R17": "PENDING_REVIEW",
+    "R18": "PENDING_REVIEW",
+    "R19": "PENDING_REVIEW"
+  },
+  "rights_evidence": {
+    "R1": "",
+    "R4": "",
+    "R5": "",
+    "R6": "",
+    "R17": "",
+    "R18": "",
+    "R19": ""
+  },
+  "rights_conditions": {
+    "R1": false,
+    "R4": false,
+    "R5": false,
+    "R6": false,
+    "R17": false,
+    "R18": false,
+    "R19": false
+  },
+  "source_scope": {
+    "status": "PENDING_REVIEW",
+    "scope_id": "scope_youtube_p0_pumping_us_en_v1",
+    "scope_version": "1.0-draft",
+    "evidence_ref": ""
+  },
+  "live_readonly_approval": {
+    "status": "PENDING_REVIEW",
+    "evidence_ref": ""
+  },
+  "runtime_environment": {
+    "status": "PENDING_REVIEW",
+    "name": "",
+    "evidence_ref": ""
+  },
+  "secret_source": {
+    "status": "PENDING_REVIEW",
+    "type": "runtime_injection",
+    "env_var": "YOUTUBE_API_KEY",
+    "evidence_ref": ""
+  },
+  "samples": {
+    "channel_id": "",
+    "video_id": "",
+    "reply_parent_id": ""
+  }
+}

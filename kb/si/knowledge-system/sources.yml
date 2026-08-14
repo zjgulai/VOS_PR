@@ -246,3 +246,95 @@ sources:
     url: https://influencity.com/blog/en/red-flags-in-influencer-analytics-every-brand-should-know
     reviewedAt: "2026-08-13"
     notes: 【交叉验证 L1】5 红旗：假互动/高 follower 低互动/受众不匹配/缺 tracking/内容品牌不契合；doubtful followers >25% 需警惕
+
+  # ── 研究包4：Facebook Groups 母婴社群 ──────────────────────────
+  - sourceId: SRC-HOOTSUITE-FBGROUPS
+    title: Hootsuite — How to Use Facebook Groups to Grow Your Business 2026
+    kind: industry-article
+    authority: third-party
+    url: https://blog.hootsuite.com/facebook-groups-business/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】FB Groups 1.8B/月活跃用户，25M+ 公开群；Public/Private/Hidden 三类对比；内容节奏 4-6次/周；80/20 推广比
+
+  - sourceId: SRC-GROUPSWATCHER-MONITORING
+    title: GroupsWatcher — Monitor Facebook Brand Mentions in Groups
+    kind: industry-article
+    authority: third-party
+    url: https://www.groupswatcher.com/blog/monitor-brand-mentions-facebook
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】大多数 social listening 工具无法监测 FB Groups（API 限制）；私密群 = 最真实讨论发生地；Groups Watcher 可监测公开+私密群
+
+  - sourceId: SRC-BRANDLIX-FBGROUPS
+    title: Brandlix — Facebook Groups for Business Complete 2026 Guide
+    kind: industry-article
+    authority: third-party
+    url: https://brandlix.io/blog/facebook-groups-for-business-the-complete-2026-guide-en
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】Groups 有机覆盖 > Pages（Pages 1-5% followers，Groups 通知驱动）；Private > Public 适合大多数品牌；健康群活跃度 15-25%
+
+  - sourceId: SRC-ABCNEWS-MUMS-GROUP
+    title: ABC News — Canberra Mums Facebook Group (Commercialisation Risk)
+    kind: news
+    authority: third-party
+    url: https://www.abc.net.au/news/2025-01-11/canberra-mums-facebook-groups-run-digital-marketing-interstate/104796658
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】母婴 FB Groups 商业化黑幕：admin 可为商业公司，未透明赞助；背景权威：University of Melbourne 媒体研究专家点评
+
+  - sourceId: SRC-CONVERSATION-PARENTING-GROUPS
+    title: The Conversation — Social Media Groups for New Parents (Ethical Analysis)
+    kind: academic
+    authority: third-party
+    url: https://theconversation.com/social-media-groups-can-offer-support-to-new-parents-heres-how-to-tell-if-theres-marketing-involved-247212
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】母婴 FB Groups 高信任度+高商业风险；建议看 admin 背景/group rules 提及商业/成员是否含 Pages；同行评审级分析
+
+  # ── 研究包5：竞品内容情报方法论 ──────────────────────────────
+  - sourceId: SRC-TIKLIVEAPI-COMPETITOR
+    title: TikLiveAPI — Measuring Competitor Content Performance
+    kind: industry-article
+    authority: third-party
+    url: https://www.tikliveapi.com/blog/tiktok-algorithm-2026-what-we-know-from-public-data/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】前 24-72 小时 save_rate/share_rate/engaged_action_rate 是最准竞品内容预测指标；不要比 play_count，要比早期比率
+
+  - sourceId: SRC-HOOTSUITE-COMPETITOR-ANALYSIS
+    title: Hootsuite — Social Media Competitive Analysis
+    kind: industry-article
+    authority: third-party
+    url: https://blog.hootsuite.com/competitive-analysis-on-social-media/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】SOV（声量份额）；content pillar 分析；竞品最高参与内容提取；需追踪 posting frequency/content mix/engagement rate
+
+  - sourceId: SRC-SPROUT-COMPETITOR-LISTENING
+    title: Sprout Social — Social Media Competitor Analysis 2026
+    kind: industry-article
+    authority: third-party
+    url: https://sproutsocial.com/insights/social-media-competitor-analysis/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】竞品分析 5 步：识别→追踪→分析内容→评估受众→迭代；关注 engagement rate 不是 follower 数；危机信号追踪
+
+  # ── 研究包6：社媒效果测量 ──────────────────────────────────────
+  - sourceId: SRC-SPROUT-SOCIAL-METRICS
+    title: Sprout Social — Social Media Metrics That Matter 2026
+    kind: industry-article
+    authority: third-party
+    url: https://sproutsocial.com/insights/social-media-metrics/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】4 类指标：Awareness（reach/impressions）/Engagement（rate/saves/shares）/Conversion（clicks/leads）/Customer Care（response time）
+
+  - sourceId: SRC-HOOTSUITE-SOCIAL-KPI
+    title: Hootsuite — Social Media KPIs 2026
+    kind: industry-article
+    authority: third-party
+    url: https://blog.hootsuite.com/social-media-kpis/
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】SI 核心 KPI：SOV/sentiment score/痛点识别率/趋势参与时效/Creator 合作 EMV；避免 vanity metrics
+
+  - sourceId: SRC-INFLUENCITY-CREATOR-ROI
+    title: Influencity — Influencer Marketing ROI 5 Metrics 2026
+    kind: industry-article
+    authority: third-party
+    url: https://influencity.com/blog/en/influencer-marketing-roi
+    reviewedAt: "2026-08-13"
+    notes: 【交叉验证 L1】Creator 合作 ROI 5 指标：reach/EMV（Earned Media Value）/engagement/referral traffic/直接 attribution；EMV = $5-10/1000 reached
+

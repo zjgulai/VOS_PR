@@ -15,6 +15,8 @@ stage: 决策门 2——数据、权利与覆盖
 
 当前产品级状态：`BLOCKED_PENDING_REVIEW`。
 
+2026-08-14 已获准执行 V1 preflight 和本地 HTTP 合同测试。该授权不等于 R1、R4–R6、R17–R19 已获批准，也不授权使用真实 API key 或读取真实评论。机器 preflight 对上述项仍返回 `NO_GO`。
+
 解除阻断至少需要：
 
 1. YouTube API Client、Google Cloud project、Privacy Policy、Terms 和数据删除机制的责任主体明确。
@@ -148,7 +150,7 @@ stage: 决策门 2——数据、权利与覆盖
 | Apify | 证据不足前保持 `BLOCKED` | 待填写 | 待填写 | 采购 + 法务 | 待填写 |
 | 视频/音频/transcript | `OUT_OF_SCOPE` | 待填写 | 待填写 | 产品 + 法务 | 待填写 |
 
-签字完成标准：R1–R19 每项有明确状态和证据；R20 保持阻断或取得足以解除阻断的书面证据；R22–R24 明确不进入 P0。
+签字完成标准：R1–R19 每项有明确状态和证据；R20 保持阻断或取得足以解除阻断的书面证据；R22–R24 明确不进入 P0。进入 V1 真实只读 smoke 时，R1、R4–R6、R17–R19 的状态和证据引用还必须同步写入 [`youtube_p0_v1_preflight.json`](../../config/youtube_p0_v1_preflight.json)；只改状态、不填 `rights_evidence` 不能通过。状态为 `APPROVED_WITH_CONDITIONS` 时，还必须将已完成条件明确记为 `rights_conditions[Ri]=true`；未完成条件不能进入 live。
 
 ---
 

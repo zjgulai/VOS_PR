@@ -117,3 +117,32 @@ concepts:
     definition: (likes + comments + saves + shares) / followers 或 / views（因平台不同）。母婴 TikTok nano 平均 5.5%，IG 4.8%；Macro 降至 1.5% 左右。评估 Creator 时互动率远比 follower 数重要。2%+ IG 是健康基准，TikTok 3%+ 正常。
     canonicalDocument: kb/si/knowledge-system/claims.yml
     evidenceRef: CLM-SI-CR-002
+
+  # ── Phase B 新增概念 ──────────────────────────────────────────
+  - conceptId: CONCEPT-FB-GROUPS-LISTENING
+    term: Facebook Groups 社群监测
+    aliases: [FB Groups 监听, 私密群监测]
+    definition: 绝大多数 social listening 工具只覆盖公开 Pages，FB Groups（尤其私密群）是监测盲区。私密群是母婴用户最真实、最坦诚讨论发生地。专用工具（如 Groups Watcher/Apify）可补充，但需确认 ToS 合规性。属于 B 型覆盖缺口（ToS 限制）。
+    canonicalDocument: kb/si/sop/02_覆盖缺口诚实表达.md
+    evidenceRef: CLM-SI-FB-002
+
+  - conceptId: CONCEPT-SOV
+    term: 声量份额 Share of Voice (SOV)
+    aliases: [SOV, 声量占比, 媒体份额]
+    definition: 品牌在品类总讨论中的占比：SOV = 品牌提及 / (品牌 + 主要竞品总提及) × 100%。S2 竞品监控的核心指标，反映品牌在用户心智中的相对存在感。
+    canonicalDocument: kb/si/knowledge-system/claims.yml
+    evidenceRef: CLM-SI-CI-003
+
+  - conceptId: CONCEPT-EMV
+    term: 媒体赢得价值 Earned Media Value (EMV)
+    aliases: [EMV, 赢得媒体价值, 曝光价值]
+    definition: Creator 合作产生的媒体曝光的估算货币价值，约 $5-10/1000 triggered，是 Creator 合作 ROI 指标之一。注意：EMV 是估算值，attribution（可归因销售）更准确但更难追踪。
+    canonicalDocument: kb/si/knowledge-system/claims.yml
+    evidenceRef: CLM-SI-KPI-002
+
+  - conceptId: CONCEPT-EDUTAINMENT
+    term: 教育娱乐内容 Edutainment
+    aliases: [edutainment, 教娱, 知识娱乐]
+    definition: 2026 年 TikTok/IG 最高病毒公式：用娱乐形式传递有价值的知识/信息（如母婴产品演示+使用技巧+问题解答）。纯娱乐容易跳过，纯教育缺乏黏性，edutainment 兼顾完播率和 saves 触发。
+    canonicalDocument: kb/si/knowledge-system/claims.yml
+    evidenceRef: CLM-SI-CI-002
